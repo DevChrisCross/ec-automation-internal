@@ -2,6 +2,7 @@ package com.elavon.tasks;
 
 import com.elavon.setup.EnvironmentLocale;
 import com.elavon.setup.EnvironmentType;
+import com.elavon.setup.PageUrl;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -10,11 +11,12 @@ import net.thucydides.core.annotations.Step;
 
 import java.util.ResourceBundle;
 
-import static net.serenitybdd.screenplay.Tasks.instrumented;
-
 public class OpenTheApplication implements Task{
 
     String baseUrl;
+    String pageUrl;
+    EnvironmentType envType;
+    EnvironmentLocale localeType;
     ResourceBundle config;
 
     @Step("Open the application")
@@ -24,80 +26,70 @@ public class OpenTheApplication implements Task{
         );
     }
 
-    public static Task onTheHomePage() {
-        return instrumented(OpenTheApplication.class);
-    }
-
-    public static Task onTheEnvironmentOf(EnvironmentType envType) {
-        return Instrumented.instanceOf(OpenTheApplication.class)
-                .withProperties(envType);
-    }
-
-    public static Task onTheLocaleOf(EnvironmentLocale locale) {
-        return Instrumented.instanceOf(OpenTheApplication.class)
-                .withProperties(locale);
-    }
-
-    public static Task withEnvironmentAndLocaleOf(EnvironmentType envType, EnvironmentLocale locale) {
-        return Instrumented.instanceOf(OpenTheApplication.class)
-                .withProperties(envType, locale);
-    }
-
-    public static Task onTheLoginPage() {
-        return Instrumented.instanceOf(OpenTheApplication.class)
-                .withProperties("login");
-    }
-
-    public static Task onTheContactUsPage() {
-        return Instrumented.instanceOf(OpenTheApplication.class)
-                .withProperties("contactus");
-    }
-
-    public static Task onTheCookiesPolicyPage() {
-        return Instrumented.instanceOf(OpenTheApplication.class)
-                .withProperties("cookiePolicyEu");
-    }
-
-    public static Task onTheTermsOfUsePage() {
-        return Instrumented.instanceOf(OpenTheApplication.class)
-                .withProperties("termsOfUseEu");
-    }
-
     public OpenTheApplication(String pageUrl) {
-        this();
-        baseUrl += pageUrl;
-    }
-
-    public OpenTheApplication() { this(EnvironmentType.NONE, EnvironmentLocale.NONE); }
-
-    public OpenTheApplication(EnvironmentType envType) { this(envType, EnvironmentLocale.NONE); }
-
-    public OpenTheApplication(EnvironmentLocale locale) { this(EnvironmentType.NONE, locale); }
-
-    public OpenTheApplication(EnvironmentType envType, EnvironmentLocale localeType) {
 
         config = ResourceBundle.getBundle("config");
-        if (envType.equals(EnvironmentType.NONE)) {
-            String env = config.getString("environment.type");
-            envType = EnvironmentType.valueOf(env.toUpperCase());
-        }
 
-        if (localeType.equals(EnvironmentLocale.NONE)) {
-            String locale = config.getString("environment.locale");
-            localeType = EnvironmentLocale.valueOf(locale);
-        }
+        String env = config.getString("environment.type");
+        envType = EnvironmentType.valueOf(env.toUpperCase());
 
+        String locale = config.getString("environment.locale");
+        localeType = EnvironmentLocale.valueOf(locale);
+
+        this.pageUrl = pageUrl;
+        constructUrl();
+    }
+
+    public static OpenTheApplication onTheHomePage() {
+        return Instrumented.instanceOf(OpenTheApplication.class)
+                .withProperties(PageUrl.HOME);
+    }
+
+    public static OpenTheApplication onTheLoginPage() {
+        return Instrumented.instanceOf(OpenTheApplication.class)
+                .withProperties(PageUrl.LOGIN);
+    }
+
+    public static OpenTheApplication onTheContactUsPage() {
+        return Instrumented.instanceOf(OpenTheApplication.class)
+                .withProperties(PageUrl.CONTACT_US);
+    }
+
+    public static OpenTheApplication onTheCookiesPolicyPage() {
+        return Instrumented.instanceOf(OpenTheApplication.class)
+                .withProperties(PageUrl.PRIVACY_POLICY);
+    }
+
+    public static OpenTheApplication onTheTermsOfUsePage() {
+        return Instrumented.instanceOf(OpenTheApplication.class)
+                .withProperties(PageUrl.TERMS_OF_USE);
+    }
+
+    public OpenTheApplication withTheEnvironmentOf(EnvironmentType envType) {
+        this.envType = envType;
+        constructUrl();
+        return this;
+    }
+
+    public OpenTheApplication withTheLocaleOf(EnvironmentLocale locale) {
+        this.localeType = locale;
+        constructUrl();
+        return this;
+    }
+
+    private void constructUrl() {
+        baseUrl = "";
         switch (envType) {
             case QA:
-                baseUrl = config.getString("environment.qa.url");
+                baseUrl = config.getString("environment.url.qa");
                 break;
             case UAT:
-                baseUrl = config.getString("environment.uat.url");
+                baseUrl = config.getString("environment.url.uat");
                 break;
             case PROD:
-                baseUrl = config.getString("environment.prod.url");
+                baseUrl = config.getString("environment.url.prod");
                 break;
         }
-        baseUrl += localeType.toString() + "/";
+        baseUrl += localeType.toString() + "/" + pageUrl;
     }
 }

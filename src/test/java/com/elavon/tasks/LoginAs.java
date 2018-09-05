@@ -2,8 +2,12 @@ package com.elavon.tasks;
 
 public class LoginAs {
 
-    public static void anInternalUser() {
+    public static LoginAs anInternalUser() {
+        return new LoginAs();
+    }
 
+    public static LoginAs anExternalUser() {
+        return new LoginAs();
     }
 
 }
