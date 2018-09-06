@@ -10,7 +10,7 @@ public class LoginAs extends LoginUser{
     }
 
     public LoginUser fromTheHomePage() {
-        this.isFromHome = true;
+        isFromHome = true;
         return this;
     }
 

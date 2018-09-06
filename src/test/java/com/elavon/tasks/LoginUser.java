@@ -5,7 +5,6 @@ import com.elavon.setup.UserType;
 import com.elavon.ui.pages.HomePage;
 import com.elavon.ui.pages.LoginPage;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -38,7 +37,9 @@ public class LoginUser implements Task {
     @Override
     @Step("Login using the user #username")
     public <T extends Actor> void performAs(T actor) {
-        Performable navigateToLoginPage = isFromHome ? Click.on(HomePage.LOGIN_BUTTON) : OpenTheApplication.onTheLoginPage();
+        Performable navigateToLoginPage = isFromHome ?
+                OpenTheApplication.onTheLoginPage().fromTheHomePage() :
+                OpenTheApplication.onTheLoginPage();
         actor.attemptsTo(
                 navigateToLoginPage,
                 Enter.theValue(username).into(LoginPage.USERNAME_FIELD),
