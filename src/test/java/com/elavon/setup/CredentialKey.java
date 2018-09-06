@@ -16,43 +16,45 @@ public class CredentialKey {
     private static PublicKey pubKey;
     private static PrivateKey privateKey;
     private static PropertiesConfiguration config;
-    private static final String configPath = "config.properties";
+    private static final String CONFIG_PROPERTIES = "config.properties";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         ResourceBundle config = ResourceBundle.getBundle("config");
-//        String configProperty = "credentials.qa.internal.username";
+        String configProperty = "credentials.qa.internal.password";
 //        String pathname = config.getString("credential.src") + configProperty +".txt";
 //        String message = "";
 //
-//        generate(configProperty, message, pathname);
+//        generate(configProperty, message);
 //
-//        String s = retrieve(configProperty, pathname);
-//        System.out.println(s);
+        String s = retrieve(configProperty);
+        System.out.println(s);
     }
 
-    public static void generate(String configProperty, String message, String pathname) throws Exception {
+    public static void generate(String configPropertyName, String stringToEncrypt) throws Exception {
         keyPair = buildKeyPair();
         pubKey = keyPair.getPublic();
         privateKey = keyPair.getPrivate();
-        config = new PropertiesConfiguration(configPath);
+        config = new PropertiesConfiguration(CONFIG_PROPERTIES);
 
-        String encrypted = Base64.getEncoder().encodeToString(encrypt(privateKey, message));
-        config.setProperty(configProperty, encrypted);
+        String encrypted = Base64.getEncoder().encodeToString(encrypt(privateKey, stringToEncrypt));
+        config.setProperty(configPropertyName, encrypted);
         config.save();
 
-        FileOutputStream f = new FileOutputStream(new File(pathname));
+        String objFileName = config.getString("credentials.src") + "/" + configPropertyName +".txt";
+        FileOutputStream f = new FileOutputStream(new File(objFileName));
         ObjectOutputStream o = new ObjectOutputStream(f);
         o.writeObject(pubKey);
         o.close();
         f.close();
     }
 
-    public static String retrieve(String configProperty, String pathname) throws Exception {
-        config = new PropertiesConfiguration(configPath);
-        byte[] decrypted = Base64.getDecoder().decode(config.getString(configProperty).getBytes());
+    public static String retrieve(String configPropertyName) throws Exception {
+        config = new PropertiesConfiguration(CONFIG_PROPERTIES);
+        byte[] decrypted = Base64.getDecoder().decode(config.getString(configPropertyName).getBytes());
 
-        FileInputStream fi = new FileInputStream(new File(pathname));
+        String objFileName = config.getString("credentials.src") + "/" + configPropertyName +".txt";
+        FileInputStream fi = new FileInputStream(new File(objFileName));
         ObjectInputStream oi = new ObjectInputStream(fi);
         pubKey = (PublicKey) oi.readObject();
         oi.close();

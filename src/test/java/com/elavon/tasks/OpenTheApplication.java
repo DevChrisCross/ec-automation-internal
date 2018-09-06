@@ -13,13 +13,14 @@ import java.util.ResourceBundle;
 
 public class OpenTheApplication implements Task{
 
-    String baseUrl;
-    String pageUrl;
-    EnvironmentType envType;
-    EnvironmentLocale localeType;
-    ResourceBundle config;
+    private String baseUrl;
+    private String pageUrl;
+    private EnvironmentType envType;
+    private EnvironmentLocale localeType;
+    private static final ResourceBundle CONFIG = ResourceBundle.getBundle("config");
 
-    @Step("Open the application")
+    @Override
+    @Step("Opens the application at #baseUrl")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Open.url(baseUrl)
@@ -28,12 +29,10 @@ public class OpenTheApplication implements Task{
 
     public OpenTheApplication(String pageUrl) {
 
-        config = ResourceBundle.getBundle("config");
-
-        String env = config.getString("environment.type");
+        String env = CONFIG.getString("environment.type");
         envType = EnvironmentType.valueOf(env.toUpperCase());
 
-        String locale = config.getString("environment.locale");
+        String locale = CONFIG.getString("environment.locale");
         localeType = EnvironmentLocale.valueOf(locale);
 
         this.pageUrl = pageUrl;
@@ -81,13 +80,13 @@ public class OpenTheApplication implements Task{
         baseUrl = "";
         switch (envType) {
             case QA:
-                baseUrl = config.getString("environment.url.qa");
+                baseUrl = CONFIG.getString("environment.url.qa");
                 break;
             case UAT:
-                baseUrl = config.getString("environment.url.uat");
+                baseUrl = CONFIG.getString("environment.url.uat");
                 break;
             case PROD:
-                baseUrl = config.getString("environment.url.prod");
+                baseUrl = CONFIG.getString("environment.url.prod");
                 break;
         }
         baseUrl += localeType.toString() + "/" + pageUrl;

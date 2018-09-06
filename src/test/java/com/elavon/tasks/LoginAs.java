@@ -1,13 +1,27 @@
 package com.elavon.tasks;
 
-public class LoginAs {
+import com.elavon.setup.UserType;
+import net.serenitybdd.core.steps.Instrumented;
+
+public class LoginAs extends LoginUser{
+
+    public LoginAs(UserType user) {
+        super(user);
+    }
+
+    public LoginUser fromTheHomePage() {
+        this.isFromHome = true;
+        return this;
+    }
 
     public static LoginAs anInternalUser() {
-        return new LoginAs();
+        return Instrumented.instanceOf(LoginAs.class)
+                .withProperties(UserType.INTERNAL);
     }
 
     public static LoginAs anExternalUser() {
-        return new LoginAs();
+        return Instrumented.instanceOf(LoginAs.class)
+                .withProperties(UserType.EXTERNAL);
     }
 
 }
