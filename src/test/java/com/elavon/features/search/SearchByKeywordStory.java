@@ -24,7 +24,8 @@ public class SearchByKeywordStory {
     @Test
     public void search_results_should_show_the_search_term_in_the_title() {
 
-        givenThat(anna).wasAbleTo(OpenTheApplication.onTheHomePage()
+        givenThat(anna)
+                .wasAbleTo(OpenTheApplication.onTheHomePage()
                 .withTheLocaleOf(EnvironmentLocale.es_ES));
 //        andThat(anna).wasAbleTo(LoginAs.anInternalUser());
 //        when(anna).attemptsTo(Search.forTheTerm("BDD In Action"));

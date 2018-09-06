@@ -6,6 +6,8 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import javax.crypto.Cipher;
 import java.io.*;
 import java.security.*;
+import java.util.Base64;
+import java.util.ResourceBundle;
 
 @Beta
 public class CredentialKey {
@@ -16,15 +18,16 @@ public class CredentialKey {
     private static PropertiesConfiguration config;
     private static final String configPath = "config.properties";
 
-    public static void main(String [] args) throws Exception {
+    public static void main(String[] args) {
 
-        generate("credentials.qa.internal.username",
-                "c038975",
-                "qa-credential.txt");
-
-//        String s = retrieve("credentials.qa.internal.username",
-//                "qa-credential.txt");
-
+        ResourceBundle config = ResourceBundle.getBundle("config");
+//        String configProperty = "credentials.qa.internal.username";
+//        String pathname = config.getString("credential.src") + configProperty +".txt";
+//        String message = "";
+//
+//        generate(configProperty, message, pathname);
+//
+//        String s = retrieve(configProperty, pathname);
 //        System.out.println(s);
     }
 
@@ -34,7 +37,7 @@ public class CredentialKey {
         privateKey = keyPair.getPrivate();
         config = new PropertiesConfiguration(configPath);
 
-        byte[] encrypted = encrypt(privateKey, message);
+        String encrypted = Base64.getEncoder().encodeToString(encrypt(privateKey, message));
         config.setProperty(configProperty, encrypted);
         config.save();
 
@@ -47,7 +50,7 @@ public class CredentialKey {
 
     public static String retrieve(String configProperty, String pathname) throws Exception {
         config = new PropertiesConfiguration(configPath);
-        byte encrypted = config.getByte(configProperty);
+        byte[] decrypted = Base64.getDecoder().decode(config.getString(configProperty).getBytes());
 
         FileInputStream fi = new FileInputStream(new File(pathname));
         ObjectInputStream oi = new ObjectInputStream(fi);
@@ -55,9 +58,8 @@ public class CredentialKey {
         oi.close();
         fi.close();
 
-//        byte[] retrievedValue = decrypt(pubKey, encrypted);
-//        return retrievedValue.toString();
-        return "";
+        byte[] retrievedValue = decrypt(pubKey, decrypted);
+        return new String(retrievedValue);
     }
 
     public static KeyPair buildKeyPair() throws NoSuchAlgorithmException {
