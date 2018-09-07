@@ -6,14 +6,14 @@ import com.elavon.setup.PageUrl;
 import com.elavon.ui.pages.HomePage;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.Step;
 
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class OpenTheApplication implements Task{
 
@@ -27,18 +27,20 @@ public class OpenTheApplication implements Task{
     @Override
     @Step("Opens the application at #baseUrl")
     public <T extends Actor> void performAs(T actor) {
+        Deque<Performable> todoList = new ArrayDeque<>();
+
         if (isFromHome) {
             Target navigationButton = retrieveButtonFor(pageUrl);
             pageUrl = PageUrl.HOME;
             constructUrl();
-
-            actor.attemptsTo(
-                    Open.url(baseUrl),
-                    Click.on(navigationButton)
-            );
-        } else {
-            actor.attemptsTo(Open.url(baseUrl));
+            todoList.addFirst(Click.on(navigationButton));
         }
+
+        todoList.addFirst(Click.on(HomePage.COOKIES_DISCLAIMER_CLOSE_BUTTON));
+        todoList.addFirst(Open.url(baseUrl));
+
+        Performable[] todoActions = todoList.toArray(new Performable[]{});
+        actor.attemptsTo(todoActions);
     }
 
     public OpenTheApplication(String pageUrl) {

@@ -26,10 +26,7 @@ public class SearchByKeywordStory {
     @Test
     public void search_results_should_show_the_search_term_in_the_title() {
 
-        givenThat(anna)
-                .wasAbleTo(OpenTheApplication.onTheLoginPage().fromTheHomePage());
-//        andThat(anna)
-//                .wasAbleTo(LoginAs.anInternalUser().fromTheHomePage());
+        givenThat(anna).wasAbleTo(OpenTheApplication.onTheTermsOfUsePage().fromTheHomePage());
 //        when(anna).attemptsTo(Search.forTheTerm("BDD In Action"));
 
 //        then(anna).should(eventually(seeThat(TheWebPage.title(), containsString("BDD In Action"))));
