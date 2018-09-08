@@ -1,8 +1,9 @@
-package com.elavon.tasks;
+package com.elavon.tasks.login;
 
 import com.elavon.setup.Application;
 import com.elavon.setup.CredentialKey;
 import com.elavon.setup.UserType;
+import com.elavon.tasks.OpenTheApplication;
 import com.elavon.ui.PageUrl;
 import com.elavon.ui.pages.HomePage;
 import com.elavon.ui.pages.LoginPage;

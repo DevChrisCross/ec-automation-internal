@@ -16,7 +16,7 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 
 import java.util.ResourceBundle;
 
-public class DriverSetup {
+public class Driver {
 
     private WebDriver browser;
     private MutableCapabilities options;
@@ -24,13 +24,15 @@ public class DriverSetup {
     private static final ResourceBundle driverConfig = ResourceBundle.getBundle("webdrivermanager");
     private static final EnvironmentVariables env = SystemEnvironmentVariables.createEnvironmentVariables();
 
-    public DriverSetup() {
+    public Driver() {
         this(env.getProperty("driver"));
     }
 
-    public DriverSetup(String driver) { this(DriverManagerType.valueOf(driver.toUpperCase())); }
+    public Driver(String driver) {
+        this(DriverManagerType.valueOf(driver.toUpperCase()));
+    }
 
-    public DriverSetup(DriverManagerType driver) {
+    public Driver(DriverManagerType driver) {
         WebDriverManager.config().setTargetPath(driverConfig.getString("wdm.targetPath"));
         switch (driver) {
             case IEXPLORER:

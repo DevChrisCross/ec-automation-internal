@@ -1,8 +1,8 @@
 package com.elavon.features.search;
 
 import com.elavon.setup.Application;
-import com.elavon.tasks.LoginAs;
 import com.elavon.tasks.OpenTheApplication;
+import com.elavon.tasks.login.LoginAs;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import org.junit.Test;

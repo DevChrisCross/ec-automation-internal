@@ -1,4 +1,4 @@
-package com.elavon.tasks;
+package com.elavon.tasks.login;
 
 import com.elavon.setup.UserType;
 import net.serenitybdd.core.steps.Instrumented;

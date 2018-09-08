@@ -27,7 +27,7 @@ public class Application {
         }
 
         CONFIG = config.orElse(new PropertiesConfiguration());
-        BROWSER = (new DriverSetup()).getBrowser();
+        BROWSER = (new Driver()).getBrowser();
         USER = (new Actor(CONFIG.getString("user.name")))
                 .can(BrowseTheWeb.with(BROWSER));
 
