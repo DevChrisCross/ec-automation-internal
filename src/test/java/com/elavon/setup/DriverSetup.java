@@ -17,11 +17,12 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 import java.util.ResourceBundle;
 
 public class DriverSetup {
+
     private WebDriver browser;
     private MutableCapabilities options;
 
-    private static ResourceBundle driverConfig = ResourceBundle.getBundle("webdrivermanager");
-    private static EnvironmentVariables env = SystemEnvironmentVariables.createEnvironmentVariables();
+    private static final ResourceBundle driverConfig = ResourceBundle.getBundle("webdrivermanager");
+    private static final EnvironmentVariables env = SystemEnvironmentVariables.createEnvironmentVariables();
 
     public DriverSetup() {
         this(env.getProperty("driver"));
@@ -41,6 +42,7 @@ public class DriverSetup {
 
                 browser = new InternetExplorerDriver((InternetExplorerOptions) options);
                 break;
+
             case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
 
@@ -56,6 +58,7 @@ public class DriverSetup {
 
                 browser = new FirefoxDriver((FirefoxOptions) options);
                 break;
+
             case CHROME:
                 WebDriverManager.chromedriver().setup();
 
@@ -64,17 +67,13 @@ public class DriverSetup {
 
                 browser = new ChromeDriver((ChromeOptions) options);
                 break;
+
             default:
                 throw new UnsupportedOperationException();
         }
+
         browser.manage().window().maximize();
         browser.manage().deleteAllCookies();
-    }
-
-    public void teardown() {
-        if (browser != null) {
-            browser.quit();
-        }
     }
 
     public WebDriver getBrowser() {

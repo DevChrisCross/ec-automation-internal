@@ -2,7 +2,7 @@ package com.elavon.tasks;
 
 import com.elavon.setup.EnvironmentLocale;
 import com.elavon.setup.EnvironmentType;
-import com.elavon.setup.PageUrl;
+import com.elavon.ui.PageUrl;
 import com.elavon.ui.pages.HomePage;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
@@ -13,7 +13,11 @@ import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.Step;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Optional;
+
+import static com.elavon.setup.Application.CONFIG;
 
 public class OpenTheApplication implements Task{
 
@@ -22,7 +26,6 @@ public class OpenTheApplication implements Task{
     private String pageUrl;
     private EnvironmentType envType;
     private EnvironmentLocale localeType;
-    private static final ResourceBundle CONFIG = ResourceBundle.getBundle("config");
 
     @Override
     @Step("Opens the application at #baseUrl")
@@ -44,7 +47,6 @@ public class OpenTheApplication implements Task{
     }
 
     public OpenTheApplication(String pageUrl) {
-
         String env = CONFIG.getString("environment.type");
         envType = EnvironmentType.valueOf(env.toUpperCase());
 

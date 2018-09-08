@@ -1,13 +1,13 @@
 package com.elavon.setup;
 
 import com.google.common.annotations.Beta;
-import org.apache.commons.configuration.PropertiesConfiguration;
 
 import javax.crypto.Cipher;
 import java.io.*;
 import java.security.*;
 import java.util.Base64;
-import java.util.ResourceBundle;
+
+import static com.elavon.setup.Application.CONFIG;
 
 @Beta
 public class CredentialKey {
@@ -15,14 +15,11 @@ public class CredentialKey {
     private static KeyPair keyPair;
     private static PublicKey pubKey;
     private static PrivateKey privateKey;
-    private static PropertiesConfiguration config;
-    private static final String CONFIG_PROPERTIES = "config.properties";
 
     public static void main(String[] args) throws Exception {
 
-        ResourceBundle config = ResourceBundle.getBundle("config");
         String configProperty = "credentials.qa.internal.password";
-//        String pathname = config.getString("credential.src") + configProperty +".txt";
+//        String pathname = CONFIG.getString("credential.src") + configProperty +".txt";
 //        String message = "";
 //
 //        generate(configProperty, message);
@@ -35,13 +32,12 @@ public class CredentialKey {
         keyPair = buildKeyPair();
         pubKey = keyPair.getPublic();
         privateKey = keyPair.getPrivate();
-        config = new PropertiesConfiguration(CONFIG_PROPERTIES);
 
         String encrypted = Base64.getEncoder().encodeToString(encrypt(privateKey, stringToEncrypt));
-        config.setProperty(configPropertyName, encrypted);
-        config.save();
+        CONFIG.setProperty(configPropertyName, encrypted);
+        CONFIG.save();
 
-        String objFileName = config.getString("credentials.src") + "/" + configPropertyName +".txt";
+        String objFileName = CONFIG.getString("credentials.src") + "/" + configPropertyName + ".txt";
         FileOutputStream f = new FileOutputStream(new File(objFileName));
         ObjectOutputStream o = new ObjectOutputStream(f);
         o.writeObject(pubKey);
@@ -50,10 +46,9 @@ public class CredentialKey {
     }
 
     public static String retrieve(String configPropertyName) throws Exception {
-        config = new PropertiesConfiguration(CONFIG_PROPERTIES);
-        byte[] decrypted = Base64.getDecoder().decode(config.getString(configPropertyName).getBytes());
+        byte[] decrypted = Base64.getDecoder().decode(CONFIG.getString(configPropertyName).getBytes());
 
-        String objFileName = config.getString("credentials.src") + "/" + configPropertyName +".txt";
+        String objFileName = CONFIG.getString("credentials.src") + "/" + configPropertyName + ".txt";
         FileInputStream fi = new FileInputStream(new File(objFileName));
         ObjectInputStream oi = new ObjectInputStream(fi);
         pubKey = (PublicKey) oi.readObject();

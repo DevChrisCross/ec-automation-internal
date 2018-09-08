@@ -1,7 +1,9 @@
 package com.elavon.tasks;
 
+import com.elavon.setup.Application;
 import com.elavon.setup.CredentialKey;
 import com.elavon.setup.UserType;
+import com.elavon.ui.PageUrl;
 import com.elavon.ui.pages.HomePage;
 import com.elavon.ui.pages.LoginPage;
 import net.serenitybdd.screenplay.Actor;
@@ -12,25 +14,22 @@ import net.serenitybdd.screenplay.actions.Enter;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.Keys;
 
-import javax.swing.text.html.Option;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Optional;
-import java.util.ResourceBundle;
+
+import static com.elavon.setup.Application.CONFIG;
 
 public class LoginUser implements Task {
 
-    boolean isFromHome;
     private String username;
     private String password;
-    private static final String DEFAULT_CREDENTIAL = "No_Credential_Available";
-    private static final ResourceBundle CONFIG = ResourceBundle.getBundle("config");
 
     public LoginUser(UserType user) {
-
         String baseConfigName = "credentials."
                 + CONFIG.getString("environment.type").toLowerCase() + "."
                 + user.toString().toLowerCase();
 
-        isFromHome = false;
         Optional<String> username = Optional.empty();
         Optional<String> password = Optional.empty();
 
@@ -40,23 +39,28 @@ public class LoginUser implements Task {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            this.username = username.orElse(DEFAULT_CREDENTIAL);
-            this.password = password.orElse(DEFAULT_CREDENTIAL);
+            this.username = username.orElse(CONFIG.getString("credentials.default.username"));
+            this.password = password.orElse(CONFIG.getString("credentials.default.password"));
         }
     }
 
     @Override
     @Step("Login using the user #username")
     public <T extends Actor> void performAs(T actor) {
+        String currentUrl = Application.BROWSER.getCurrentUrl();
+        Deque<Performable> todoList = new ArrayDeque<>();
 
-        Performable navigateToLoginPage = isFromHome ?
-                OpenTheApplication.onTheLoginPage().fromTheHomePage() :
-                OpenTheApplication.onTheLoginPage();
+        if (currentUrl.endsWith(PageUrl.HOME)) {
+            todoList.add(Click.on(HomePage.LOGIN_BUTTON));
+        }
+        if (!currentUrl.endsWith(PageUrl.LOGIN)) {
+            todoList.add(OpenTheApplication.onTheLoginPage());
+        }
 
-        actor.attemptsTo(
-                navigateToLoginPage,
-                Enter.theValue(username).into(LoginPage.USERNAME_FIELD),
-                Enter.theValue(password).into(LoginPage.PASSWORD_FIELD).thenHit(Keys.ENTER)
-        );
+        todoList.add(Enter.theValue(username).into(LoginPage.USERNAME_FIELD));
+        todoList.add(Enter.theValue(password).into(LoginPage.PASSWORD_FIELD).thenHit(Keys.ENTER));
+
+        Performable[] todoActions = todoList.toArray(new Performable[]{});
+        actor.attemptsTo(todoActions);
     }
 }

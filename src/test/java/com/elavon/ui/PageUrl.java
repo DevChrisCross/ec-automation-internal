@@ -1,4 +1,4 @@
-package com.elavon.setup;
+package com.elavon.ui;
 
 public class PageUrl {
 
