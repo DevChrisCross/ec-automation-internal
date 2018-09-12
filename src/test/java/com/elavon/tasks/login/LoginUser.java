@@ -3,8 +3,8 @@ package com.elavon.tasks.login;
 import com.elavon.setup.Application;
 import com.elavon.setup.CredentialKey;
 import com.elavon.setup.UserType;
-import com.elavon.tasks.OpenTheApplication;
-import com.elavon.ui.PageUrl;
+import com.elavon.tasks.Open;
+import com.elavon.ui.Page;
 import com.elavon.ui.pages.HomePage;
 import com.elavon.ui.pages.LoginPage;
 import net.serenitybdd.screenplay.Actor;
@@ -14,10 +14,11 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Optional;
+import java.util.*;
 
 import static com.elavon.setup.Application.CONFIG;
 
@@ -49,13 +50,12 @@ public class LoginUser implements Task {
     @Step("Login using the user #username")
     public <T extends Actor> void performAs(T actor) {
         String currentUrl = Application.BROWSER.getCurrentUrl();
-        Deque<Performable> todoList = new ArrayDeque<>();
+        List<Performable> todoList = new ArrayList<>();
 
-        if (currentUrl.endsWith(PageUrl.HOME)) {
+        if (currentUrl.endsWith(Page.HOME.getUrl())) {
             todoList.add(Click.on(HomePage.LOGIN_BUTTON));
-        }
-        if (!currentUrl.endsWith(PageUrl.LOGIN)) {
-            todoList.add(OpenTheApplication.onTheLoginPage());
+        } else {
+            todoList.add(Open.theApplication().onThe(Page.LOGIN));
         }
 
         todoList.add(Enter.theValue(username).into(LoginPage.USERNAME_FIELD));

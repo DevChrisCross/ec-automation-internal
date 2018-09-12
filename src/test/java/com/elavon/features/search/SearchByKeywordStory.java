@@ -1,8 +1,10 @@
 package com.elavon.features.search;
 
 import com.elavon.setup.Application;
-import com.elavon.tasks.OpenTheApplication;
-import com.elavon.tasks.login.LoginAs;
+import com.elavon.setup.UserType;
+import com.elavon.tasks.*;
+import com.elavon.tasks.login.Login;
+import com.elavon.ui.Page;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import org.junit.Test;
@@ -19,8 +21,12 @@ public class SearchByKeywordStory {
     @Test
     public void search_results_should_show_the_search_term_in_the_title() {
 
-        givenThat(anna).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(anna).wasAbleTo(LoginAs.anInternalUser());
+        givenThat(anna).wasAbleTo(Open.theApplication().onThe(Page.LOGIN));
+        andThat(anna).wasAbleTo(Login.as(UserType.INTERNAL));
+        andThat(anna).wasAbleTo(Search.forCustomer(SearchBy.USER)
+                .withThe(SearchFilter.EMAIL).that(SearchMatch.CONTAINS).theWord("neeee"));
+//        andThat(anna).wasAbleTo(Search.withTheName().thatContains(""));
+//        andThat(anna).wasAbleTo(Search.withTheEmail().thatStartsWith(""));
 //        when(anna).attemptsTo(Search.forTheTerm("BDD In Action"));
 
 //        then(anna).should(eventually(seeThat(TheWebPage.title(), containsString("BDD In Action"))));
