@@ -1,5 +1,6 @@
 package com.elavon.tasks.search;
 
+import com.elavon.tasks.View;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Performable;
 
@@ -13,7 +14,9 @@ public class Search {
         this.by = by;
     }
 
-    public static Search forCustomer(SearchBy by) { return new Search(by); }
+    public static Performable forTheProfileOf(String userId) { return View.theProfileOf(userId); }
+
+    public static Search forTheCustomer(SearchBy by) { return new Search(by); }
 
     public Search withThe(SearchFilter filter) {
         this.filter = filter;
