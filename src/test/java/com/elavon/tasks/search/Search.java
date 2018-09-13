@@ -14,7 +14,7 @@ public class Search {
         this.by = by;
     }
 
-    public static Performable forTheProfileOf(String userId) { return View.theProfileOf(userId); }
+    public static Performable forTheUserProfileOf(String userId) { return View.theUserProfileOf(userId); }
 
     public static Search forTheCustomer(SearchBy by) { return new Search(by); }
 

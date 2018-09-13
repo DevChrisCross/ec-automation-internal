@@ -27,4 +27,12 @@ public class CustomerProfilePage extends PageObject {
     public static final Target CANCEL_BUTTON =
             Target.the("cancel button")
                     .located(By.xpath("/html/body/div[5]/md-dialog/md-dialog-actions/button[1]"));
+
+    public static final Target SEND_BUTTON =
+            Target.the("send button")
+                    .located(By.xpath("/html/body/div[4]/md-dialog/md-dialog-actions/button[2]"));
+
+    public static final Target END_BUTTON =
+            Target.the("end button")
+                    .located(By.id("endimpersonate"));
 }
