@@ -4,7 +4,6 @@ import com.elavon.ui.pages.HomePage;
 import com.elavon.ui.pages.LoginPage;
 import com.google.common.collect.ImmutableMap;
 import net.serenitybdd.screenplay.targets.Target;
-import net.serenitybdd.screenplay.targets.TargetResolver;
 import net.thucydides.core.pages.PageObject;
 import org.apache.tools.ant.taskdefs.Tar;
 

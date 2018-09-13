@@ -1,4 +1,4 @@
-package com.elavon.tasks;
+package com.elavon.tasks.search;
 
 import com.elavon.ui.pages.CustomerSearchPage;
 import net.serenitybdd.screenplay.targets.Target;

@@ -1,12 +1,12 @@
-package com.elavon.tasks;
+package com.elavon.tasks.search;
 
+import com.elavon.setup.Application;
 import com.elavon.ui.pages.CustomerSearchPage;
 import com.elavon.ui.pages.InternalHomePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
@@ -31,7 +31,8 @@ public class SearchCustomer implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                WaitUntil.the(InternalHomePage.NAVIGATION_SIDEBAR, isVisible()).forNoMoreThan(10).seconds(),
+                WaitUntil.the(InternalHomePage.NAVIGATION_SIDEBAR, isVisible())
+                        .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds(),
                 Click.on(InternalHomePage.CUSTOMER_SEARCH_TAB),
                 Click.on(CustomerSearchPage.SEARCH_FILTER_DROPDOWN),
                 Click.on(filter.getOptionValue()),

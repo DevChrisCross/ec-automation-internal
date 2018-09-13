@@ -2,8 +2,12 @@ package com.elavon.features.search;
 
 import com.elavon.setup.Application;
 import com.elavon.setup.UserType;
-import com.elavon.tasks.*;
 import com.elavon.tasks.login.Login;
+import com.elavon.tasks.open.Open;
+import com.elavon.tasks.search.Search;
+import com.elavon.tasks.search.SearchBy;
+import com.elavon.tasks.search.SearchFilter;
+import com.elavon.tasks.search.SearchMatch;
 import com.elavon.ui.Page;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;

@@ -1,4 +1,4 @@
-package com.elavon.tasks;
+package com.elavon.tasks.search;
 
 public enum SearchMatch {
     STARTS_WITH,

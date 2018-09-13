@@ -51,4 +51,11 @@ public class CustomerSearchPage extends PageObject {
             Target.the("location tab button").located(By.id("userButton"));
     public static final Target USER_TAB_BUTTON =
             Target.the("location tab button").located(By.id("locationButton"));
+
+    public static final Target SEARCH_OPTIONS =
+            Target.the("search options").located(By.id("editFaqMenu"));
+    public static final Target DOWNLOAD_RESULTS_OPTION =
+            Target.the("download results option")
+                    .located(By.cssSelector("#menu_container_23 > md-menu-content:nth-child(1) > " +
+                            "md-menu-item:nth-child(1) > button:nth-child(1)"));
 }

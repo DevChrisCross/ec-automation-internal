@@ -22,11 +22,6 @@ public class Driver {
     private MutableCapabilities options;
 
     private static final ResourceBundle driverConfig = ResourceBundle.getBundle("webdrivermanager");
-    private static final EnvironmentVariables env = SystemEnvironmentVariables.createEnvironmentVariables();
-
-    public Driver() {
-        this(env.getProperty("driver"));
-    }
 
     public Driver(String driver) {
         this(DriverManagerType.valueOf(driver.toUpperCase()));

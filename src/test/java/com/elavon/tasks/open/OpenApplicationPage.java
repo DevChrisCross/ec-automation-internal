@@ -1,4 +1,4 @@
-package com.elavon.tasks;
+package com.elavon.tasks.open;
 
 import com.elavon.setup.Application;
 import com.elavon.setup.EnvironmentLocale;
@@ -12,12 +12,11 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.*;
 
 import static com.elavon.setup.Application.CONFIG;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class OpenApplicationPage implements Task {
 
@@ -40,8 +39,14 @@ public class OpenApplicationPage implements Task {
         List<Performable> todoList = new ArrayList<>();
 
         todoList.add(Open.url(url));
+        todoList.add(WaitUntil.the(HomePage.NAVIGATION_HEADER, isVisible())
+                .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds());
         if (isFromHome) {
-            todoList.add(Click.on(HomePage.COOKIES_DISCLAIMER_CLOSE_BUTTON));
+            if (page.equals(Page.COOKIES_POLICY) || page.equals(Page.TERMS_OF_USE)) {
+                todoList.add(WaitUntil.the(HomePage.COOKIES_DISCLAIMER_FOOTER, isVisible())
+                        .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds());
+                todoList.add(Click.on(HomePage.COOKIES_DISCLAIMER_CLOSE_BUTTON));
+            }
             todoList.add(Click.on(page.getButtons().get(Page.HOME)));
         }
 

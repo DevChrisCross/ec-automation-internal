@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Application {
 
+    public static final int MAXIMUM_TIMEOUT = 10;
     public static final Actor USER;
     public static final WebDriver BROWSER;
     public static final PropertiesConfiguration CONFIG;
@@ -28,7 +29,7 @@ public class Application {
         }
 
         CONFIG = config.orElse(new PropertiesConfiguration());
-        BROWSER = (new Driver()).getBrowser();
+        BROWSER = (new Driver(CONFIG.getString("environment.driver"))).getBrowser();
         USER = (new Actor(CONFIG.getString("user.name")))
                 .can(BrowseTheWeb.with(BROWSER))
                 .can(CallAnApi.at(CONFIG.getString("environment.url.restapi")));

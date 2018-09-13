@@ -1,13 +1,10 @@
-package com.elavon.tasks;
+package com.elavon.tasks.open;
 
-import com.elavon.setup.Application;
 import com.elavon.setup.EnvironmentLocale;
 import com.elavon.setup.EnvironmentType;
 import com.elavon.ui.Page;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Performable;
-
-import java.util.Optional;
 
 import static com.elavon.setup.Application.CONFIG;
 

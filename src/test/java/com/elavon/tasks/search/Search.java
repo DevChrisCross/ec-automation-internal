@@ -1,4 +1,4 @@
-package com.elavon.tasks;
+package com.elavon.tasks.search;
 
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Performable;

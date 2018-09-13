@@ -3,7 +3,7 @@ package com.elavon.tasks.login;
 import com.elavon.setup.Application;
 import com.elavon.setup.CredentialKey;
 import com.elavon.setup.UserType;
-import com.elavon.tasks.Open;
+import com.elavon.tasks.open.Open;
 import com.elavon.ui.Page;
 import com.elavon.ui.pages.HomePage;
 import com.elavon.ui.pages.LoginPage;
@@ -14,9 +14,6 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.*;
 
