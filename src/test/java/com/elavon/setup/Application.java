@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Application {
 
-    public static final int MAXIMUM_TIMEOUT = 10;
+    public static final int MAXIMUM_TIMEOUT = 20;
     public static final Actor USER;
     public static final WebDriver BROWSER;
     public static final PropertiesConfiguration CONFIG;
