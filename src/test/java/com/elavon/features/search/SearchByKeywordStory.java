@@ -5,6 +5,7 @@ import com.elavon.setup.UserType;
 import com.elavon.tasks.Delete;
 import com.elavon.tasks.End;
 import com.elavon.tasks.Impersonate;
+import com.elavon.tasks.Reset;
 import com.elavon.tasks.login.Login;
 import com.elavon.tasks.open.Open;
 import com.elavon.tasks.search.Search;
@@ -32,6 +33,7 @@ public class SearchByKeywordStory {
 //        andThat(anna).wasAbleTo(Search.forTheUserProfileOf("chris@creag"));
         andThat(anna).wasAbleTo(Impersonate.theUserProfileOf("chris@creag"));
         andThat(anna).wasAbleTo(End.theImpersonationOfTheUser());
+        andThat(anna).wasAbleTo(Reset.thePasswordOfTheUserAccount().incompletely());
 //        andThat(anna).wasAbleTo(Click.on());
 //        andThat(anna).wasAbleTo(Search.withTheName().thatContains(""));
 //        andThat(anna).wasAbleTo(Search.withTheEmail().thatStartsWith(""));

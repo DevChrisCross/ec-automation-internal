@@ -9,11 +9,11 @@ import net.serenitybdd.screenplay.actions.Click;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeleteUserAccount implements Task {
+public class ResetPassword implements Task {
 
     private boolean isCompletely;
 
-    public DeleteUserAccount() {
+    public ResetPassword() {
         isCompletely = true;
     }
 
@@ -26,11 +26,10 @@ public class DeleteUserAccount implements Task {
     public <T extends Actor> void performAs(T actor) {
         List<Performable> todoList = new ArrayList<>();
 
-        todoList.add(Click.on(CustomerProfilePage.ACCOUNT_OPTIONS));
-        todoList.add(Click.on(CustomerProfilePage.DELETE_ACCOUNT_OPTION));
+        todoList.add(Click.on(CustomerProfilePage.RESET_PASSWORD_BUTTON));
         todoList.add(Click.on(isCompletely ?
-                CustomerProfilePage.DELETE_MODAL_DELETE_BUTTON :
-                CustomerProfilePage.DELETE_MODAL_CANCEL_BUTTON));
+                CustomerProfilePage.RESET_MODAL_SEND_BUTTON :
+                CustomerProfilePage.RESET_MODAL_CANCEL_BUTTON));
 
         Performable[] todoActions = todoList.toArray(new Performable[]{});
         actor.attemptsTo(todoActions);

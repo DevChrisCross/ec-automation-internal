@@ -9,6 +9,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotCurrentlyVisible;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class SearchCustomer implements Task {
@@ -31,14 +32,14 @@ public class SearchCustomer implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                WaitUntil.the(InternalHomePage.NAVIGATION_SIDEBAR, isVisible())
-                        .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds(),
                 Click.on(InternalHomePage.CUSTOMER_SEARCH_TAB),
                 Click.on(CustomerSearchPage.SEARCH_FILTER_DROPDOWN),
                 Click.on(filter.getOptionValue()),
                 Enter.theValue(input).into(filter.getOptionField()),
                 Click.on(CustomerSearchPage.APPLY_FILTER_BUTTON),
-                Click.on(by.getTarget())
+                Click.on(by.getTarget()),
+                WaitUntil.the(CustomerSearchPage.TOAST_MESSAGE, isNotCurrentlyVisible())
+                        .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds()
         );
     }
 }

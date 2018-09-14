@@ -4,6 +4,7 @@ import com.elavon.setup.Application;
 import com.elavon.setup.EnvironmentLocale;
 import com.elavon.setup.EnvironmentType;
 import com.elavon.ui.Page;
+import com.elavon.ui.pages.CustomerSearchPage;
 import com.elavon.ui.pages.HomePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
@@ -16,6 +17,7 @@ import net.thucydides.core.annotations.Step;
 import java.util.*;
 
 import static com.elavon.setup.Application.CONFIG;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotCurrentlyVisible;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class OpenApplicationPage implements Task {
@@ -39,6 +41,10 @@ public class OpenApplicationPage implements Task {
         List<Performable> todoList = new ArrayList<>();
 
         todoList.add(Open.url(url));
+//        todoList.add(WaitUntil.the(CustomerSearchPage.TOAST_MESSAGE, isVisible())
+//                .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds());
+//        todoList.add(WaitUntil.the(CustomerSearchPage.TOAST_MESSAGE, isNotCurrentlyVisible())
+//                .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds());
         todoList.add(WaitUntil.the(HomePage.NAVIGATION_HEADER, isVisible())
                 .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds());
         if (isFromHome) {

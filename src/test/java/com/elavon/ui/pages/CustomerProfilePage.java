@@ -21,18 +21,29 @@ public class CustomerProfilePage extends PageObject {
             Target.the("impersonate button")
                     .located(By.cssSelector("button.md-button:nth-child(3)"));
 
-    public static final Target DELETE_BUTTON =
+    public static final Target DELETE_MODAL_DELETE_BUTTON =
             Target.the("delete button")
                     .located(By.xpath("/html/body/div[5]/md-dialog/md-dialog-actions/button[2]"));
-    public static final Target CANCEL_BUTTON =
+    public static final Target DELETE_MODAL_CANCEL_BUTTON =
             Target.the("cancel button")
                     .located(By.xpath("/html/body/div[5]/md-dialog/md-dialog-actions/button[1]"));
 
-    public static final Target SEND_BUTTON =
+    public static final Target RESET_MODAL_SEND_BUTTON =
             Target.the("send button")
                     .located(By.xpath("/html/body/div[4]/md-dialog/md-dialog-actions/button[2]"));
+    public static final Target RESET_MODAL_CANCEL_BUTTON =
+            Target.the("cancel button")
+                    .located(By.xpath("/html/body/div[4]/md-dialog/md-dialog-actions/button[1]"));
 
-    public static final Target END_BUTTON =
+    public static final Target IMPERSONATE_END_BUTTON =
             Target.the("end button")
                     .located(By.id("endimpersonate"));
+
+    public static final Target ACCOUNT_DETAILS_CARD =
+            Target.the("account details card")
+                    .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/md-card[1]"));
+
+    public static final Target IMPERSONATED_DASHBOARD =
+            Target.the("impersonated dashboard")
+                    .located(By.id("mainpanel"));
 }
