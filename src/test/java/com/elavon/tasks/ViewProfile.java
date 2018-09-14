@@ -28,9 +28,9 @@ public class ViewProfile implements Task {
                         .withThe(SearchFilter.USER_ID)
                         .that(SearchMatch.EXACTS)
                         .theWord(input),
+                WaitUntilThe.targetIsLoaded(CustomerSearchPage.FIRST_ROW_SEARCH_RESULT),
                 Click.on(CustomerSearchPage.FIRST_ROW_SEARCH_RESULT),
-                WaitUntil.the(CustomerProfilePage.ACCOUNT_DETAILS_CARD, isVisible())
-                        .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds()
+                WaitUntilThe.pageIsFullyLoaded()
         );
     }
 }

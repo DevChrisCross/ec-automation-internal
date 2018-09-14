@@ -3,6 +3,7 @@ package com.elavon.tasks.login;
 import com.elavon.setup.Application;
 import com.elavon.setup.CredentialKey;
 import com.elavon.setup.UserType;
+import com.elavon.tasks.WaitUntilThe;
 import com.elavon.tasks.open.Open;
 import com.elavon.ui.Page;
 import com.elavon.ui.pages.HomePage;
@@ -53,6 +54,7 @@ public class LoginUser implements Task {
         List<Performable> todoList = new ArrayList<>();
 
         if (currentUrl.endsWith(Page.HOME.getUrl())) {
+            todoList.add(WaitUntilThe.targetIsLoaded(HomePage.LOGIN_BUTTON));
             todoList.add(Click.on(HomePage.LOGIN_BUTTON));
         } else {
             todoList.add(Open.theApplication().onThe(Page.LOGIN));
@@ -60,8 +62,7 @@ public class LoginUser implements Task {
 
         todoList.add(Enter.theValue(username).into(LoginPage.USERNAME_FIELD));
         todoList.add(Enter.theValue(password).into(LoginPage.PASSWORD_FIELD).thenHit(Keys.ENTER));
-        todoList.add(WaitUntil.the(InternalHomePage.NAVIGATION_SIDEBAR, isVisible())
-                .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds());
+        todoList.add(WaitUntilThe.pageIsFullyLoaded());
 
         Performable[] todoActions = todoList.toArray(new Performable[]{});
         actor.attemptsTo(todoActions);

@@ -26,10 +26,12 @@ public class ResetPassword implements Task {
     public <T extends Actor> void performAs(T actor) {
         List<Performable> todoList = new ArrayList<>();
 
+        todoList.add(WaitUntilThe.targetIsLoaded(CustomerProfilePage.RESET_PASSWORD_BUTTON));
         todoList.add(Click.on(CustomerProfilePage.RESET_PASSWORD_BUTTON));
         todoList.add(Click.on(isCompletely ?
                 CustomerProfilePage.RESET_MODAL_SEND_BUTTON :
                 CustomerProfilePage.RESET_MODAL_CANCEL_BUTTON));
+        todoList.add(WaitUntilThe.pageIsFullyLoaded());
 
         Performable[] todoActions = todoList.toArray(new Performable[]{});
         actor.attemptsTo(todoActions);

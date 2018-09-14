@@ -3,21 +3,21 @@ package com.elavon.tasks.open;
 import com.elavon.setup.Application;
 import com.elavon.setup.EnvironmentLocale;
 import com.elavon.setup.EnvironmentType;
+import com.elavon.tasks.WaitUntilThe;
 import com.elavon.ui.Page;
-import com.elavon.ui.pages.CustomerSearchPage;
 import com.elavon.ui.pages.HomePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Open;
+import net.serenitybdd.screenplay.targets.Target;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Step;
 
 import java.util.*;
 
 import static com.elavon.setup.Application.CONFIG;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotCurrentlyVisible;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class OpenApplicationPage implements Task {
@@ -41,20 +41,16 @@ public class OpenApplicationPage implements Task {
         List<Performable> todoList = new ArrayList<>();
 
         todoList.add(Open.url(url));
-//        todoList.add(WaitUntil.the(CustomerSearchPage.TOAST_MESSAGE, isVisible())
-//                .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds());
-//        todoList.add(WaitUntil.the(CustomerSearchPage.TOAST_MESSAGE, isNotCurrentlyVisible())
-//                .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds());
-        todoList.add(WaitUntil.the(HomePage.NAVIGATION_HEADER, isVisible())
-                .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds());
+        todoList.add(WaitUntilThe.pageIsFullyLoaded());
         if (isFromHome) {
             if (page.equals(Page.COOKIES_POLICY) || page.equals(Page.TERMS_OF_USE)) {
-                todoList.add(WaitUntil.the(HomePage.COOKIES_DISCLAIMER_FOOTER, isVisible())
-                        .forNoMoreThan(Application.MAXIMUM_TIMEOUT).seconds());
                 todoList.add(Click.on(HomePage.COOKIES_DISCLAIMER_CLOSE_BUTTON));
             }
-            todoList.add(Click.on(page.getButtons().get(Page.HOME)));
+            Target targetButton = page.getButtons().get(Page.HOME);
+            todoList.add(WaitUntilThe.targetIsLoaded(targetButton));
+            todoList.add(Click.on(targetButton));
         }
+        todoList.add(WaitUntilThe.pageIsFullyLoaded());
 
         Performable[] todoActions = todoList.toArray(new Performable[]{});
         actor.attemptsTo(todoActions);
