@@ -7,21 +7,20 @@ import com.elavon.tasks.WaitUntilThe;
 import com.elavon.tasks.open.Open;
 import com.elavon.ui.Page;
 import com.elavon.ui.pages.HomePage;
-import com.elavon.ui.pages.InternalHomePage;
 import com.elavon.ui.pages.LoginPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.Keys;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import static com.elavon.setup.Application.CONFIG;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class LoginUser implements Task {
 
@@ -54,7 +53,7 @@ public class LoginUser implements Task {
         List<Performable> todoList = new ArrayList<>();
 
         if (currentUrl.endsWith(Page.HOME.getUrl())) {
-            todoList.add(WaitUntilThe.targetIsLoaded(HomePage.LOGIN_BUTTON));
+//            todoList.add(WaitUntilThe.targetIsLoaded(HomePage.LOGIN_BUTTON));
             todoList.add(Click.on(HomePage.LOGIN_BUTTON));
         } else {
             todoList.add(Open.theApplication().onThe(Page.LOGIN));

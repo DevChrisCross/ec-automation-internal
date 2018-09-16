@@ -26,7 +26,7 @@ public class DeleteUserAccount implements Task {
     public <T extends Actor> void performAs(T actor) {
         List<Performable> todoList = new ArrayList<>();
 
-        todoList.add(WaitUntilThe.targetIsLoaded(CustomerProfilePage.ACCOUNT_OPTIONS));
+//        todoList.add(WaitUntilThe.targetIsLoaded(CustomerProfilePage.ACCOUNT_OPTIONS));
         todoList.add(Click.on(CustomerProfilePage.ACCOUNT_OPTIONS));
         todoList.add(Click.on(CustomerProfilePage.DELETE_ACCOUNT_OPTION));
         todoList.add(Click.on(isCompletely ?

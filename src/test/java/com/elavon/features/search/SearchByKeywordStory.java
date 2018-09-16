@@ -2,17 +2,14 @@ package com.elavon.features.search;
 
 import com.elavon.setup.Application;
 import com.elavon.setup.UserType;
-import com.elavon.tasks.Delete;
 import com.elavon.tasks.End;
 import com.elavon.tasks.Impersonate;
 import com.elavon.tasks.Reset;
 import com.elavon.tasks.login.Login;
 import com.elavon.tasks.open.Open;
-import com.elavon.tasks.search.Search;
 import com.elavon.ui.Page;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.actions.Click;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -31,7 +28,7 @@ public class SearchByKeywordStory {
         andThat(anna).wasAbleTo(Login.as(UserType.INTERNAL));
 //        andThat(anna).wasAbleTo(Search.forTheCustomer(SearchBy.USER)
 //        andThat(anna).wasAbleTo(Search.forTheUserProfileOf("chris@creag"));
-        andThat(anna).wasAbleTo(Impersonate.theUserProfileOf("chris@creag"));
+        andThat(anna).wasAbleTo(Impersonate.theUserProfileOf("testdata@uat2018"));
         andThat(anna).wasAbleTo(End.theImpersonationOfTheUser());
         andThat(anna).wasAbleTo(Reset.thePasswordOfTheUserAccount().incompletely());
 //        andThat(anna).wasAbleTo(Click.on());

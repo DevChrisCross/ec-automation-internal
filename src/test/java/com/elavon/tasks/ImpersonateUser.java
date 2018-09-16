@@ -1,16 +1,9 @@
 package com.elavon.tasks;
 
-import com.elavon.setup.Application;
 import com.elavon.ui.pages.CustomerProfilePage;
-import com.elavon.ui.pages.CustomerSearchPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.waits.WaitUntil;
-import org.openqa.selenium.support.ui.Wait;
-
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotCurrentlyVisible;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class ImpersonateUser implements Task {
 
@@ -24,7 +17,7 @@ public class ImpersonateUser implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 View.theUserProfileOf(userId),
-                WaitUntilThe.targetIsLoaded(CustomerProfilePage.IMPERSONATE_BUTTON),
+//                WaitUntilThe.targetIsLoaded(CustomerProfilePage.IMPERSONATE_BUTTON),
                 Click.on(CustomerProfilePage.IMPERSONATE_BUTTON),
                 WaitUntilThe.pageIsFullyLoaded()
 //                WaitUntil.the(CustomerSearchPage.TOAST_MESSAGE, isVisible())
