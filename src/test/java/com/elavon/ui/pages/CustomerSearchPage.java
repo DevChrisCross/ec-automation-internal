@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 public class CustomerSearchPage extends PageObject {
 
     public static final Target SEARCH_FILTER_DROPDOWN =
-            Target.the("search filter dropdown").located(By.id("selectedFilter"));
+            Target.the("customerSearch filter dropdown").located(By.id("selectedFilter"));
     public static final Target APPLY_FILTER_BUTTON =
             Target.the("apply filter button").located(By.id("submitFilter"));
 
@@ -31,21 +31,29 @@ public class CustomerSearchPage extends PageObject {
             Target.the("user id field").located(By.id("searchUserId"));
 
     public static final Target GROUP_DROPDOWN_OPTION =
-            Target.the("group dropdown option").located(By.id("select_option_28"));
+            Target.the("group dropdown option")
+                    .located(By.xpath("/html/body/div[4]/md-select-menu/md-content/div/md-option[1]"));
     public static final Target ENTITY_DROPDOWN_OPTION =
-            Target.the("entity dropdown option").located(By.id("select_option_29"));
+            Target.the("entity dropdown option")
+                    .located(By.xpath("/html/body/div[4]/md-select-menu/md-content/div/md-option[2]"));
     public static final Target MCC_DROPDOWN_OPTION =
-            Target.the("mcc dropdown option").located(By.id("select_option_30"));
+            Target.the("mcc dropdown option")
+                    .located(By.xpath("/html/body/div[4]/md-select-menu/md-content/div/md-option[3]"));
     public static final Target MERCHANT_DROPDOWN_OPTION =
-            Target.the("merchant id dropdown option").located(By.id("select_option_31"));
+            Target.the("merchant id dropdown option")
+                    .located(By.xpath("/html/body/div[4]/md-select-menu/md-content/div/md-option[4]"));
     public static final Target NAME_DROPDOWN_OPTION =
-            Target.the("name dropdown option").located(By.id("select_option_32"));
+            Target.the("name dropdown option")
+                    .located(By.xpath("/html/body/div[4]/md-select-menu/md-content/div/md-option[5]"));
     public static final Target TAX_ID_DROPDOWN_OPTION =
-            Target.the("tax id dropdown option").located(By.id("select_option_33"));
+            Target.the("tax id dropdown option")
+                    .located(By.xpath("/html/body/div[4]/md-select-menu/md-content/div/md-option[6]"));
     public static final Target EMAIL_DROPDOWN_OPTION =
-            Target.the("email dropdown option").located(By.id("select_option_34"));
+            Target.the("email dropdown option")
+                    .located(By.xpath("/html/body/div[4]/md-select-menu/md-content/div/md-option[7]"));
     public static final Target USER_ID_DROPDOWN_OPTION =
-            Target.the("user id dropdown option").located(By.id("select_option_35"));
+            Target.the("user id dropdown option")
+                    .located(By.xpath("/html/body/div[4]/md-select-menu/md-content/div/md-option[8]"));
 
     public static final Target LOCATION_TAB_BUTTON =
             Target.the("location tab button").located(By.id("userButton"));
@@ -53,7 +61,7 @@ public class CustomerSearchPage extends PageObject {
             Target.the("location tab button").located(By.id("locationButton"));
 
     public static final Target SEARCH_OPTIONS =
-            Target.the("search options").located(By.id("editFaqMenu"));
+            Target.the("customerSearch options").located(By.id("editFaqMenu"));
     public static final Target DOWNLOAD_RESULTS_OPTION =
             Target.the("download results option")
                     .located(By.cssSelector("#menu_container_23 > md-menu-content:nth-child(1) > " +
