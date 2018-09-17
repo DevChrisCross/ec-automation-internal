@@ -11,11 +11,11 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 
-public class ViewProfile implements Task {
+public class ViewUserProfile implements Task {
 
     private String input;
 
-    public ViewProfile(String input) { this.input = input; }
+    public ViewUserProfile(String input) { this.input = input; }
 
     @Override
     public <T extends Actor> void performAs(T actor) {

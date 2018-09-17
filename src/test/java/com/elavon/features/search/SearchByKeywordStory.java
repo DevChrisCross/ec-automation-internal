@@ -2,11 +2,8 @@ package com.elavon.features.search;
 
 import com.elavon.setup.Application;
 import com.elavon.setup.constants.UserType;
-import com.elavon.tasks.general.End;
-import com.elavon.tasks.general.Impersonate;
-import com.elavon.tasks.general.Reset;
-import com.elavon.tasks.general.Login;
-import com.elavon.tasks.general.Open;
+import com.elavon.tasks.general.*;
+import com.elavon.tasks.userProfile.constants.UserProfile;
 import com.elavon.ui.Page;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
@@ -27,10 +24,11 @@ public class SearchByKeywordStory {
         givenThat(anna).wasAbleTo(Open.theApplication().onThe(Page.LOGIN));
         andThat(anna).wasAbleTo(Login.as(UserType.INTERNAL));
 //        andThat(anna).wasAbleTo(Search.forTheCustomer(SearchBy.USER)
-//        andThat(anna).wasAbleTo(Search.forTheUserProfileOf("chris@creag"));
-        andThat(anna).wasAbleTo(Impersonate.theUserProfileOf("chris@creag"));
-        andThat(anna).wasAbleTo(End.theImpersonationOfTheUser());
-        andThat(anna).wasAbleTo(Reset.thePasswordOfTheUserAccount().incompletely());
+        andThat(anna).wasAbleTo(Search.forTheUserProfileOf("chris@creag"));
+//        andThat(anna).wasAbleTo(Impersonate.theUserProfileOf("chris@creag"));
+//        andThat(anna).wasAbleTo(End.theImpersonationOfTheUser());
+//        andThat(anna).wasAbleTo(Reset.thePasswordOfTheUserAccount().incompletely());
+        andThat(anna).wasAbleTo(Update.theCustomerProfile(UserProfile.LANGUAGE).withTheValueOf("new"));
 //        andThat(anna).wasAbleTo(Click.on());
 //        andThat(anna).wasAbleTo(Search.withTheName().thatContains(""));
 //        andThat(anna).wasAbleTo(Search.withTheEmail().thatStartsWith(""));

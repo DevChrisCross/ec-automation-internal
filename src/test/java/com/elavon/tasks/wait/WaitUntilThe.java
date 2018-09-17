@@ -12,6 +12,4 @@ public class WaitUntilThe {
     public static WaitElementLoad targetIsLoaded(Target target) {
         return Instrumented.instanceOf(WaitElementLoad.class).withProperties(target);
     }
-
-
 }
