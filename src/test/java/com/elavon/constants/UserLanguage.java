@@ -1,6 +1,6 @@
-package com.elavon.tasks;
+package com.elavon.constants;
 
-public enum Language {
+public enum UserLanguage {
     DEUSTCH,
     ENGLISH,
     ESPANOL,

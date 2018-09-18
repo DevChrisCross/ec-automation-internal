@@ -1,4 +1,4 @@
-package com.elavon.tasks;
+package com.elavon.constants;
 
 public enum UserRole {
     EMPLOYEE,

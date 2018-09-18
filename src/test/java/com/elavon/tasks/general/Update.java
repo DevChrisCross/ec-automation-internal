@@ -1,7 +1,7 @@
 package com.elavon.tasks.general;
 
+import com.elavon.constants.UserProfile;
 import com.elavon.tasks.userProfile.UpdateCustomerProfile;
-import com.elavon.tasks.userProfile.constants.UserProfile;
 import net.serenitybdd.core.steps.Instrumented;
 
 public class Update {

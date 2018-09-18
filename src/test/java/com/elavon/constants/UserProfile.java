@@ -1,4 +1,4 @@
-package com.elavon.tasks.userProfile.constants;
+package com.elavon.constants;
 
 public enum UserProfile {
     FIRST_NAME,

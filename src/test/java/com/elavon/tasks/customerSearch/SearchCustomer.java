@@ -1,16 +1,18 @@
 package com.elavon.tasks.customerSearch;
 
+import com.elavon.constants.SearchBy;
+import com.elavon.constants.SearchFilter;
+import com.elavon.constants.SearchMatch;
 import com.elavon.interactions.ClickOn;
-import com.elavon.tasks.customerSearch.constants.SearchBy;
-import com.elavon.tasks.customerSearch.constants.SearchFilter;
-import com.elavon.tasks.customerSearch.constants.SearchMatch;
-import com.elavon.tasks.wait.WaitUntilThe;
 import com.elavon.ui.pages.CustomerSearchPage;
 import com.elavon.ui.pages.InternalHomePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.targets.Target;
+
+import java.util.Map;
 
 public class SearchCustomer implements Task {
 
@@ -31,13 +33,16 @@ public class SearchCustomer implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
+        Map<String, Target> searchFilter = SearchFilter.bindMap.get(CustomerSearchPage.class).get(filter);
+        Map<String, Target> searchBy = SearchBy.bindMap.get(CustomerSearchPage.class).get(by);
+
         actor.attemptsTo(
                 ClickOn.the(InternalHomePage.CUSTOMER_SEARCH_TAB),
                 Click.on(CustomerSearchPage.SEARCH_FILTER_DROPDOWN),
-                Click.on(filter.getOptionValue()),
-                Enter.theValue(input).into(filter.getOptionField()),
+                Click.on(searchFilter.get("option")),
+                Enter.theValue(input).into(searchFilter.get("field")),
                 Click.on(CustomerSearchPage.APPLY_FILTER_BUTTON),
-                ClickOn.the(by.getTarget())
+                ClickOn.the(searchBy.get("target"))
         );
     }
 }

@@ -1,5 +1,6 @@
 package com.elavon.setup;
 
+import com.elavon.constants.Bind;
 import net.serenitybdd.screenplay.Ability;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -8,6 +9,10 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.openqa.selenium.WebDriver;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
@@ -40,6 +45,29 @@ public class Application {
                     .setScriptTimeout(CONFIG.getInt("environment.timeout.script"), TimeUnit.SECONDS)
                     .pageLoadTimeout(CONFIG.getInt("environment.timeout.page"), TimeUnit.SECONDS);
         }
+
+        Bind.loadBinders();
+//        loadPages();
+    }
+
+    private static void loadPages() {
+        List<String> pageList = new ArrayList<>(Arrays.asList(
+                "CustomerSearchPage",
+                "HomePage",
+                "InternalHomePage",
+                "LoginPage",
+                "UserProfilePage"
+        ));
+
+        pageList.forEach(className -> {
+            try {
+                Method method = Class.forName(className).getDeclaredMethod("bindPageObject", Void.TYPE);
+                method.setAccessible(true);
+                method.invoke(null);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public Actor can(List<Ability> abilities) {

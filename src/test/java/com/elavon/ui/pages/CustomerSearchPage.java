@@ -39,7 +39,7 @@ public class CustomerSearchPage extends PageObject {
     public static final Target MCC_DROPDOWN_OPTION =
             Target.the("mcc dropdown option")
                     .located(By.xpath("/html/body/div[4]/md-select-menu/md-content/div/md-option[3]"));
-    public static final Target MERCHANT_DROPDOWN_OPTION =
+    public static final Target MERCHANT_ID_DROPDOWN_OPTION =
             Target.the("merchant id dropdown option")
                     .located(By.xpath("/html/body/div[4]/md-select-menu/md-content/div/md-option[4]"));
     public static final Target NAME_DROPDOWN_OPTION =
@@ -74,4 +74,5 @@ public class CustomerSearchPage extends PageObject {
                     .located(By.xpath("/html/body/div[1]/span/" +
                             "md-content/md-content/div/div/" +
                             "md-card[2]/md-card-content[2]/md-table-container/table/tbody/tr/td[1]"));
+
 }

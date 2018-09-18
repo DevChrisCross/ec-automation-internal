@@ -1,4 +1,4 @@
-package com.elavon.tasks.customerSearch.constants;
+package com.elavon.constants;
 
 public enum SearchMatch {
     STARTS_WITH,

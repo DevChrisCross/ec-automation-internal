@@ -1,9 +1,9 @@
 package com.elavon.tasks.general;
 
-import com.elavon.setup.constants.EnvironmentLocale;
-import com.elavon.setup.constants.EnvironmentType;
+import com.elavon.constants.EnvironmentLocale;
+import com.elavon.constants.EnvironmentType;
+import com.elavon.constants.Page;
 import com.elavon.tasks.home.OpenApplicationPage;
-import com.elavon.ui.Page;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Performable;
 

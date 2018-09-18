@@ -1,17 +1,13 @@
 package com.elavon.tasks.userProfile;
 
+import com.elavon.constants.UserProfile;
 import com.elavon.interactions.ClickOn;
-import com.elavon.tasks.Language;
-import com.elavon.tasks.UserRole;
-import com.elavon.tasks.userProfile.constants.UserProfile;
 import com.elavon.ui.pages.UserProfilePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.actions.SendKeysIntoTarget;
-import net.serenitybdd.screenplay.targets.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +15,6 @@ import java.util.List;
 public class UpdateCustomerProfile implements Task {
 
     private UserProfile userProfile;
-    private Target target;
     private String value;
 
     public UpdateCustomerProfile(UserProfile userProfile) {
@@ -31,7 +26,6 @@ public class UpdateCustomerProfile implements Task {
         List<Performable> todoList = new ArrayList<>();
 
         todoList.add(ClickOn.the(UserProfilePage.EDIT_PROFILE_BUTTON));
-//        todoList.add(ClickOn.the(target));
         if (userProfile.equals(UserProfile.FIRST_NAME) ||
                 userProfile.equals(UserProfile.LAST_NAME) ||
                 userProfile.equals(UserProfile.EMAIL)) {

@@ -1,15 +1,13 @@
 package com.elavon.tasks.customerSearch;
 
+import com.elavon.constants.SearchBy;
+import com.elavon.constants.SearchFilter;
+import com.elavon.constants.SearchMatch;
 import com.elavon.interactions.ClickOn;
 import com.elavon.tasks.general.Search;
-import com.elavon.tasks.customerSearch.constants.SearchBy;
-import com.elavon.tasks.customerSearch.constants.SearchFilter;
-import com.elavon.tasks.customerSearch.constants.SearchMatch;
-import com.elavon.tasks.wait.WaitUntilThe;
 import com.elavon.ui.pages.CustomerSearchPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.actions.Click;
 
 public class ViewUserProfile implements Task {
 

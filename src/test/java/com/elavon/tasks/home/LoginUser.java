@@ -1,7 +1,7 @@
 package com.elavon.tasks.home;
 
+import com.elavon.constants.UserType;
 import com.elavon.setup.CredentialKey;
-import com.elavon.setup.constants.UserType;
 import com.elavon.tasks.wait.WaitUntilThe;
 import com.elavon.ui.pages.LoginPage;
 import net.serenitybdd.screenplay.Actor;

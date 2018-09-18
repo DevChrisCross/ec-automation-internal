@@ -1,9 +1,9 @@
 package com.elavon.tasks.general;
 
-import com.elavon.tasks.customerSearch.constants.SearchBy;
+import com.elavon.constants.SearchBy;
+import com.elavon.constants.SearchFilter;
+import com.elavon.constants.SearchMatch;
 import com.elavon.tasks.customerSearch.SearchCustomer;
-import com.elavon.tasks.customerSearch.constants.SearchFilter;
-import com.elavon.tasks.customerSearch.constants.SearchMatch;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Performable;
 

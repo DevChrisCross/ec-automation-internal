@@ -1,10 +1,13 @@
 package com.elavon.features.search;
 
+import com.elavon.constants.Page;
+import com.elavon.constants.UserProfile;
+import com.elavon.constants.UserType;
 import com.elavon.setup.Application;
-import com.elavon.setup.constants.UserType;
-import com.elavon.tasks.general.*;
-import com.elavon.tasks.userProfile.constants.UserProfile;
-import com.elavon.ui.Page;
+import com.elavon.tasks.general.Login;
+import com.elavon.tasks.general.Open;
+import com.elavon.tasks.general.Search;
+import com.elavon.tasks.general.Update;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import org.junit.Test;

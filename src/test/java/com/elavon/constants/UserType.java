@@ -1,4 +1,4 @@
-package com.elavon.setup.constants;
+package com.elavon.constants;
 
 public enum UserType {
     EXTERNAL,
