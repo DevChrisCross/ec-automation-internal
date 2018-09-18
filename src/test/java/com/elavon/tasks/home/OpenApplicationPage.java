@@ -8,7 +8,6 @@ import com.elavon.ui.pages.HomePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.Step;
@@ -41,7 +40,7 @@ public class OpenApplicationPage implements Task {
         todoList.add(Open.url(url));
         if (isFromHome) {
             if (page.equals(Page.COOKIES_POLICY) || page.equals(Page.TERMS_OF_USE)) {
-                todoList.add(Click.on(HomePage.COOKIES_DISCLAIMER_CLOSE_BUTTON));
+                todoList.add(ClickOn.the(HomePage.COOKIES_DISCLAIMER_CLOSE_BUTTON));
             }
             Target targetButton = (Target) Page.bindMap.get(HomePage.class).get(page).get("target");
             todoList.add(ClickOn.the(targetButton));

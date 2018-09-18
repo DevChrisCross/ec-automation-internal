@@ -66,9 +66,7 @@ public class CustomerSearchPage extends PageObject {
             Target.the("download results option")
                     .located(By.cssSelector("#menu_container_23 > md-menu-content:nth-child(1) > " +
                             "md-menu-item:nth-child(1) > button:nth-child(1)"));
-//
-//    public static final Target TOAST_MESSAGE =
-//            Target.the("toast message").located(By.id("toast"));
+
     public static final Target FIRST_ROW_SEARCH_RESULT =
             Target.the("")
                     .located(By.xpath("/html/body/div[1]/span/" +

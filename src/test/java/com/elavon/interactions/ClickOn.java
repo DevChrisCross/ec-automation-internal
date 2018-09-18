@@ -5,6 +5,7 @@ import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.Scroll;
 import net.serenitybdd.screenplay.targets.Target;
 
 public class ClickOn implements Interaction {
@@ -21,6 +22,7 @@ public class ClickOn implements Interaction {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 WaitUntilThe.targetIsLoaded(target),
+                Scroll.to(target),
                 Click.on(target),
                 WaitUntilThe.pageIsFullyLoaded()
         );

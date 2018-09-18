@@ -17,10 +17,4 @@ public class HomePage extends PageObject {
     public static final Target COOKIES_DISCLAIMER_CLOSE_BUTTON =
             Target.the("cookies disclaimer close button")
                     .located(By.xpath("/html/body/div[1]/md-content/div/footer[2]/div[1]/div[2]/button"));
-
-    public static final Target NAVIGATION_HEADER =
-            Target.the("top navigation bar").located(By.cssSelector(".md-white-toolbar-theme"));
-    public static final Target COOKIES_DISCLAIMER_FOOTER =
-            Target.the("cookies disclaimer footer").located(By.cssSelector(".cookie-disclaimer"));
-
 }
