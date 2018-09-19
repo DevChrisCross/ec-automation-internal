@@ -2,6 +2,7 @@ package com.elavon.tasks.userProfile;
 
 import com.elavon.constants.Bind;
 import com.elavon.constants.UserProfile;
+import com.elavon.constants.UserRole;
 import com.elavon.interactions.ClickOn;
 import com.elavon.ui.pages.UserProfilePage;
 import net.serenitybdd.screenplay.Actor;
@@ -41,7 +42,12 @@ public class UpdateCustomerProfile implements Task {
                     .get(value).get("option")));
         }
         if (userProfile.equals(UserProfile.ROLE)) {
-            todoList.add(Click.on(UserProfilePage.CUSTOMER_MANAGER_RBUTTON));
+            if (value.equals(UserRole.EMPLOYEE)) {
+                todoList.add(Click.on(UserProfilePage.CUSTOMER_EMPLOYEE_RBUTTON));
+            }
+            if (value.equals(UserRole.MANAGER)) {
+                todoList.add(Click.on(UserProfilePage.CUSTOMER_MANAGER_RBUTTON));
+            }
         }
         todoList.add(ClickOn.the(UserProfilePage.CUSTOMER_UPDATE_BUTTON));
 
