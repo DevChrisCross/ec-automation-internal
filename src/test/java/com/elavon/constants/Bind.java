@@ -2,17 +2,24 @@ package com.elavon.constants;
 
 import com.elavon.ui.pages.CustomerSearchPage;
 import com.elavon.ui.pages.HomePage;
+import com.elavon.ui.pages.UserProfilePage;
 import com.google.common.collect.ImmutableMap;
+import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
 
 import java.util.*;
 
 public class Bind {
 
-    public static <K, V> void bindTargets(
+    public static Map<Class<? extends PageObject>, Map<Bindable, Map<String, Object>>> pageMap = new HashMap<>();
+    public static Map<Class<? extends PageObject>, Map<Bindable, Map<String, Target>>> searchByMap = new HashMap<>();
+    public static Map<Class<? extends PageObject>, Map<Bindable, Map<String, Target>>> searchFilterMap = new HashMap<>();
+    public static Map<Class<? extends PageObject>, Map<Bindable, Map<String, Target>>> userProfileMap = new HashMap<>();
+    public static Map<Class<? extends PageObject>, Map<Bindable, Map<String, Target>>> userLanguageMap = new HashMap<>();
+
+    private static <K, V> void bindTargets(
             Map<Class<? extends PageObject>, Map<Bindable, Map<K, V>>> bindMap,
-            Class<? extends Bindable> enumObject,
-            Class<? extends PageObject> pageObject,
+            Class<? extends PageObject> pageObject, Class<? extends Bindable> enumObject,
             Queue<Map<K, V>> targets) {
         Map<Bindable, Map<K, V>> bindableTargetMap = new HashMap<>();
         for (Bindable enumConstant : enumObject.getEnumConstants()) {
@@ -22,9 +29,8 @@ public class Bind {
     }
 
     public static void loadBinders() {
-        bindTargets(Page.bindMap,
-                Page.class,
-                HomePage.class,
+        bindTargets(pageMap,
+                HomePage.class, Page.class,
                 new LinkedList<>(Arrays.asList(
                         ImmutableMap.of("target", new Object(), "url", "welcome"),
                         ImmutableMap.of("target", HomePage.LOGIN_BUTTON, "url", "login"),
@@ -33,17 +39,15 @@ public class Bind {
                         ImmutableMap.of("target", HomePage.COOKIES_POLICY_LINK, "url", "cookiesPolicyEu")
                 )));
 
-        bindTargets(SearchBy.bindMap,
-                SearchBy.class,
-                CustomerSearchPage.class,
+        bindTargets(searchByMap,
+                CustomerSearchPage.class, SearchBy.class,
                 new LinkedList<>(Arrays.asList(
                         ImmutableMap.of("target", CustomerSearchPage.LOCATION_TAB_BUTTON),
                         ImmutableMap.of("target", CustomerSearchPage.USER_TAB_BUTTON)
                 )));
 
-        bindTargets(SearchFilter.bindMap,
-                SearchFilter.class,
-                CustomerSearchPage.class,
+        bindTargets(searchFilterMap,
+                CustomerSearchPage.class, SearchFilter.class,
                 new LinkedList<>(Arrays.asList(
                         ImmutableMap.of("option", CustomerSearchPage.GROUP_DROPDOWN_OPTION,
                                 "field", CustomerSearchPage.GROUP_FIELD),
@@ -63,6 +67,30 @@ public class Bind {
                                 "field", CustomerSearchPage.EMAIL_FIELD),
                         ImmutableMap.of("option", CustomerSearchPage.USER_ID_DROPDOWN_OPTION,
                                 "field", CustomerSearchPage.USER_ID_FIELD)
+                )));
+
+        bindTargets(userProfileMap,
+                UserProfilePage.class, UserProfile.class,
+                new LinkedList<>(Arrays.asList(
+                        ImmutableMap.of("target", UserProfilePage.CUSTOMER_FIRST_NAME_FIELD),
+                        ImmutableMap.of("target", UserProfilePage.CUSTOMER_LAST_NAME_FIELD),
+                        ImmutableMap.of("target", UserProfilePage.CUSTOMER_EMAIL_FIELD),
+                        ImmutableMap.of("target", UserProfilePage.CUSTOMER_LANGUAGE_DROPDOWN),
+                        ImmutableMap.of("employee option", UserProfilePage.CUSTOMER_EMPLOYEE_RBUTTON,
+                                "manager option", UserProfilePage.CUSTOMER_MANAGER_RBUTTON)
+                )));
+
+        bindTargets(userLanguageMap,
+                UserProfilePage.class, UserLanguage.class,
+                new LinkedList<>(Arrays.asList(
+                        ImmutableMap.of("option", UserProfilePage.CUSTOMER_DEUTSCH_OPTION),
+                        ImmutableMap.of("option", UserProfilePage.CUSTOMER_ENGLISH_OPTION),
+                        ImmutableMap.of("option", UserProfilePage.CUSTOMER_ESPANOL_OPTION),
+                        ImmutableMap.of("option", UserProfilePage.CUSTOMER_FRANCAIS_OPTION),
+                        ImmutableMap.of("option", UserProfilePage.CUSTOMER_ITALIANO_OPTION),
+                        ImmutableMap.of("option", UserProfilePage.CUSTOMER_NEDERLANDS_OPTION),
+                        ImmutableMap.of("option", UserProfilePage.CUSTOMER_NORSK_OPTION),
+                        ImmutableMap.of("option", UserProfilePage.CUSTOMER_POLSKI_OPTION)
                 )));
     }
 }

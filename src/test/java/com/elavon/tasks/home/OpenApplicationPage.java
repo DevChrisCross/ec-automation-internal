@@ -1,5 +1,6 @@
 package com.elavon.tasks.home;
 
+import com.elavon.constants.Bind;
 import com.elavon.constants.EnvironmentLocale;
 import com.elavon.constants.EnvironmentType;
 import com.elavon.constants.Page;
@@ -29,7 +30,7 @@ public class OpenApplicationPage implements Task {
         this.isFromHome = isFromHome;
 
         page = isFromHome ? Page.HOME : page;
-        this.url = baseUrl + locale.toString() + "/" + Page.bindMap.get(HomePage.class).get(page).get("url");
+        this.url = baseUrl + locale.toString() + "/" + Bind.pageMap.get(HomePage.class).get(page).get("url");
     }
 
     @Step("Opens the application in the #page page")
@@ -42,7 +43,7 @@ public class OpenApplicationPage implements Task {
             if (page.equals(Page.COOKIES_POLICY) || page.equals(Page.TERMS_OF_USE)) {
                 todoList.add(ClickOn.the(HomePage.COOKIES_DISCLAIMER_CLOSE_BUTTON));
             }
-            Target targetButton = (Target) Page.bindMap.get(HomePage.class).get(page).get("target");
+            Target targetButton = (Target) Bind.pageMap.get(HomePage.class).get(page).get("target");
             todoList.add(ClickOn.the(targetButton));
         }
 

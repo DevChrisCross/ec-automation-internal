@@ -1,6 +1,6 @@
 package com.elavon.constants;
 
-public enum UserLanguage {
+public enum UserLanguage implements Bindable {
     DEUSTCH,
     ENGLISH,
     ESPANOL,

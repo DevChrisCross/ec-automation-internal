@@ -2,7 +2,6 @@ package com.elavon.ui.pages;
 
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
-import org.apache.tools.ant.taskdefs.Tar;
 import org.openqa.selenium.By;
 
 public class UserProfilePage extends PageObject {
@@ -52,6 +51,8 @@ public class UserProfilePage extends PageObject {
             Target.the("customer first name field").located(By.id("customerFirstName"));
     public static final Target CUSTOMER_LAST_NAME_FIELD =
             Target.the("customer last name field").located(By.id("customerLastName"));
+    public static final Target CUSTOMER_EMAIL_FIELD =
+            Target.the("customer last name field").located(By.id("customerEmail"));
     public static final Target CUSTOMER_LANGUAGE_DROPDOWN =
             Target.the("customer language dropdown")
                     .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/form/md-card[1]/" +
