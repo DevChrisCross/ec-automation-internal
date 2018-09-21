@@ -1,6 +1,6 @@
 package com.elavon.setup;
 
-import com.elavon.constants.Bind;
+import com.elavon.binder.Binder;
 import net.serenitybdd.screenplay.Ability;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -9,17 +9,13 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.openqa.selenium.WebDriver;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 public class Application {
 
-    public static final int MAXIMUM_TIMEOUT = 30;
+    public static final int MAXIMUM_TIMEOUT;
     public static final Actor USER;
     public static final WebDriver BROWSER;
     public static final PropertiesConfiguration CONFIG;
@@ -39,6 +35,7 @@ public class Application {
                 .can(BrowseTheWeb.with(BROWSER))
                 .can(CallAnApi.at(CONFIG.getString("environment.url.restapi")));
 
+        MAXIMUM_TIMEOUT = CONFIG.getInt("environment.timeout.maximum");
         if (CONFIG.getBoolean("environment.timeout.enabled")) {
             BROWSER.manage().timeouts()
                     .implicitlyWait(CONFIG.getInt("environment.timeout.element"), TimeUnit.SECONDS)
@@ -46,28 +43,7 @@ public class Application {
                     .pageLoadTimeout(CONFIG.getInt("environment.timeout.page"), TimeUnit.SECONDS);
         }
 
-        Bind.loadBinders();
-//        loadPages();
-    }
-
-    private static void loadPages() {
-        List<String> pageList = new ArrayList<>(Arrays.asList(
-                "CustomerSearchPage",
-                "HomePage",
-                "InternalHomePage",
-                "LoginPage",
-                "UserProfilePage"
-        ));
-
-        pageList.forEach(className -> {
-            try {
-                Method method = Class.forName(className).getDeclaredMethod("bindPageObject", Void.TYPE);
-                method.setAccessible(true);
-                method.invoke(null);
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        });
+        Binder.loadBinders();
     }
 
     public Actor can(List<Ability> abilities) {

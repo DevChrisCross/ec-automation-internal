@@ -92,4 +92,21 @@ public class UserProfilePage extends PageObject {
                     .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/form/md-card[2]/" +
                             "md-card-content/div/md-input-container/md-radio-group/div[2]/div[1]/md-radio-button"));
 
+    // TODO: Simplify xpaths for multiple Targets
+    public static final Target LOCATION_RULE_FIELD =
+            Target.the("location rule field")
+                    .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/md-card[2]/" +
+                            "md-card-content/accesscriteriaselector/div[1]/md-list-item[1]/" +
+                            "md-autocomplete/md-autocomplete-wrap/input"));
+    public static final Target LOCATION_CLG_GROUP_FIELD =
+            Target.the("location clg group")
+                    .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/md-card[2]/" +
+                            "md-card-content/accesscriteriaselector/div[1]/md-list-item[2]/" +
+                            "md-autocomplete/md-autocomplete-wrap/input"));
+    public static final Target LOCATION_VALUE_FIELD =
+            Target.the("location value field")
+                    .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/md-card[2]/" +
+                            "md-card-content/accesscriteriaselector/div[1]/md-list-item[3]/" +
+                            "md-autocomplete/md-autocomplete-wrap/input"));
+
 }

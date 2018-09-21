@@ -1,6 +1,8 @@
 package com.elavon.constants;
 
-public enum Page implements Bindable {
+import com.elavon.binder.Bindable;
+
+public enum HomeNav implements Bindable {
     HOME,
     LOGIN,
     CONTACT_US,

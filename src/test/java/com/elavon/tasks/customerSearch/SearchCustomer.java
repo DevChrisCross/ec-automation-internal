@@ -1,6 +1,6 @@
 package com.elavon.tasks.customerSearch;
 
-import com.elavon.constants.Bind;
+import com.elavon.binder.Binder;
 import com.elavon.constants.SearchBy;
 import com.elavon.constants.SearchFilter;
 import com.elavon.constants.SearchMatch;
@@ -34,8 +34,8 @@ public class SearchCustomer implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        Map<String, Target> searchFilter = Bind.searchFilterMap.get(CustomerSearchPage.class).get(filter);
-        Map<String, Target> searchBy = Bind.searchByMap.get(CustomerSearchPage.class).get(by);
+        Map<String, Target> searchFilter = Binder.searchFilterMap.get(CustomerSearchPage.class).get(filter);
+        Map<String, Target> searchBy = Binder.searchByMap.get(CustomerSearchPage.class).get(by);
 
         actor.attemptsTo(
                 ClickOn.the(InternalHomePage.CUSTOMER_SEARCH_TAB),

@@ -1,6 +1,6 @@
 package com.elavon.features.search;
 
-import com.elavon.constants.Page;
+import com.elavon.constants.HomeNav;
 import com.elavon.constants.UserProfile;
 import com.elavon.constants.UserRole;
 import com.elavon.constants.UserType;
@@ -25,7 +25,7 @@ public class SearchByKeywordStory {
     @Test
     public void search_results_should_show_the_search_term_in_the_title() {
 
-        givenThat(anna).wasAbleTo(Open.theApplication().onThe(Page.LOGIN));
+        givenThat(anna).wasAbleTo(Open.theApplication().onThe(HomeNav.LOGIN));
         andThat(anna).wasAbleTo(Login.as(UserType.INTERNAL));
 //        andThat(anna).wasAbleTo(Search.forTheCustomer(SearchBy.USER)
         andThat(anna).wasAbleTo(Search.forTheUserProfileOf("chris@creag"));
