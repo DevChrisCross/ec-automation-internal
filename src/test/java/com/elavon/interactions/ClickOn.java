@@ -1,6 +1,6 @@
 package com.elavon.interactions;
 
-import com.elavon.tasks.wait.WaitUntilThe;
+import com.elavon.tasks.waitToLoad.WaitUntilThe;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
