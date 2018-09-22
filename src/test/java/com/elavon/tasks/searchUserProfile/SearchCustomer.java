@@ -1,6 +1,5 @@
 package com.elavon.tasks.searchUserProfile;
 
-import com.elavon.binder.Binder;
 import com.elavon.constants.SearchBy;
 import com.elavon.constants.SearchFilter;
 import com.elavon.constants.SearchMatch;
@@ -11,9 +10,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.targets.Target;
-
-import java.util.Map;
 
 public class SearchCustomer implements Task {
 
@@ -34,16 +30,13 @@ public class SearchCustomer implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        Map<String, Target> searchFilter = Binder.searchFilterMap.get(CustomerSearchPage.class).get(filter);
-        Map<String, Target> searchBy = Binder.searchByMap.get(CustomerSearchPage.class).get(by);
-
         actor.attemptsTo(
                 ClickOn.the(InternalHomePage.CUSTOMER_SEARCH_TAB),
                 Click.on(CustomerSearchPage.Filter.DROPDOWN),
-                Click.on(searchFilter.get("option")),
-                Enter.theValue(input).into(searchFilter.get("field")),
+                Click.on(CustomerSearchPage.bind.get(filter).get("option")),
+                Enter.theValue(input).into(CustomerSearchPage.bind.get(filter).get("field")),
                 Click.on(CustomerSearchPage.Filter.APPLY_BUTTON),
-                ClickOn.the(searchBy.get("target"))
+                ClickOn.the(CustomerSearchPage.bind.get(by).get("target"))
         );
     }
 }

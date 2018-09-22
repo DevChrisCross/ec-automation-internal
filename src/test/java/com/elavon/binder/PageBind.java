@@ -6,6 +6,7 @@ import com.elavon.ui.pages.EditUserProfilePage;
 import com.elavon.ui.pages.GeneralHomePage;
 import com.elavon.ui.pages.ViewUserProfilePage;
 import com.google.common.collect.ImmutableMap;
+import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
 
 import java.util.ArrayList;
@@ -21,13 +22,13 @@ public class PageBind {
             ViewUserProfilePage.class
     ));
 
-    public static List<DataBind<?, ?>> dataBinds = new ArrayList<>(Arrays.asList(
-            new DataBind<>(GeneralHomePage.class, HomeNav.class, new LinkedList<>(Arrays.asList(
-                    ImmutableMap.of("target", new Object(), "url", "welcome"),
-                    ImmutableMap.of("target", GeneralHomePage.LOGIN_BUTTON, "url", "login"),
-                    ImmutableMap.of("target", GeneralHomePage.CONTACT_US_BUTTON, "url", "contactus"),
-                    ImmutableMap.of("target", GeneralHomePage.Footer.TERMS_OF_USE_LINK, "url", "termsOfUseEu"),
-                    ImmutableMap.of("target", GeneralHomePage.Footer.COOKIES_POLICY_LINK, "url", "cookiesPolicyEu")))),
+    public static List<DataBind<String, Target>> dataBinds = new ArrayList<>(Arrays.asList(
+            new DataBind<>(GeneralHomePage.class, HomeNavigation.class, new LinkedList<>(Arrays.asList(
+                    ImmutableMap.of("target", null),
+                    ImmutableMap.of("target", GeneralHomePage.LOGIN_BUTTON),
+                    ImmutableMap.of("target", GeneralHomePage.CONTACT_US_BUTTON),
+                    ImmutableMap.of("target", GeneralHomePage.Footer.TERMS_OF_USE_LINK),
+                    ImmutableMap.of("target", GeneralHomePage.Footer.COOKIES_POLICY_LINK)))),
 
             new DataBind<>(CustomerSearchPage.class, SearchBy.class, new LinkedList<>(Arrays.asList(
                     ImmutableMap.of("target", CustomerSearchPage.LOCATION_TAB_BUTTON),

@@ -1,10 +1,16 @@
 package com.elavon.ui.pages;
 
+import com.elavon.binder.Bindable;
+import com.elavon.binder.Binder;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 
+import java.util.Map;
+
 public class ViewUserProfilePage extends PageObject {
+
+    public static final Map<Bindable, Map<String, Target>> bind = Binder.bindMapOf(ViewUserProfilePage.class);
 
     public static final Target ACCOUNT_OPTIONS = Target
             .the("account options")

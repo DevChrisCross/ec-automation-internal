@@ -2,8 +2,8 @@ package com.elavon.tasks.genericTasks;
 
 import com.elavon.constants.EnvironmentLocale;
 import com.elavon.constants.EnvironmentType;
-import com.elavon.constants.HomeNav;
-import com.elavon.tasks.accessApplication.OpenApplicationPage;
+import com.elavon.constants.HomeNavigation;
+import com.elavon.tasks.accessApplication.OpenApplication;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Performable;
 
@@ -24,14 +24,9 @@ public class Open {
 
     public static Open theApplication() { return new Open(); }
 
-    public Performable byNavigatingUrlTo(HomeNav homeNav) {
-        return Instrumented.instanceOf(OpenApplicationPage.class)
-                .withProperties(homeNav, envType, localeType, false);
-    }
-
-    public Performable onThe(HomeNav homeNav) {
-        return Instrumented.instanceOf(OpenApplicationPage.class)
-                .withProperties(homeNav, envType, localeType, true);
+    public Performable onThe(HomeNavigation homeNavigation) {
+        return Instrumented.instanceOf(OpenApplication.class)
+                .withProperties(homeNavigation, envType, localeType);
     }
 
     public Open withTheEnvironmentOf(EnvironmentType envType) {

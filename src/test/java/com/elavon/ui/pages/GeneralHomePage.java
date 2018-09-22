@@ -11,6 +11,8 @@ import java.util.Map;
 
 public class GeneralHomePage extends PageObject {
 
+    public static final Map<Bindable, Map<String, Target>> bind = Binder.bindMapOf(GeneralHomePage.class);
+
     public static final Target LOGIN_BUTTON = Target
             .the("login button")
             .located(By.id("navbarSignIn"));
@@ -20,7 +22,6 @@ public class GeneralHomePage extends PageObject {
     public static final Target COOKIES_DISCLAIMER_CLOSE_BUTTON = Target
             .the("cookies disclaimer close button")
             .located(By.xpath("/html/body/div[1]/md-content/div/footer[2]/div[1]/div[2]/button"));
-    public static Map<Bindable, Map<?, ?>> bind = Binder.bindMapOf(GeneralHomePage.class);
 
     public static class Footer {
 

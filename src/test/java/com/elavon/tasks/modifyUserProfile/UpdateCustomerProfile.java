@@ -1,6 +1,5 @@
 package com.elavon.tasks.modifyUserProfile;
 
-import com.elavon.binder.Binder;
 import com.elavon.constants.UserProfile;
 import com.elavon.constants.UserRole;
 import com.elavon.interactions.ClickOn;
@@ -27,7 +26,7 @@ public class UpdateCustomerProfile implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        Target target = Binder.userProfileMap.get(ViewUserProfilePage.class).get(userProfile).get("target");
+        Target target = (Target) ViewUserProfilePage.bind.get(userProfile).get("target");
         List<Performable> todoList = new ArrayList<>();
 
         todoList.add(ClickOn.the(ViewUserProfilePage.EDIT_PROFILE_BUTTON));
@@ -38,8 +37,7 @@ public class UpdateCustomerProfile implements Task {
         }
         if (userProfile.equals(UserProfile.LANGUAGE)) {
             todoList.add(Click.on(target));
-            todoList.add(Click.on(Binder.userLanguageMap.get(ViewUserProfilePage.class)
-                    .get(value).get("option")));
+            todoList.add(Click.on((Target) ViewUserProfilePage.bind.get(userProfile).get("option")));
         }
         if (userProfile.equals(UserProfile.ROLE)) {
             if (value.equals(UserRole.EMPLOYEE)) {
