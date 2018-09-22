@@ -1,10 +1,16 @@
 package com.elavon.ui.pages;
 
+import com.elavon.binder.Bindable;
+import com.elavon.binder.Binder;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 
+import java.util.Map;
+
 public class HomePage extends PageObject {
+
+    public static Map<Bindable, Map<?, ?>> bind = Binder.bindMapOf(HomePage.class);
 
     public static final Target LOGIN_BUTTON =
             Target.the("login button").located(By.id("navbarSignIn"));

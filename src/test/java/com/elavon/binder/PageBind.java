@@ -5,6 +5,7 @@ import com.elavon.ui.pages.CustomerSearchPage;
 import com.elavon.ui.pages.HomePage;
 import com.elavon.ui.pages.UserProfilePage;
 import com.google.common.collect.ImmutableMap;
+import net.thucydides.core.pages.PageObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +14,13 @@ import java.util.List;
 
 public class PageBind {
 
-    public static List<DataBind<?, ?>> bindList = new ArrayList<>(Arrays.asList(
+    public static List<Class<? extends PageObject>> pages = new ArrayList<>(Arrays.asList(
+            HomePage.class,
+            CustomerSearchPage.class,
+            UserProfilePage.class
+    ));
+
+    public static List<DataBind<?, ?>> dataBinds = new ArrayList<>(Arrays.asList(
             new DataBind<>(HomePage.class, HomeNav.class, new LinkedList<>(Arrays.asList(
                     ImmutableMap.of("target", new Object(), "url", "welcome"),
                     ImmutableMap.of("target", HomePage.LOGIN_BUTTON, "url", "login"),
