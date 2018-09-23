@@ -3,16 +3,20 @@ package com.elavon.binder;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 
 public class Binder {
 
-    public static Map<Class<? extends PageObject>, Map<Bindable, Map<String, Target>>> bindMap;
+    public static Map<Class<? extends PageObject>, BindMap<String, Target>> map;
+
+    public static void loadBinders() {
+        PageBind.pages.forEach(clazz -> map.put(clazz, new BindMap<>(PageBind.DEFAULT_KEY)));
+        PageBind.dataBinds.forEach(Binder::bindObjects);
+    }
 
     public static void bindObjects(DataBind<String, Target> dataBind) {
-        Map<Bindable, Map<String, Target>> targetMap = bindMap.get(dataBind.getPageClass());
+        BindMap<String, Target> targetMap = map.get(dataBind.getPageClass());
         Bindable[] enumConstants = dataBind.getBindClass().getEnumConstants();
         Queue<Map<String, Target>> data = dataBind.getData();
 
@@ -21,12 +25,7 @@ public class Binder {
         }
     }
 
-    public static Map<Bindable, Map<String, Target>> bindMapOf(Class<? extends PageObject> page) {
-        return bindMap.get(page);
-    }
-
-    public static void loadBinders() {
-        PageBind.pages.forEach(clazz -> bindMap.put(clazz, new HashMap<>()));
-        PageBind.dataBinds.forEach(Binder::bindObjects);
+    public static BindMap<String, Target> bindMapOf(Class<? extends PageObject> page) {
+        return map.get(page);
     }
 }

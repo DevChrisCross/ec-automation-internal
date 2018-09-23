@@ -40,7 +40,7 @@ public class OpenApplication implements Task {
             todoList.add(ClickOn.the(GeneralHomePage.COOKIES_DISCLAIMER_CLOSE_BUTTON));
         }
 
-        Target targetButton = GeneralHomePage.bind.get(homeNavigation).get("target");
+        Target targetButton = GeneralHomePage.bind.getDefaultItem(homeNavigation);
         todoList.add(ClickOn.the(targetButton));
 
         Performable[] todoActions = todoList.toArray(new Performable[]{});

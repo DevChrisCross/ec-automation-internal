@@ -9,30 +9,23 @@ import com.google.common.collect.ImmutableMap;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class PageBind {
 
-    public static List<Class<? extends PageObject>> pages = new ArrayList<>(Arrays.asList(
-            GeneralHomePage.class,
-            CustomerSearchPage.class,
-            ViewUserProfilePage.class
-    ));
-
+    public static final String DEFAULT_KEY = "target";
+    private static final Target TARGET_OF_NONE = Target.the("").locatedBy("");
     public static List<DataBind<String, Target>> dataBinds = new ArrayList<>(Arrays.asList(
             new DataBind<>(GeneralHomePage.class, HomeNavigation.class, new LinkedList<>(Arrays.asList(
-                    ImmutableMap.of("target", null),
-                    ImmutableMap.of("target", GeneralHomePage.LOGIN_BUTTON),
-                    ImmutableMap.of("target", GeneralHomePage.CONTACT_US_BUTTON),
-                    ImmutableMap.of("target", GeneralHomePage.Footer.TERMS_OF_USE_LINK),
-                    ImmutableMap.of("target", GeneralHomePage.Footer.COOKIES_POLICY_LINK)))),
+                    defaultMap(TARGET_OF_NONE),
+                    defaultMap(GeneralHomePage.LOGIN_BUTTON),
+                    defaultMap(GeneralHomePage.CONTACT_US_BUTTON),
+                    defaultMap(GeneralHomePage.Footer.TERMS_OF_USE_LINK),
+                    defaultMap(GeneralHomePage.Footer.COOKIES_POLICY_LINK)))),
 
             new DataBind<>(CustomerSearchPage.class, SearchBy.class, new LinkedList<>(Arrays.asList(
-                    ImmutableMap.of("target", CustomerSearchPage.LOCATION_TAB_BUTTON),
-                    ImmutableMap.of("target", CustomerSearchPage.USER_TAB_BUTTON)))),
+                    defaultMap(CustomerSearchPage.LOCATION_TAB_BUTTON),
+                    defaultMap(CustomerSearchPage.USER_TAB_BUTTON)))),
 
             new DataBind<>(CustomerSearchPage.class, SearchFilter.class, new LinkedList<>(Arrays.asList(
                     ImmutableMap.of("option", CustomerSearchPage.Filter.GROUP_DROPDOWN_OPTION,
@@ -55,21 +48,34 @@ public class PageBind {
                             "field", CustomerSearchPage.Filter.USER_ID_FIELD)))),
 
             new DataBind<>(ViewUserProfilePage.class, UserProfile.class, new LinkedList<>(Arrays.asList(
-                    ImmutableMap.of("target", EditUserProfilePage.CUSTOMER_FIRST_NAME_FIELD),
-                    ImmutableMap.of("target", EditUserProfilePage.CUSTOMER_LAST_NAME_FIELD),
-                    ImmutableMap.of("target", EditUserProfilePage.CUSTOMER_EMAIL_FIELD),
-                    ImmutableMap.of("target", EditUserProfilePage.Language.DROPDOWN),
-                    ImmutableMap.of("employee option", EditUserProfilePage.Role.EMPLOYEE_RADIO_BUTTON,
-                            "manager option", EditUserProfilePage.Role.MANAGER_RADIO_BUTTON)))),
+                    defaultMap(EditUserProfilePage.CUSTOMER_FIRST_NAME_FIELD),
+                    defaultMap(EditUserProfilePage.CUSTOMER_LAST_NAME_FIELD),
+                    defaultMap(EditUserProfilePage.CUSTOMER_EMAIL_FIELD),
+                    defaultMap(EditUserProfilePage.Language.DROPDOWN),
+                    defaultMap(TARGET_OF_NONE)))),
+
+            new DataBind<>(ViewUserProfilePage.class, UserRole.class, new LinkedList<>(Arrays.asList(
+                    defaultMap(EditUserProfilePage.Role.EMPLOYEE_RADIO_BUTTON),
+                    defaultMap(EditUserProfilePage.Role.MANAGER_RADIO_BUTTON)))),
 
             new DataBind<>(ViewUserProfilePage.class, UserLanguage.class, new LinkedList<>(Arrays.asList(
-                    ImmutableMap.of("option", EditUserProfilePage.Language.DEUTSCH_OPTION),
-                    ImmutableMap.of("option", EditUserProfilePage.Language.ENGLISH_OPTION),
-                    ImmutableMap.of("option", EditUserProfilePage.Language.ESPANOL_OPTION),
-                    ImmutableMap.of("option", EditUserProfilePage.Language.FRANCAIS_OPTION),
-                    ImmutableMap.of("option", EditUserProfilePage.Language.ITALIANO_OPTION),
-                    ImmutableMap.of("option", EditUserProfilePage.Language.NEDERLANDS_OPTION),
-                    ImmutableMap.of("option", EditUserProfilePage.Language.NORSK_OPTION),
-                    ImmutableMap.of("option", EditUserProfilePage.Language.POLSKI_OPTION))))
+                    defaultMap(EditUserProfilePage.Language.DEUTSCH_OPTION),
+                    defaultMap(EditUserProfilePage.Language.ENGLISH_OPTION),
+                    defaultMap(EditUserProfilePage.Language.ESPANOL_OPTION),
+                    defaultMap(EditUserProfilePage.Language.FRANCAIS_OPTION),
+                    defaultMap(EditUserProfilePage.Language.ITALIANO_OPTION),
+                    defaultMap(EditUserProfilePage.Language.NEDERLANDS_OPTION),
+                    defaultMap(EditUserProfilePage.Language.NORSK_OPTION),
+                    defaultMap(EditUserProfilePage.Language.POLSKI_OPTION))))
     ));
+
+    public static List<Class<? extends PageObject>> pages = new ArrayList<>(Arrays.asList(
+            GeneralHomePage.class,
+            CustomerSearchPage.class,
+            ViewUserProfilePage.class
+    ));
+
+    private static Map<String, Target> defaultMap(Target target) {
+        return ImmutableMap.of(DEFAULT_KEY, target);
+    }
 }

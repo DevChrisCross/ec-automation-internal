@@ -1,7 +1,6 @@
 package com.elavon.tasks.modifyUserProfile;
 
 import com.elavon.constants.UserProfile;
-import com.elavon.constants.UserRole;
 import com.elavon.interactions.ClickOn;
 import com.elavon.ui.pages.EditUserProfilePage;
 import com.elavon.ui.pages.ViewUserProfilePage;
@@ -26,27 +25,21 @@ public class UpdateCustomerProfile implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        Target target = (Target) ViewUserProfilePage.bind.get(userProfile).get("target");
+        Target target = ViewUserProfilePage.bind.getDefaultItem(userProfile);
         List<Performable> todoList = new ArrayList<>();
 
         todoList.add(ClickOn.the(ViewUserProfilePage.EDIT_PROFILE_BUTTON));
-        if (userProfile.equals(UserProfile.FIRST_NAME) ||
-                userProfile.equals(UserProfile.LAST_NAME) ||
-                userProfile.equals(UserProfile.EMAIL)) {
+        if (userProfile.equals(UserProfile.FIRST_NAME)
+                || userProfile.equals(UserProfile.LAST_NAME)
+                || userProfile.equals(UserProfile.EMAIL)) {
             todoList.add(Enter.theValue((String) value).into(target));
-        }
-        if (userProfile.equals(UserProfile.LANGUAGE)) {
-            todoList.add(Click.on(target));
-            todoList.add(Click.on((Target) ViewUserProfilePage.bind.get(userProfile).get("option")));
-        }
-        if (userProfile.equals(UserProfile.ROLE)) {
-            if (value.equals(UserRole.EMPLOYEE)) {
-                todoList.add(Click.on(EditUserProfilePage.Role.EMPLOYEE_RADIO_BUTTON));
+        } else {
+            if (userProfile.equals(UserProfile.LANGUAGE)) {
+                todoList.add(Click.on(target));
             }
-            if (value.equals(UserRole.MANAGER)) {
-                todoList.add(Click.on(EditUserProfilePage.Role.MANAGER_RADIO_BUTTON));
-            }
+            todoList.add(Click.on(ViewUserProfilePage.bind.getDefaultItem(value)));
         }
+
         todoList.add(ClickOn.the(EditUserProfilePage.CUSTOMER_UPDATE_BUTTON));
 
         Performable[] todoActions = todoList.toArray(new Performable[]{});
