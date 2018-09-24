@@ -1,7 +1,6 @@
 package com.elavon.ui.pages;
 
 import com.elavon.binder.BindMap;
-import com.elavon.binder.Binder;
 import com.elavon.helper.LocatorGenerator;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
@@ -9,7 +8,7 @@ import org.openqa.selenium.By;
 
 public class CustomerSearchPage extends PageObject {
 
-    public static final BindMap<String, Target> bind = Binder.bindMapOf(CustomerSearchPage.class);
+    public static BindMap<String, Target> bind;
 
     public static final Target LOCATION_TAB_BUTTON = Target
             .the("location tab button")

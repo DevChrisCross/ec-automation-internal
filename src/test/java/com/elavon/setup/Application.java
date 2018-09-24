@@ -1,6 +1,6 @@
 package com.elavon.setup;
 
-import com.elavon.binder.Binder;
+import com.elavon.binder.PageBind;
 import net.serenitybdd.screenplay.Ability;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -42,8 +42,7 @@ public class Application {
                     .setScriptTimeout(CONFIG.getInt("environment.timeout.script"), TimeUnit.SECONDS)
                     .pageLoadTimeout(CONFIG.getInt("environment.timeout.page"), TimeUnit.SECONDS);
         }
-
-        Binder.loadBinders();
+        PageBind.loadBinders();
     }
 
     public Actor can(List<Ability> abilities) {
