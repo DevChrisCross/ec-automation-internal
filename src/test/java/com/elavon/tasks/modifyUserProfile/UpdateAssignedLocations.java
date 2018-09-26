@@ -1,5 +1,6 @@
 package com.elavon.tasks.modifyUserProfile;
 
+import com.elavon.constants.Cancellable;
 import com.elavon.constants.UserLocationRule;
 import com.elavon.interactions.ClickOn;
 import com.elavon.tasks.waitToLoad.WaitUntilThe;
@@ -11,7 +12,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.JavaScriptClick;
 
-public class UpdateAssignedLocations implements Task {
+public class UpdateAssignedLocations extends Cancellable implements Task {
 
     private UserLocationRule locationRule;
     private String value;
@@ -32,7 +33,9 @@ public class UpdateAssignedLocations implements Task {
                 Enter.theValue(value).into(EditLocationsPage.Location.VALUE_FIELD),
                 WaitUntilThe.targetIsLoaded(EditLocationsPage.Location.VALUE_FIRST_OPTION),
                 JavaScriptClick.on(EditLocationsPage.Location.VALUE_FIRST_OPTION),
-                ClickOn.the(EditLocationsPage.UPDATE_BUTTON)
+                ClickOn.the(SuccessOrFail(
+                        EditLocationsPage.UPDATE_BUTTON,
+                        EditLocationsPage.CANCEL_BUTTON))
         );
     }
 

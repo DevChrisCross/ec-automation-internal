@@ -1,5 +1,6 @@
 package com.elavon.tasks.modifyUserProfile;
 
+import com.elavon.constants.Cancellable;
 import com.elavon.constants.UserProfile;
 import com.elavon.interactions.ClickOn;
 import com.elavon.ui.pages.CustomerAccount.EditCustomerProfilePage;
@@ -14,7 +15,7 @@ import net.serenitybdd.screenplay.targets.Target;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UpdateCustomerProfile implements Task {
+public class UpdateCustomerProfile extends Cancellable implements Task {
 
     private UserProfile userProfile;
     private Object value;
@@ -40,7 +41,9 @@ public class UpdateCustomerProfile implements Task {
             todoList.add(Click.on(EditCustomerProfilePage.bind.getDefaultItem(value)));
         }
 
-        todoList.add(ClickOn.the(EditCustomerProfilePage.CUSTOMER_UPDATE_BUTTON));
+        todoList.add(ClickOn.the(SuccessOrFail(
+                EditCustomerProfilePage.UPDATE_BUTTON,
+                EditCustomerProfilePage.CANCEL_BUTTON)));
 
         Performable[] todoActions = todoList.toArray(new Performable[]{});
         actor.attemptsTo(todoActions);

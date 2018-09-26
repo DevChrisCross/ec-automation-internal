@@ -8,10 +8,14 @@ import org.openqa.selenium.By;
 
 public class EditCustomerProfilePage extends PageObject {
 
-    public static final Target CUSTOMER_UPDATE_BUTTON = Target
+    private static LocatorGenerator update = new LocatorGenerator("/html/body/div[1]/span/md-content/" +
+            "md-content/div/form/md-card[3]/md-card-content/md-card-actions/button[@COUNTER]");
+    public static final Target UPDATE_BUTTON = Target
             .the("customer update button")
-            .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/form/md-card[3]/" +
-                    "md-card-content/md-card-actions/button[2]"));
+            .located(By.xpath(update.generate(2)));
+    public static final Target CANCEL_BUTTON = Target
+            .the("cancel button")
+            .located(By.xpath(update.generate(1)));
 
     public static final Target CUSTOMER_FIRST_NAME_FIELD = Target
             .the("customer first name field")
