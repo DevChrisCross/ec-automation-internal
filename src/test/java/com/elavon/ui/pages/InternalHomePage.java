@@ -1,11 +1,12 @@
 package com.elavon.ui.pages;
 
 import net.serenitybdd.screenplay.targets.Target;
+import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 
-public class InternalHomePage {
+public class InternalHomePage extends PageObject {
 
     public static final Target CUSTOMER_SEARCH_TAB = Target
-            .the("customer searchCustomer tab")
+            .the("customer search tab")
             .located(By.id("sidebarSearch"));
 }

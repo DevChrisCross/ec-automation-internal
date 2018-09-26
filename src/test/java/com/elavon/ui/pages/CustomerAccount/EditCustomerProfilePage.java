@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 
 public class EditCustomerProfilePage extends PageObject {
 
+    public static BindMap<String, Target> bind;
+
     private static LocatorCounter update = new LocatorCounter("/html/body/div[1]/span/md-content/" +
             "md-content/div/form/md-card[3]/md-card-content/md-card-actions/button[@COUNTER]");
     public static final Target UPDATE_BUTTON = Target
@@ -26,7 +28,7 @@ public class EditCustomerProfilePage extends PageObject {
     public static final Target CUSTOMER_EMAIL_FIELD = Target
             .the("customer last name field")
             .located(By.id("customerEmail"));
-    public static BindMap<String, Target> bind;
+
 
     public static class Language {
 

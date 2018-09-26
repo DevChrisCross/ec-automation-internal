@@ -12,7 +12,7 @@ import net.thucydides.core.annotations.Step;
 
 public class ViewCustomerAccount implements Task {
 
-    private String input;
+    private final String input;
 
     public ViewCustomerAccount(String input) {
         this.input = input;

@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 public class EditLocationsPage extends PageObject {
 
     public static BindMap<String, Target> bind;
+
     private static LocatorCounter button = new LocatorCounter("/html/body/div[1]/span/md-content/" +
             "md-content/div/div/button[@COUNTER]");
     public static final Target CANCEL_BUTTON = Target
@@ -26,6 +27,7 @@ public class EditLocationsPage extends PageObject {
         public static final Target RULE_CLOSE_BUTTON = Target
                 .the("rule field close button")
                 .located(By.xpath(s.replace("@COUNTER", "1") + "button"));
+
         private static LocatorCounter location = new LocatorCounter(s + "input");
         public static final Target RULE_FIELD = Target
                 .the("location rule field")
@@ -36,6 +38,7 @@ public class EditLocationsPage extends PageObject {
         public static final Target VALUE_FIELD = Target
                 .the("location value field")
                 .located(By.xpath(location.valueOf(3)));
+
         private static LocatorCounter rule = new LocatorCounter("/html/body/md-virtual-repeat-container[1]/" +
                 "div/div[2]/ul/li[@COUNTER]");
         public static final Target RULE_MID_OPTION = Target
@@ -47,6 +50,7 @@ public class EditLocationsPage extends PageObject {
         public static final Target RULE_ENTITY_OPTION = Target
                 .the("rule entity option")
                 .located(By.xpath(rule.valueOf(3)));
+
         private static LocatorCounter firstOption = new LocatorCounter("/html/body/" +
                 "md-virtual-repeat-container[@COUNTER]/div/div[2]/ul/li");
         public static final Target CLG_FIRST_OPTION = Target

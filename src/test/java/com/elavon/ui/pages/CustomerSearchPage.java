@@ -18,7 +18,7 @@ public class CustomerSearchPage extends PageObject {
             .located(By.id("locationButton"));
 
     public static final Target SEARCH_OPTIONS = Target
-            .the("searchCustomer options")
+            .the("search options")
             .located(By.id("editFaqMenu"));
     public static final Target DOWNLOAD_RESULTS_OPTION = Target
             .the("download results option")
