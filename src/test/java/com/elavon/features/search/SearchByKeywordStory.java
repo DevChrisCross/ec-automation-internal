@@ -1,8 +1,7 @@
 package com.elavon.features.search;
 
 import com.elavon.constants.HomeNavigation;
-import com.elavon.constants.UserProfile;
-import com.elavon.constants.UserRole;
+import com.elavon.constants.UserLocationRule;
 import com.elavon.constants.UserType;
 import com.elavon.setup.Application;
 import com.elavon.tasks.genericTasks.Login;
@@ -32,7 +31,10 @@ public class SearchByKeywordStory {
 //        andThat(anna).wasAbleTo(Impersonate.theUserProfileOf("chris@creag"));
 //        andThat(anna).wasAbleTo(End.theImpersonationOfTheUser());
 //        andThat(anna).wasAbleTo(Reset.thePasswordOfTheUserAccount().incompletely());
-        andThat(anna).wasAbleTo(Update.theCustomerProfile(UserProfile.ROLE).withTheValueOf(UserRole.EMPLOYEE));
+//        andThat(anna).wasAbleTo(Update.theCustomerProfile(UserProfile.ROLE).withTheValueOf(UserRole.MANAGER));
+        andThat(anna).wasAbleTo(Update.theAssignedLocationsWithTheRuleOf(UserLocationRule.MID)
+                .fromTheClientGroup("300")
+                .withTheValueOf("2100371205"));
 //        andThat(anna).wasAbleTo(Click.on());
 //        andThat(anna).wasAbleTo(Search.withTheName().thatContains(""));
 //        andThat(anna).wasAbleTo(Search.withTheEmail().thatStartsWith(""));

@@ -1,9 +1,9 @@
-package com.elavon.ui.pages;
+package com.elavon.ui.pages.CustomerAccount;
 
 import net.serenitybdd.screenplay.targets.Target;
 import org.openqa.selenium.By;
 
-public class ImpersonateUserProfilePage {
+public class ImpersonateCustomerPage {
 
     public static final Target IMPERSONATE_END_BUTTON = Target
             .the("end button")

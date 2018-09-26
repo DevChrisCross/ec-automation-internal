@@ -2,8 +2,8 @@ package com.elavon.tasks.modifyUserProfile;
 
 import com.elavon.constants.UserProfile;
 import com.elavon.interactions.ClickOn;
-import com.elavon.ui.pages.EditUserProfilePage;
-import com.elavon.ui.pages.ViewUserProfilePage;
+import com.elavon.ui.pages.CustomerAccount.EditCustomerProfilePage;
+import com.elavon.ui.pages.CustomerAccount.ViewCustomerPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -25,10 +25,10 @@ public class UpdateCustomerProfile implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        Target target = ViewUserProfilePage.bind.getDefaultItem(userProfile);
+        Target target = EditCustomerProfilePage.bind.getDefaultItem(userProfile);
         List<Performable> todoList = new ArrayList<>();
 
-        todoList.add(ClickOn.the(ViewUserProfilePage.EDIT_PROFILE_BUTTON));
+        todoList.add(ClickOn.the(ViewCustomerPage.EDIT_PROFILE_BUTTON));
         if (userProfile.equals(UserProfile.FIRST_NAME)
                 || userProfile.equals(UserProfile.LAST_NAME)
                 || userProfile.equals(UserProfile.EMAIL)) {
@@ -37,10 +37,10 @@ public class UpdateCustomerProfile implements Task {
             if (userProfile.equals(UserProfile.LANGUAGE)) {
                 todoList.add(Click.on(target));
             }
-            todoList.add(Click.on(ViewUserProfilePage.bind.getDefaultItem(value)));
+            todoList.add(Click.on(EditCustomerProfilePage.bind.getDefaultItem(value)));
         }
 
-        todoList.add(ClickOn.the(EditUserProfilePage.CUSTOMER_UPDATE_BUTTON));
+        todoList.add(ClickOn.the(EditCustomerProfilePage.CUSTOMER_UPDATE_BUTTON));
 
         Performable[] todoActions = todoList.toArray(new Performable[]{});
         actor.attemptsTo(todoActions);

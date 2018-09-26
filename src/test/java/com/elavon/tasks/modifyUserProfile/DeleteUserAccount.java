@@ -1,7 +1,7 @@
 package com.elavon.tasks.modifyUserProfile;
 
 import com.elavon.interactions.ClickOn;
-import com.elavon.ui.pages.ViewUserProfilePage;
+import com.elavon.ui.pages.CustomerAccount.ViewCustomerPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -27,11 +27,11 @@ public class DeleteUserAccount implements Task {
     public <T extends Actor> void performAs(T actor) {
         List<Performable> todoList = new ArrayList<>();
 
-        todoList.add(ClickOn.the(ViewUserProfilePage.ACCOUNT_OPTIONS));
-        todoList.add(Click.on(ViewUserProfilePage.DELETE_ACCOUNT_OPTION));
+        todoList.add(ClickOn.the(ViewCustomerPage.ACCOUNT_OPTIONS));
+        todoList.add(Click.on(ViewCustomerPage.DELETE_ACCOUNT_OPTION));
         todoList.add(ClickOn.the(isCompletely ?
-                ViewUserProfilePage.DeleteModal.DELETE_BUTTON :
-                ViewUserProfilePage.DeleteModal.CANCEL_BUTTON));
+                ViewCustomerPage.DeleteModal.DELETE_BUTTON :
+                ViewCustomerPage.DeleteModal.CANCEL_BUTTON));
 
         Performable[] todoActions = todoList.toArray(new Performable[]{});
         actor.attemptsTo(todoActions);

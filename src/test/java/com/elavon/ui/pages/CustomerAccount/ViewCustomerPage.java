@@ -1,11 +1,11 @@
-package com.elavon.ui.pages;
+package com.elavon.ui.pages.CustomerAccount;
 
 import com.elavon.binder.BindMap;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 
-public class ViewUserProfilePage extends PageObject {
+public class ViewCustomerPage extends PageObject {
 
     public static BindMap<String, Target> bind;
 
@@ -29,6 +29,10 @@ public class ViewUserProfilePage extends PageObject {
     public static final Target EDIT_PROFILE_BUTTON = Target
             .the("edit profile button")
             .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/md-card[2]/" +
+                    "md-card-title/md-card-title-text/div[2]/button"));
+    public static final Target EDIT_LOCATIONS_BUTTON = Target
+            .the("edit locations button")
+            .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/md-card[3]/" +
                     "md-card-title/md-card-title-text/div[2]/button"));
 
     public static class DeleteModal {

@@ -1,4 +1,4 @@
-package com.elavon.tasks.searchUserProfile;
+package com.elavon.tasks.searchCustomer;
 
 import com.elavon.constants.SearchBy;
 import com.elavon.constants.SearchFilter;
@@ -9,11 +9,13 @@ import com.elavon.ui.pages.CustomerSearchPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 
-public class ViewUserProfile implements Task {
+public class ViewCustomerAccount implements Task {
 
     private String input;
 
-    public ViewUserProfile(String input) { this.input = input; }
+    public ViewCustomerAccount(String input) {
+        this.input = input;
+    }
 
     @Override
     public <T extends Actor> void performAs(T actor) {

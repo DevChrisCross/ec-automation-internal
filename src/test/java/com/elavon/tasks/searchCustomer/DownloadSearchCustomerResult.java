@@ -1,4 +1,4 @@
-package com.elavon.tasks.searchUserProfile;
+package com.elavon.tasks.searchCustomer;
 
 import com.elavon.ui.pages.CustomerSearchPage;
 import net.serenitybdd.screenplay.Actor;

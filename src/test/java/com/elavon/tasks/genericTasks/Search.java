@@ -3,7 +3,7 @@ package com.elavon.tasks.genericTasks;
 import com.elavon.constants.SearchBy;
 import com.elavon.constants.SearchFilter;
 import com.elavon.constants.SearchMatch;
-import com.elavon.tasks.searchUserProfile.SearchCustomer;
+import com.elavon.tasks.searchCustomer.SearchCustomerAccount;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Performable;
 
@@ -32,7 +32,7 @@ public class Search {
     }
 
     public Performable theWord(String input) {
-        return Instrumented.instanceOf(SearchCustomer.class)
+        return Instrumented.instanceOf(SearchCustomerAccount.class)
                 .withProperties(by, filter, match, input);
     }
 }

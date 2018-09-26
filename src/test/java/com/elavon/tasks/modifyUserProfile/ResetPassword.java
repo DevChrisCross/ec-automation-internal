@@ -1,7 +1,7 @@
 package com.elavon.tasks.modifyUserProfile;
 
 import com.elavon.interactions.ClickOn;
-import com.elavon.ui.pages.ViewUserProfilePage;
+import com.elavon.ui.pages.CustomerAccount.ViewCustomerPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -26,10 +26,10 @@ public class ResetPassword implements Task {
     public <T extends Actor> void performAs(T actor) {
         List<Performable> todoList = new ArrayList<>();
 
-        todoList.add(ClickOn.the(ViewUserProfilePage.RESET_PASSWORD_BUTTON));
+        todoList.add(ClickOn.the(ViewCustomerPage.RESET_PASSWORD_BUTTON));
         todoList.add(ClickOn.the(isCompletely ?
-                ViewUserProfilePage.ResetModal.SEND_BUTTON :
-                ViewUserProfilePage.ResetModal.CANCEL_BUTTON));
+                ViewCustomerPage.ResetModal.SEND_BUTTON :
+                ViewCustomerPage.ResetModal.CANCEL_BUTTON));
 
         Performable[] todoActions = todoList.toArray(new Performable[]{});
         actor.attemptsTo(todoActions);

@@ -1,6 +1,6 @@
 package com.elavon.tasks.genericTasks;
 
-import com.elavon.tasks.searchUserProfile.DownloadSearchCustomerResult;
+import com.elavon.tasks.searchCustomer.DownloadSearchCustomerResult;
 import net.serenitybdd.core.steps.Instrumented;
 
 public class Download {

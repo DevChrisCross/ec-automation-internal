@@ -1,10 +1,12 @@
-package com.elavon.ui.pages;
+package com.elavon.ui.pages.CustomerAccount;
 
+import com.elavon.binder.BindMap;
 import com.elavon.helper.LocatorGenerator;
 import net.serenitybdd.screenplay.targets.Target;
+import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 
-public class EditUserProfilePage {
+public class EditCustomerProfilePage extends PageObject {
 
     public static final Target CUSTOMER_UPDATE_BUTTON = Target
             .the("customer update button")
@@ -20,6 +22,7 @@ public class EditUserProfilePage {
     public static final Target CUSTOMER_EMAIL_FIELD = Target
             .the("customer last name field")
             .located(By.id("customerEmail"));
+    public static BindMap<String, Target> bind;
 
     public static class Language {
 

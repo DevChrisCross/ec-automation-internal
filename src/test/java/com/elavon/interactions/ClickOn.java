@@ -4,7 +4,7 @@ import com.elavon.tasks.waitToLoad.WaitUntilThe;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
-import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.JavaScriptClick;
 import net.serenitybdd.screenplay.actions.Scroll;
 import net.serenitybdd.screenplay.targets.Target;
 
@@ -23,7 +23,7 @@ public class ClickOn implements Interaction {
         actor.attemptsTo(
                 WaitUntilThe.targetIsLoaded(target),
                 Scroll.to(target),
-                Click.on(target),
+                JavaScriptClick.on(target),
                 WaitUntilThe.pageIsFullyLoaded()
         );
     }

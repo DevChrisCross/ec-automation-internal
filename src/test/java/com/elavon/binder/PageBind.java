@@ -1,10 +1,10 @@
 package com.elavon.binder;
 
 import com.elavon.constants.*;
+import com.elavon.ui.pages.CustomerAccount.EditCustomerProfilePage;
+import com.elavon.ui.pages.CustomerAccount.EditLocationsPage;
 import com.elavon.ui.pages.CustomerSearchPage;
-import com.elavon.ui.pages.EditUserProfilePage;
 import com.elavon.ui.pages.GeneralHomePage;
-import com.elavon.ui.pages.ViewUserProfilePage;
 import com.google.common.collect.ImmutableMap;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
@@ -24,7 +24,8 @@ public class PageBind {
         pages = new ArrayList<>(Arrays.asList(
                 GeneralHomePage.class,
                 CustomerSearchPage.class,
-                ViewUserProfilePage.class
+                EditCustomerProfilePage.class,
+                EditLocationsPage.class
         ));
 
         dataBinds = new ArrayList<>(Arrays.asList(
@@ -59,26 +60,32 @@ public class PageBind {
                         ImmutableMap.of("option", CustomerSearchPage.Filter.USER_ID_DROPDOWN_OPTION,
                                 "field", CustomerSearchPage.Filter.USER_ID_FIELD)))),
 
-                new DataBind<>(ViewUserProfilePage.class, UserProfile.class, new LinkedList<>(Arrays.asList(
-                        defaultMap(EditUserProfilePage.CUSTOMER_FIRST_NAME_FIELD),
-                        defaultMap(EditUserProfilePage.CUSTOMER_LAST_NAME_FIELD),
-                        defaultMap(EditUserProfilePage.CUSTOMER_EMAIL_FIELD),
-                        defaultMap(EditUserProfilePage.Language.DROPDOWN),
+                new DataBind<>(EditCustomerProfilePage.class, UserProfile.class, new LinkedList<>(Arrays.asList(
+                        defaultMap(EditCustomerProfilePage.CUSTOMER_FIRST_NAME_FIELD),
+                        defaultMap(EditCustomerProfilePage.CUSTOMER_LAST_NAME_FIELD),
+                        defaultMap(EditCustomerProfilePage.CUSTOMER_EMAIL_FIELD),
+                        defaultMap(EditCustomerProfilePage.Language.DROPDOWN),
                         defaultMap(TARGET_OF_NONE)))),
 
-                new DataBind<>(ViewUserProfilePage.class, UserRole.class, new LinkedList<>(Arrays.asList(
-                        defaultMap(EditUserProfilePage.Role.EMPLOYEE_RADIO_BUTTON),
-                        defaultMap(EditUserProfilePage.Role.MANAGER_RADIO_BUTTON)))),
+                new DataBind<>(EditCustomerProfilePage.class, UserRole.class, new LinkedList<>(Arrays.asList(
+                        defaultMap(EditCustomerProfilePage.Role.EMPLOYEE_RADIO_BUTTON),
+                        defaultMap(EditCustomerProfilePage.Role.MANAGER_RADIO_BUTTON)))),
 
-                new DataBind<>(ViewUserProfilePage.class, UserLanguage.class, new LinkedList<>(Arrays.asList(
-                        defaultMap(EditUserProfilePage.Language.DEUTSCH_OPTION),
-                        defaultMap(EditUserProfilePage.Language.ENGLISH_OPTION),
-                        defaultMap(EditUserProfilePage.Language.ESPANOL_OPTION),
-                        defaultMap(EditUserProfilePage.Language.FRANCAIS_OPTION),
-                        defaultMap(EditUserProfilePage.Language.ITALIANO_OPTION),
-                        defaultMap(EditUserProfilePage.Language.NEDERLANDS_OPTION),
-                        defaultMap(EditUserProfilePage.Language.NORSK_OPTION),
-                        defaultMap(EditUserProfilePage.Language.POLSKI_OPTION))))
+                new DataBind<>(EditCustomerProfilePage.class, UserLanguage.class, new LinkedList<>(Arrays.asList(
+                        defaultMap(EditCustomerProfilePage.Language.DEUTSCH_OPTION),
+                        defaultMap(EditCustomerProfilePage.Language.ENGLISH_OPTION),
+                        defaultMap(EditCustomerProfilePage.Language.ESPANOL_OPTION),
+                        defaultMap(EditCustomerProfilePage.Language.FRANCAIS_OPTION),
+                        defaultMap(EditCustomerProfilePage.Language.ITALIANO_OPTION),
+                        defaultMap(EditCustomerProfilePage.Language.NEDERLANDS_OPTION),
+                        defaultMap(EditCustomerProfilePage.Language.NORSK_OPTION),
+                        defaultMap(EditCustomerProfilePage.Language.POLSKI_OPTION)))),
+
+                new DataBind<>(EditLocationsPage.class, UserLocationRule.class, new LinkedList<>(Arrays.asList(
+                        defaultMap(EditLocationsPage.Location.RULE_MID_OPTION),
+                        defaultMap(EditLocationsPage.Location.RULE_CHAIN_OPTION),
+                        defaultMap(EditLocationsPage.Location.RULE_ENTITY_OPTION)
+                )))
         ));
 
         pages.forEach(aClazz -> map.put(aClazz, new BindMap<>(PageBind.DEFAULT_KEY)));

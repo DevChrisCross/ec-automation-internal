@@ -1,4 +1,4 @@
-package com.elavon.tasks.searchUserProfile;
+package com.elavon.tasks.searchCustomer;
 
 import com.elavon.constants.SearchBy;
 import com.elavon.constants.SearchFilter;
@@ -11,14 +11,14 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 
-public class SearchCustomer implements Task {
+public class SearchCustomerAccount implements Task {
 
     private String input;
     private SearchBy by;
     private SearchFilter filter;
     private static final String WILDCARD = "%";
 
-    public SearchCustomer(SearchBy by, SearchFilter filter, SearchMatch match, String input) {
+    public SearchCustomerAccount(SearchBy by, SearchFilter filter, SearchMatch match, String input) {
         if (match.equals(SearchMatch.STARTS_WITH)) { input += WILDCARD; }
         if (match.equals(SearchMatch.ENDS_WITH)) { input = WILDCARD + input; }
         if (match.equals(SearchMatch.CONTAINS)) { input = WILDCARD + input + WILDCARD; }
