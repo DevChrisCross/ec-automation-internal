@@ -1,7 +1,7 @@
 package com.elavon.ui.pages;
 
 import com.elavon.binder.BindMap;
-import com.elavon.helper.LocatorGenerator;
+import com.elavon.helper.LocatorCounter;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
@@ -67,31 +67,31 @@ public class CustomerSearchPage extends PageObject {
                 .the("user id field")
                 .located(By.id("searchUserId"));
 
-        private static LocatorGenerator dropdownOption = new LocatorGenerator("/html/body/div[4]/md-select-menu/" +
+        private static LocatorCounter dropdownOption = new LocatorCounter("/html/body/div[4]/md-select-menu/" +
                 "md-content/div/md-option[@COUNTER]");
         public static final Target GROUP_DROPDOWN_OPTION = Target
                 .the("group dropdown option")
-                .located(By.xpath(dropdownOption.generate(1)));
+                .located(By.xpath(dropdownOption.valueOf(1)));
         public static final Target ENTITY_DROPDOWN_OPTION = Target
                 .the("entity dropdown option")
-                .located(By.xpath(dropdownOption.generate(2)));
+                .located(By.xpath(dropdownOption.valueOf(2)));
         public static final Target MCC_DROPDOWN_OPTION = Target
                 .the("mcc dropdown option")
-                .located(By.xpath(dropdownOption.generate(3)));
+                .located(By.xpath(dropdownOption.valueOf(3)));
         public static final Target MERCHANT_ID_DROPDOWN_OPTION = Target
                 .the("merchant id dropdown option")
-                .located(By.xpath(dropdownOption.generate(4)));
+                .located(By.xpath(dropdownOption.valueOf(4)));
         public static final Target NAME_DROPDOWN_OPTION = Target
                 .the("name dropdown option")
-                .located(By.xpath(dropdownOption.generate(5)));
+                .located(By.xpath(dropdownOption.valueOf(5)));
         public static final Target TAX_ID_DROPDOWN_OPTION = Target
                 .the("tax id dropdown option")
-                .located(By.xpath(dropdownOption.generate(6)));
+                .located(By.xpath(dropdownOption.valueOf(6)));
         public static final Target EMAIL_DROPDOWN_OPTION = Target
                 .the("email dropdown option")
-                .located(By.xpath(dropdownOption.generate(7)));
+                .located(By.xpath(dropdownOption.valueOf(7)));
         public static final Target USER_ID_DROPDOWN_OPTION = Target
                 .the("user id dropdown option")
-                .located(By.xpath(dropdownOption.generate(8)));
+                .located(By.xpath(dropdownOption.valueOf(8)));
     }
 }

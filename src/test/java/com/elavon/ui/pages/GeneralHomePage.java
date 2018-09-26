@@ -1,7 +1,7 @@
 package com.elavon.ui.pages;
 
 import com.elavon.binder.BindMap;
-import com.elavon.helper.LocatorGenerator;
+import com.elavon.helper.LocatorCounter;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
@@ -22,13 +22,13 @@ public class GeneralHomePage extends PageObject {
 
     public static class Footer {
 
-        private static LocatorGenerator footerLink = new LocatorGenerator("span.eu-footer-links:nth-child(@COUNTER)");
+        private static LocatorCounter footerLink = new LocatorCounter("span.eu-footer-links:nth-child(@COUNTER)");
 
         public static final Target TERMS_OF_USE_LINK = Target
                 .the("terms of use link")
-                .located(By.cssSelector(footerLink.generate(2)));
+                .located(By.cssSelector(footerLink.valueOf(2)));
         public static final Target COOKIES_POLICY_LINK = Target
                 .the("cookies poilcy link")
-                .located(By.cssSelector(footerLink.generate(3)));
+                .located(By.cssSelector(footerLink.valueOf(3)));
     }
 }

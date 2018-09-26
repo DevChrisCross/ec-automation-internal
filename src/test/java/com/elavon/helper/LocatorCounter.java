@@ -1,15 +1,15 @@
 package com.elavon.helper;
 
-public class LocatorGenerator {
+public class LocatorCounter {
 
     public static final String delimeter = "@COUNTER";
-    private String xpath;
+    private final String xpath;
 
-    public LocatorGenerator(String xpath) {
+    public LocatorCounter(String xpath) {
         this.xpath = xpath;
     }
 
-    public String generate(int count) {
+    public String valueOf(int count) {
         return xpath.replaceAll(delimeter, Integer.toString(count));
     }
 }

@@ -22,7 +22,7 @@ public class CredentialKey {
 //        String pathname = CONFIG.getString("credential.src") + configProperty +".txt";
 //        String message = "";
 //
-//        generate(configProperty, "c038975");
+//        valueOf(configProperty, "c038975");
 //
         String s = retrieve(configProperty);
         System.out.println(s);

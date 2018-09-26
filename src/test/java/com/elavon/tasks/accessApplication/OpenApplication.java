@@ -10,7 +10,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Open;
-import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.Step;
 
 import java.util.ArrayList;
@@ -20,30 +19,27 @@ import static com.elavon.setup.Application.CONFIG;
 
 public class OpenApplication implements Task {
 
-    private String url;
-    private HomeNavigation homeNavigation;
+    private final String url;
+    private final HomeNavigation homeNavigation;
 
     public OpenApplication(HomeNavigation homeNavigation, EnvironmentType env, EnvironmentLocale locale) {
         String baseUrl = CONFIG.getString("environment.url." + env.toString().toLowerCase());
-        this.homeNavigation = homeNavigation;
         this.url = baseUrl + locale.toString() + "/" + PageUrl.HOME.getUrl();
+        this.homeNavigation = homeNavigation;
     }
 
-    @Step("Opens the application in the #homeNavigation homeNavigation")
     @Override
+    @Step("{0} opens the application in the #homeNavigation page")
     public <T extends Actor> void performAs(T actor) {
         List<Performable> todoList = new ArrayList<>();
 
         todoList.add(Open.url(url));
-        if (homeNavigation.equals(HomeNavigation.COOKIES_POLICY) ||
-                homeNavigation.equals(HomeNavigation.TERMS_OF_USE)) {
+        if (homeNavigation.equals(HomeNavigation.COOKIES_POLICY)
+                || homeNavigation.equals(HomeNavigation.TERMS_OF_USE)) {
             todoList.add(ClickOn.the(GeneralHomePage.COOKIES_DISCLAIMER_CLOSE_BUTTON));
         }
+        todoList.add(ClickOn.the(GeneralHomePage.bind.getDefaultItem(homeNavigation)));
 
-        Target targetButton = GeneralHomePage.bind.getDefaultItem(homeNavigation);
-        todoList.add(ClickOn.the(targetButton));
-
-        Performable[] todoActions = todoList.toArray(new Performable[]{});
-        actor.attemptsTo(todoActions);
+        actor.attemptsTo(todoList.toArray(new Performable[]{}));
     }
 }

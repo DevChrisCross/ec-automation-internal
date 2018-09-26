@@ -8,6 +8,7 @@ import com.elavon.tasks.genericTasks.Search;
 import com.elavon.ui.pages.CustomerSearchPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
+import net.thucydides.core.annotations.Step;
 
 public class ViewCustomerAccount implements Task {
 
@@ -18,6 +19,7 @@ public class ViewCustomerAccount implements Task {
     }
 
     @Override
+    @Step("{0} views the user's account of #input")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Search.forTheCustomer(SearchBy.USER)

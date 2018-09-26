@@ -11,13 +11,14 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.targets.Target;
+import net.thucydides.core.annotations.Step;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UpdateCustomerProfile extends Cancellable implements Task {
 
-    private UserProfile userProfile;
+    private final UserProfile userProfile;
     private Object value;
 
     public UpdateCustomerProfile(UserProfile userProfile) {
@@ -25,28 +26,28 @@ public class UpdateCustomerProfile extends Cancellable implements Task {
     }
 
     @Override
+    @Step("{0} modifies the user's account #userProfile, updated it to #value")
     public <T extends Actor> void performAs(T actor) {
-        Target target = EditCustomerProfilePage.bind.getDefaultItem(userProfile);
         List<Performable> todoList = new ArrayList<>();
+        Target fieldToEdit = EditCustomerProfilePage.bind.getDefaultItem(userProfile);
+        Target valueToSelect = EditCustomerProfilePage.bind.getDefaultItem(value);
 
         todoList.add(ClickOn.the(ViewCustomerPage.EDIT_PROFILE_BUTTON));
         if (userProfile.equals(UserProfile.FIRST_NAME)
                 || userProfile.equals(UserProfile.LAST_NAME)
                 || userProfile.equals(UserProfile.EMAIL)) {
-            todoList.add(Enter.theValue((String) value).into(target));
+            todoList.add(Enter.theValue((String) value).into(fieldToEdit));
         } else {
             if (userProfile.equals(UserProfile.LANGUAGE)) {
-                todoList.add(Click.on(target));
+                todoList.add(Click.on(fieldToEdit));
             }
-            todoList.add(Click.on(EditCustomerProfilePage.bind.getDefaultItem(value)));
+            todoList.add(Click.on(valueToSelect));
         }
-
         todoList.add(ClickOn.the(SuccessOrFail(
                 EditCustomerProfilePage.UPDATE_BUTTON,
                 EditCustomerProfilePage.CANCEL_BUTTON)));
 
-        Performable[] todoActions = todoList.toArray(new Performable[]{});
-        actor.attemptsTo(todoActions);
+        actor.attemptsTo(todoList.toArray(new Performable[]{}));
     }
 
     public Performable withTheValueOf(Object value) {

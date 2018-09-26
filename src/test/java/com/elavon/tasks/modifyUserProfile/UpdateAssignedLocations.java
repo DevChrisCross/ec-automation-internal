@@ -11,10 +11,11 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.JavaScriptClick;
+import net.thucydides.core.annotations.Step;
 
 public class UpdateAssignedLocations extends Cancellable implements Task {
 
-    private UserLocationRule locationRule;
+    private final UserLocationRule locationRule;
     private String value;
     private String clg;
 
@@ -23,6 +24,7 @@ public class UpdateAssignedLocations extends Cancellable implements Task {
     }
 
     @Override
+    @Step("{0} adds the user's account a location of #locationRule-#clg-#value")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 ClickOn.the(ViewCustomerPage.EDIT_LOCATIONS_BUTTON),

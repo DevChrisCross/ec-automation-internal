@@ -10,12 +10,16 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.targets.Target;
+import net.thucydides.core.annotations.Step;
+
+import java.util.Map;
 
 public class SearchCustomerAccount implements Task {
 
-    private String input;
-    private SearchBy by;
-    private SearchFilter filter;
+    private final String input;
+    private final SearchBy by;
+    private final SearchFilter filter;
     private static final String WILDCARD = "%";
 
     public SearchCustomerAccount(SearchBy by, SearchFilter filter, SearchMatch match, String input) {
@@ -29,14 +33,18 @@ public class SearchCustomerAccount implements Task {
     }
 
     @Override
+    @Step("{0} searches for the user account with #filter filter and a value of #input")
     public <T extends Actor> void performAs(T actor) {
+        Target selectedSearchBy = CustomerSearchPage.bind.getDefaultItem(by);
+        Map<String, Target> selectedFilter = CustomerSearchPage.bind.get(filter);
+
         actor.attemptsTo(
                 ClickOn.the(InternalHomePage.CUSTOMER_SEARCH_TAB),
                 Click.on(CustomerSearchPage.Filter.DROPDOWN),
-                Click.on(CustomerSearchPage.bind.get(filter).get("option")),
-                Enter.theValue(input).into(CustomerSearchPage.bind.get(filter).get("field")),
+                Click.on(selectedFilter.get("option")),
+                Enter.theValue(input).into(selectedFilter.get("field")),
                 Click.on(CustomerSearchPage.Filter.APPLY_BUTTON),
-                ClickOn.the(CustomerSearchPage.bind.get(by).get("target"))
+                ClickOn.the(selectedSearchBy)
         );
     }
 }
