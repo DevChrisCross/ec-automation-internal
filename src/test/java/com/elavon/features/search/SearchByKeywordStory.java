@@ -3,6 +3,7 @@ package com.elavon.features.search;
 import com.elavon.constants.HomeNavigation;
 import com.elavon.constants.UserType;
 import com.elavon.setup.Application;
+import com.elavon.tasks.genericTasks.Clone;
 import com.elavon.tasks.genericTasks.Login;
 import com.elavon.tasks.genericTasks.Open;
 import com.elavon.tasks.genericTasks.Search;
@@ -37,7 +38,7 @@ public class SearchByKeywordStory {
 //        andThat(anna).wasAbleTo(Search.withTheName().thatContains(""));
 //        andThat(anna).wasAbleTo(Search.withTheEmail().thatStartsWith(""));
 //        when(anna).attemptsTo(Search.forTheTerm("BDD In Action"));
-
+        andThat(anna).wasAbleTo(Clone.theUser());
 //        then(anna).should(eventually(seeThat(TheWebPage.title(), containsString("BDD In Action"))));
 
     }

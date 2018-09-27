@@ -17,16 +17,17 @@ public class ViewCustomerPage extends PageObject {
             .the("delete account option")
             .located(By.id("manageUserDeleteUser"));
 
-    private static LocatorCounter accountActions = new LocatorCounter("button.md-button:nth-child(@COUNTER)");
+    private static LocatorCounter accountActions = new LocatorCounter("/html/body/div[1]/span/md-content/" +
+            "md-content/div/md-card[1]/md-card-content/md-card-actions/button[@COUNTER]");
     public static final Target CLONE_USER_BUTTON = Target
             .the("clone user button")
-            .located(By.cssSelector(accountActions.valueOf(1)));
+            .located(By.xpath(accountActions.valueOf(1)));
     public static final Target IMPERSONATE_BUTTON = Target
             .the("impersonate button")
-            .located(By.cssSelector(accountActions.valueOf(2)));
+            .located(By.xpath(accountActions.valueOf(2)));
     public static final Target RESET_PASSWORD_BUTTON = Target
             .the("reset password button")
-            .located(By.cssSelector(accountActions.valueOf(3)));
+            .located(By.xpath(accountActions.valueOf(3)));
 
     private static LocatorCounter editButtons = new LocatorCounter("/html/body/div[1]/span/md-content/" +
             "md-content/div/md-card[@COUNTER]/md-card-title/md-card-title-text/div[2]/button");

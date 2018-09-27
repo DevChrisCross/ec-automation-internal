@@ -1,6 +1,7 @@
 package com.elavon.binder;
 
 import com.elavon.constants.*;
+import com.elavon.ui.pages.CustomerAccount.CloneCustomerPage;
 import com.elavon.ui.pages.CustomerAccount.EditCustomerProfilePage;
 import com.elavon.ui.pages.CustomerAccount.EditLocationsPage;
 import com.elavon.ui.pages.CustomerSearchPage;
@@ -25,7 +26,8 @@ public class PageBind {
                 GeneralHomePage.class,
                 CustomerSearchPage.class,
                 EditCustomerProfilePage.class,
-                EditLocationsPage.class
+                EditLocationsPage.class,
+                CloneCustomerPage.class
         ));
 
         dataBinds = new ArrayList<>(Arrays.asList(
@@ -61,15 +63,16 @@ public class PageBind {
                                 "field", CustomerSearchPage.Filter.USER_ID_FIELD)))),
 
                 new DataBind<>(EditCustomerProfilePage.class, UserProfile.class, new LinkedList<>(Arrays.asList(
-                        defaultMap(EditCustomerProfilePage.CUSTOMER_FIRST_NAME_FIELD),
-                        defaultMap(EditCustomerProfilePage.CUSTOMER_LAST_NAME_FIELD),
-                        defaultMap(EditCustomerProfilePage.CUSTOMER_EMAIL_FIELD),
-                        defaultMap(EditCustomerProfilePage.Language.DROPDOWN),
+                        defaultMap(EditCustomerProfilePage.FIRST_NAME_FIELD),
+                        defaultMap(EditCustomerProfilePage.LAST_NAME_FIELD),
+                        defaultMap(EditCustomerProfilePage.EMAIL_FIELD),
+                        defaultMap(EditCustomerProfilePage.LANGUAGE_DROPDOWN),
                         defaultMap(TARGET_OF_NONE)))),
 
                 new DataBind<>(EditCustomerProfilePage.class, UserRole.class, new LinkedList<>(Arrays.asList(
                         defaultMap(EditCustomerProfilePage.Role.EMPLOYEE_RADIO_BUTTON),
-                        defaultMap(EditCustomerProfilePage.Role.MANAGER_RADIO_BUTTON)))),
+                        defaultMap(EditCustomerProfilePage.Role.MANAGER_RADIO_BUTTON),
+                        defaultMap(TARGET_OF_NONE)))),
 
                 new DataBind<>(EditCustomerProfilePage.class, UserLanguage.class, new LinkedList<>(Arrays.asList(
                         defaultMap(EditCustomerProfilePage.Language.DEUTSCH_OPTION),
@@ -84,8 +87,22 @@ public class PageBind {
                 new DataBind<>(EditLocationsPage.class, UserLocationRule.class, new LinkedList<>(Arrays.asList(
                         defaultMap(EditLocationsPage.Location.RULE_MID_OPTION),
                         defaultMap(EditLocationsPage.Location.RULE_CHAIN_OPTION),
-                        defaultMap(EditLocationsPage.Location.RULE_ENTITY_OPTION)
-                )))
+                        defaultMap(EditLocationsPage.Location.RULE_ENTITY_OPTION)))),
+
+                new DataBind<>(CloneCustomerPage.class, UserLanguage.class, new LinkedList<>(Arrays.asList(
+                        defaultMap(CloneCustomerPage.Language.DEUTSCH_OPTION),
+                        defaultMap(CloneCustomerPage.Language.ENGLISH_OPTION),
+                        defaultMap(CloneCustomerPage.Language.ESPANOL_OPTION),
+                        defaultMap(CloneCustomerPage.Language.FRANCAIS_OPTION),
+                        defaultMap(CloneCustomerPage.Language.ITALIANO_OPTION),
+                        defaultMap(CloneCustomerPage.Language.NEDERLANDS_OPTION),
+                        defaultMap(CloneCustomerPage.Language.NORSK_OPTION),
+                        defaultMap(CloneCustomerPage.Language.POLSKI_OPTION)))),
+
+                new DataBind<>(CloneCustomerPage.class, UserRole.class, new LinkedList<>(Arrays.asList(
+                        defaultMap(CloneCustomerPage.Role.EMPLOYEE_RADIO_BUTTON),
+                        defaultMap(CloneCustomerPage.Role.MANAGER_RADIO_BUTTON),
+                        defaultMap(TARGET_OF_NONE))))
         ));
 
         pages.forEach(aClazz -> map.put(aClazz, new BindMap<>(PageBind.DEFAULT_KEY)));
@@ -110,7 +127,10 @@ public class PageBind {
         Queue<Map<String, Target>> data = dataBind.getData();
 
         for (Bindable bindable : enumConstants) {
-            targetMap.put(bindable, data.poll());
+            Map<String, Target> dataMap = data.poll();
+//            dataMap = dataMap == null? defaultMap(TARGET_OF_NONE) : dataMap;
+//            if (dataMap == null) { break; }
+            targetMap.put(bindable, dataMap);
         }
     }
 }

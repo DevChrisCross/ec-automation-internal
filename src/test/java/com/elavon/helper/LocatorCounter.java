@@ -12,4 +12,8 @@ public class LocatorCounter {
     public String valueOf(int count) {
         return xpath.replaceAll(delimeter, Integer.toString(count));
     }
+
+    public String getXpath() {
+        return xpath;
+    }
 }

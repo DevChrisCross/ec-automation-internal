@@ -19,25 +19,24 @@ public class EditCustomerProfilePage extends PageObject {
             .the("cancel button")
             .located(By.xpath(update.valueOf(1)));
 
-    public static final Target CUSTOMER_FIRST_NAME_FIELD = Target
+    public static final Target FIRST_NAME_FIELD = Target
             .the("first name field")
             .located(By.id("customerFirstName"));
-    public static final Target CUSTOMER_LAST_NAME_FIELD = Target
+    public static final Target LAST_NAME_FIELD = Target
             .the("last name field")
             .located(By.id("customerLastName"));
-    public static final Target CUSTOMER_EMAIL_FIELD = Target
+    public static final Target EMAIL_FIELD = Target
             .the("last name field")
             .located(By.id("customerEmail"));
 
+    public static final Target LANGUAGE_DROPDOWN = Target
+            .the("language dropdown")
+            .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/form/md-card[1]/" +
+                    "md-card-content/div[3]/md-list-item/md-input-container/md-select"));
 
     public static class Language {
 
-        public static final Target DROPDOWN = Target
-                .the("language dropdown")
-                .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/form/md-card[1]/" +
-                        "md-card-content/div[3]/md-list-item/md-input-container/md-select"));
-
-        private static LocatorCounter languageOption = new LocatorCounter("/html/body/div[4]/md-select-menu/" +
+        protected static LocatorCounter languageOption = new LocatorCounter("/html/body/div[4]/md-select-menu/" +
                 "md-content/md-option[@COUNTER]");
         public static final Target DEUTSCH_OPTION = Target
                 .the("deutsch option")

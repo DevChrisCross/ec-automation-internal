@@ -4,5 +4,6 @@ import com.elavon.binder.Bindable;
 
 public enum UserRole implements Bindable {
     EMPLOYEE,
-    MANAGER
+    MANAGER,
+    PARTNER_BANK_USER
 }
