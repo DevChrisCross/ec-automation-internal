@@ -1,8 +1,8 @@
 package com.elavon.tasks.modifyUserProfile;
 
-import com.elavon.constants.Cancellable;
 import com.elavon.constants.UserLocationRule;
 import com.elavon.interactions.ClickOn;
+import com.elavon.tasks.Cancellable;
 import com.elavon.tasks.searchCustomer.ViewCustomerAccount;
 import com.elavon.tasks.waitToLoad.WaitUntilThe;
 import com.elavon.ui.pages.CustomerAccount.EditLocationsPage;
@@ -26,7 +26,7 @@ public class UpdateAssignedLocations extends Cancellable implements Task {
     }
 
     @Override
-    @Step("{0} adds a location of #locationRule-#clg-#value to the user account #name")
+    @Step("{0} adds a location of #locationRule-#clg-#value to the user account #name #status")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 ClickOn.the(ViewCustomerPage.EDIT_LOCATIONS_BUTTON),

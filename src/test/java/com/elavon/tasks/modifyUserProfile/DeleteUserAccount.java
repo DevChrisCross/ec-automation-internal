@@ -1,7 +1,7 @@
 package com.elavon.tasks.modifyUserProfile;
 
-import com.elavon.constants.Cancellable;
 import com.elavon.interactions.ClickOn;
+import com.elavon.tasks.Cancellable;
 import com.elavon.tasks.searchCustomer.ViewCustomerAccount;
 import com.elavon.ui.pages.CustomerAccount.ViewCustomerPage;
 import net.serenitybdd.screenplay.Actor;
@@ -14,7 +14,7 @@ public class DeleteUserAccount extends Cancellable implements Task {
     private static String name = ViewCustomerAccount.getName();
 
     @Override
-    @Step("{0} deletes the user account #name")
+    @Step("{0} deletes the user account #name #status")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 ClickOn.the(ViewCustomerPage.ACCOUNT_OPTIONS),
