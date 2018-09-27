@@ -54,10 +54,10 @@ public class EditLocationsPage extends PageObject {
         private static LocatorCounter firstOption = new LocatorCounter("/html/body/" +
                 "md-virtual-repeat-container[@COUNTER]/div/div[2]/ul/li");
         public static final Target CLG_FIRST_OPTION = Target
-                .the("clg first option")
+                .the("first option of clg")
                 .located(By.xpath(firstOption.valueOf(2)));
         public static final Target VALUE_FIRST_OPTION = Target
-                .the("value first option")
+                .the("first option of value")
                 .located(By.xpath(firstOption.valueOf(3)));
     }
 }

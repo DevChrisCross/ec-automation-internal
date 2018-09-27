@@ -33,7 +33,7 @@ public class SearchCustomerAccount implements Task {
     }
 
     @Override
-    @Step("{0} searches for the user account with #filter filter and a value of #input")
+    @Step("{0} searches the user account by #filter by #by with the value #input")
     public <T extends Actor> void performAs(T actor) {
         Target selectedSearchBy = CustomerSearchPage.bind.getDefaultItem(by);
         Map<String, Target> selectedFilter = CustomerSearchPage.bind.get(filter);

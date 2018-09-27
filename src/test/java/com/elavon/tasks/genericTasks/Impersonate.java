@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.Performable;
 
 public class Impersonate {
 
-    public static Performable theUserProfileOf(String userId) {
-        return Instrumented.instanceOf(ImpersonateUser.class).withProperties(userId);
+    public static Performable theUserProfile() {
+        return Instrumented.instanceOf(ImpersonateUser.class).withProperties();
     }
 }

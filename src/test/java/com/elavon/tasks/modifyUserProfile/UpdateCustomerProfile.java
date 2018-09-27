@@ -3,6 +3,7 @@ package com.elavon.tasks.modifyUserProfile;
 import com.elavon.constants.Cancellable;
 import com.elavon.constants.UserProfile;
 import com.elavon.interactions.ClickOn;
+import com.elavon.tasks.searchCustomer.ViewCustomerAccount;
 import com.elavon.ui.pages.CustomerAccount.EditCustomerProfilePage;
 import com.elavon.ui.pages.CustomerAccount.ViewCustomerPage;
 import net.serenitybdd.screenplay.Actor;
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class UpdateCustomerProfile extends Cancellable implements Task {
 
+    private static String name = ViewCustomerAccount.getName();
     private final UserProfile userProfile;
     private Object value;
 
@@ -26,7 +28,7 @@ public class UpdateCustomerProfile extends Cancellable implements Task {
     }
 
     @Override
-    @Step("{0} modifies the user's account #userProfile, updated it to #value")
+    @Step("{0} updates the #userProfile to #value of the user account #name")
     public <T extends Actor> void performAs(T actor) {
         List<Performable> todoList = new ArrayList<>();
         Target fieldToEdit = EditCustomerProfilePage.bind.getDefaultItem(userProfile);

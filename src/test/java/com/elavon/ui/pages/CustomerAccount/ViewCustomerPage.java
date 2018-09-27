@@ -25,7 +25,7 @@ public class ViewCustomerPage extends PageObject {
             .the("impersonate button")
             .located(By.cssSelector(accountActions.valueOf(2)));
     public static final Target RESET_PASSWORD_BUTTON = Target
-            .the("impersonate button")
+            .the("reset password button")
             .located(By.cssSelector(accountActions.valueOf(3)));
 
     private static LocatorCounter editButtons = new LocatorCounter("/html/body/div[1]/span/md-content/" +

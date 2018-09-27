@@ -12,21 +12,26 @@ import net.thucydides.core.annotations.Step;
 
 public class ViewCustomerAccount implements Task {
 
-    private final String input;
+    private static String name;
 
-    public ViewCustomerAccount(String input) {
-        this.input = input;
+    public ViewCustomerAccount(String name) {
+        ViewCustomerAccount.name = name;
     }
 
     @Override
-    @Step("{0} views the user's account of #input")
+    @Step("{0} views the user account #name")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Search.forTheCustomer(SearchBy.USER)
                         .withThe(SearchFilter.USER_ID)
                         .that(SearchMatch.EXACTS)
-                        .theWord(input),
+                        .theWord(name),
                 ClickOn.the(CustomerSearchPage.FIRST_ROW_SEARCH_RESULT)
         );
+    }
+
+    public static String getName() {
+        if (name == null) { return "Unknown User"; }
+        return name;
     }
 }

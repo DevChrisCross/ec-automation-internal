@@ -26,14 +26,14 @@ public class CustomerSearchPage extends PageObject {
                     "md-menu-item:nth-child(1) > button:nth-child(1)"));
 
     public static final Target FIRST_ROW_SEARCH_RESULT = Target
-            .the("")
+            .the("first row search result")
             .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/div/" +
                     "md-card[2]/md-card-content[2]/md-table-container/table/tbody/tr/td[1]"));
 
     public static class Filter {
 
         public static final Target DROPDOWN = Target
-                .the("customer search filter dropdown")
+                .the("search filter dropdown")
                 .located(By.id("selectedFilter"));
         public static final Target APPLY_BUTTON = Target
                 .the("apply filter button")
