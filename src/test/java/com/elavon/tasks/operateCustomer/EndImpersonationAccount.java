@@ -1,15 +1,15 @@
-package com.elavon.tasks.modifyUserProfile;
+package com.elavon.tasks.operateCustomer;
 
 import com.elavon.interactions.ClickOn;
-import com.elavon.tasks.searchCustomer.ViewCustomerAccount;
+import com.elavon.tasks.searchCustomer.ViewAccount;
 import com.elavon.ui.pages.CustomerAccount.ImpersonateCustomerPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.thucydides.core.annotations.Step;
 
-public class EndUserImpersonation implements Task {
+public class EndImpersonationAccount implements Task {
 
-    private static String name = ViewCustomerAccount.getName();
+    private static String name = ViewAccount.getName();
 
     @Override
     @Step("{0} ends the impersonation of the user account #name")

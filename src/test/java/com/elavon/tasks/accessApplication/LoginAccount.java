@@ -14,12 +14,12 @@ import java.util.Optional;
 
 import static com.elavon.setup.Application.CONFIG;
 
-public class LoginUser implements Task {
+public class LoginAccount implements Task {
 
     private final String username;
     private final String password;
 
-    public LoginUser(UserType user) {
+    public LoginAccount(UserType user) {
         String baseConfigName = "credentials."
                 + CONFIG.getString("environment.type").toLowerCase() + "."
                 + user.toString().toLowerCase();

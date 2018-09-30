@@ -1,8 +1,6 @@
 package com.elavon.constants;
 
-import com.elavon.binder.Bindable;
-
-public enum SearchBy implements Bindable {
+public enum SearchBy {
     LOCATION,
     USER
 }

@@ -10,12 +10,12 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.thucydides.core.annotations.Step;
 
-public class ViewCustomerAccount implements Task {
+public class ViewAccount implements Task {
 
     private static String name;
 
-    public ViewCustomerAccount(String name) {
-        ViewCustomerAccount.name = name;
+    public ViewAccount(String name) {
+        ViewAccount.name = name;
     }
 
     @Override

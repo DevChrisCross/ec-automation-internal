@@ -1,8 +1,6 @@
 package com.elavon.constants;
 
-import com.elavon.binder.Bindable;
-
-public enum SearchFilter implements Bindable {
+public enum SearchFilter {
     GROUP,
     ENTITY,
     MCC,

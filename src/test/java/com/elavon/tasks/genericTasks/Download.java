@@ -1,11 +1,11 @@
 package com.elavon.tasks.genericTasks;
 
-import com.elavon.tasks.searchCustomer.DownloadSearchCustomerResult;
+import com.elavon.tasks.searchCustomer.DownloadResult;
 import net.serenitybdd.core.steps.Instrumented;
 
 public class Download {
 
-    public static DownloadSearchCustomerResult theCustomerSearchResults() {
-        return Instrumented.instanceOf(DownloadSearchCustomerResult.class).withProperties();
+    public static DownloadResult theCustomerSearchResults() {
+        return Instrumented.instanceOf(DownloadResult.class).withProperties();
     }
 }

@@ -1,8 +1,6 @@
 package com.elavon.constants;
 
-import com.elavon.binder.Bindable;
-
-public enum UserRole implements Bindable {
+public enum UserRole {
     EMPLOYEE,
     MANAGER,
     PARTNER_BANK_USER

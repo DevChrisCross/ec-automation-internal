@@ -1,6 +1,6 @@
 package com.elavon.tasks.genericTasks;
 
-import com.elavon.tasks.modifyUserProfile.ResetPassword;
+import com.elavon.tasks.operateCustomer.ResetPassword;
 import net.serenitybdd.core.steps.Instrumented;
 
 public class Reset {

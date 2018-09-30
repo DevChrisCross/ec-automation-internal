@@ -1,9 +1,9 @@
-package com.elavon.tasks.modifyUserProfile;
+package com.elavon.tasks.operateCustomer;
 
 import com.elavon.constants.UserLocationRule;
 import com.elavon.interactions.ClickOn;
 import com.elavon.tasks.Cancellable;
-import com.elavon.tasks.searchCustomer.ViewCustomerAccount;
+import com.elavon.tasks.searchCustomer.ViewAccount;
 import com.elavon.tasks.waitToLoad.WaitUntilThe;
 import com.elavon.ui.pages.CustomerAccount.EditLocationsPage;
 import com.elavon.ui.pages.CustomerAccount.ViewCustomerPage;
@@ -14,14 +14,14 @@ import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.JavaScriptClick;
 import net.thucydides.core.annotations.Step;
 
-public class UpdateAssignedLocations extends Cancellable implements Task {
+public class UpdateLocations extends Cancellable implements Task {
 
-    private static String name = ViewCustomerAccount.getName();
+    private static String name = ViewAccount.getName();
     private final UserLocationRule locationRule;
     private String value;
     private String clg;
 
-    public UpdateAssignedLocations(UserLocationRule locationRule) {
+    public UpdateLocations(UserLocationRule locationRule) {
         this.locationRule = locationRule;
     }
 
@@ -43,12 +43,12 @@ public class UpdateAssignedLocations extends Cancellable implements Task {
         );
     }
 
-    public UpdateAssignedLocations withTheValueOf(String value) {
+    public UpdateLocations withTheValueOf(String value) {
         this.value = value;
         return this;
     }
 
-    public UpdateAssignedLocations fromTheClientGroup(String clg) {
+    public UpdateLocations fromTheClientGroup(String clg) {
         this.clg = clg;
         return this;
     }

@@ -1,15 +1,15 @@
-package com.elavon.tasks.modifyUserProfile;
+package com.elavon.tasks.operateCustomer;
 
 import com.elavon.interactions.ClickOn;
-import com.elavon.tasks.searchCustomer.ViewCustomerAccount;
+import com.elavon.tasks.searchCustomer.ViewAccount;
 import com.elavon.ui.pages.CustomerAccount.ViewCustomerPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.thucydides.core.annotations.Step;
 
-public class ImpersonateUser implements Task {
+public class ImpersonateAccount implements Task {
 
-    private static String name = ViewCustomerAccount.getName();
+    private static String name = ViewAccount.getName();
 
     @Override
     @Step("{0} impersonates the user account #name")

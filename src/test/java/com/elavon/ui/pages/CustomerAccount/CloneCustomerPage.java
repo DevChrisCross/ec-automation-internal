@@ -1,13 +1,13 @@
 package com.elavon.ui.pages.CustomerAccount;
 
-import com.elavon.binder.BindMap;
+import com.elavon.binder.DataBind;
 import com.elavon.helper.LocatorCounter;
 import net.serenitybdd.screenplay.targets.Target;
 import org.openqa.selenium.By;
 
 public class CloneCustomerPage extends EditCustomerProfilePage {
 
-    public static BindMap<String, Target> bind;
+    public static DataBind<String, Target> bind;
 
     public static final Target NEXT_BUTTON = Target
             .the("next button")

@@ -1,6 +1,6 @@
 package com.elavon.ui.pages;
 
-import com.elavon.binder.BindMap;
+import com.elavon.binder.DataBind;
 import com.elavon.helper.LocatorCounter;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 public class GeneralHomePage extends PageObject {
 
-    public static BindMap<String, Target> bind;
+    public static DataBind<String, Target> bind;
 
     public static final Target LOGIN_BUTTON = Target
             .the("login button")

@@ -1,9 +1,9 @@
-package com.elavon.tasks.modifyUserProfile;
+package com.elavon.tasks.operateCustomer;
 
 import com.elavon.constants.UserProfile;
 import com.elavon.interactions.ClickOn;
 import com.elavon.tasks.Cancellable;
-import com.elavon.tasks.searchCustomer.ViewCustomerAccount;
+import com.elavon.tasks.searchCustomer.ViewAccount;
 import com.elavon.ui.pages.CustomerAccount.EditCustomerProfilePage;
 import com.elavon.ui.pages.CustomerAccount.ViewCustomerPage;
 import net.serenitybdd.screenplay.Actor;
@@ -17,13 +17,13 @@ import net.thucydides.core.annotations.Step;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UpdateCustomerProfile extends Cancellable implements Task {
+public class UpdateProfile extends Cancellable implements Task {
 
-    private static String name = ViewCustomerAccount.getName();
+    private static String name = ViewAccount.getName();
     private final UserProfile userProfile;
-    private Object value;
+    private Enum value;
 
-    public UpdateCustomerProfile(UserProfile userProfile) {
+    public UpdateProfile(UserProfile userProfile) {
         this.userProfile = userProfile;
     }
 
@@ -38,7 +38,7 @@ public class UpdateCustomerProfile extends Cancellable implements Task {
         if (userProfile.equals(UserProfile.FIRST_NAME)
                 || userProfile.equals(UserProfile.LAST_NAME)
                 || userProfile.equals(UserProfile.EMAIL)) {
-            todoList.add(Enter.theValue((String) value).into(fieldToEdit));
+            todoList.add(Enter.theValue(value.toString()).into(fieldToEdit));
         } else {
             if (userProfile.equals(UserProfile.LANGUAGE)) {
                 todoList.add(Click.on(fieldToEdit));
@@ -52,7 +52,7 @@ public class UpdateCustomerProfile extends Cancellable implements Task {
         actor.attemptsTo(todoList.toArray(new Performable[]{}));
     }
 
-    public Performable withTheValueOf(Object value) {
+    public Performable withTheValueOf(Enum value) {
         this.value = value;
         return this;
     }

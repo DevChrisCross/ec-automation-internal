@@ -1,8 +1,9 @@
-package com.elavon.tasks.createNewUser;
+package com.elavon.tasks.createNewCustomer;
 
 import com.elavon.constants.UserLanguage;
 import com.elavon.constants.UserRole;
 import com.elavon.interactions.ClickOn;
+import com.elavon.tasks.Cancellable;
 import com.elavon.ui.pages.CustomerAccount.CloneCustomerPage;
 import com.elavon.ui.pages.CustomerAccount.ViewCustomerPage;
 import net.serenitybdd.screenplay.Actor;
@@ -11,26 +12,48 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.Step;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
 
-public class CloneUser implements Task {
+public class CloneAccount extends Cancellable implements Task {
 
     private String userId;
     private String email;
     private UserLanguage language;
     private UserRole role;
+    private static PropertiesConfiguration generate;
 
-    public CloneUser() {
-        userId = "r@r";
-        email = "r@r.r";
+    static {
+        try {
+            generate = new PropertiesConfiguration("generate.properties");
+        } catch (ConfigurationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public CloneAccount() {
+        userId = generate.getString("user.base.first")
+                + generate.getString("user.count")
+                + generate.getString("user.separator")
+                + generate.getString("user.base.last");
+        email = generate.getString("user.email");
         language = UserLanguage.ENGLISH;
         role = UserRole.MANAGER;
     }
 
     @Override
-    @Step("")
+    @Step("{0} clones the user account ")
     public <T extends Actor> void performAs(T actor) {
-        String[] name = userId.split("@");
+        String[] name = userId.split(generate.getString("user.separator"));
         Target valueToSelect = CloneCustomerPage.bind.getDefaultItem(language);
+
+        int count = generate.getInt("user.count");
+        generate.setProperty("user.count", ++count);
+        try {
+            generate.save();
+        } catch (ConfigurationException e) {
+            e.printStackTrace();
+        }
 
         actor.attemptsTo(
                 ClickOn.the(ViewCustomerPage.CLONE_USER_BUTTON),
@@ -40,27 +63,28 @@ public class CloneUser implements Task {
                 Click.on(CloneCustomerPage.LANGUAGE_DROPDOWN),
                 Click.on(valueToSelect),
                 ClickOn.the(CloneCustomerPage.NEXT_BUTTON)
+//                ClickOn.the(SuccessOrFail())
 
                 // TODO: satisfy fields for role, and name generation for creation of user
         );
     }
 
-    public CloneUser withUserIdOf(String userId) {
+    public CloneAccount withUserIdOf(String userId) {
         this.userId = userId;
         return this;
     }
 
-    public CloneUser withEmailOf(String email) {
+    public CloneAccount withEmailOf(String email) {
         this.email = email;
         return this;
     }
 
-    public CloneUser withLanguageOf(UserLanguage language) {
+    public CloneAccount withLanguageOf(UserLanguage language) {
         this.language = language;
         return this;
     }
 
-    public CloneUser withRoleOf(UserRole role) {
+    public CloneAccount withRoleOf(UserRole role) {
         this.role = role;
         return this;
     }

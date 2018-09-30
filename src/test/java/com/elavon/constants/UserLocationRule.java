@@ -1,8 +1,6 @@
 package com.elavon.constants;
 
-import com.elavon.binder.Bindable;
-
-public enum UserLocationRule implements Bindable {
+public enum UserLocationRule {
     MID,
     CHAIN,
     ENTITY

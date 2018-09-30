@@ -1,6 +1,6 @@
 package com.elavon.ui.pages.CustomerAccount;
 
-import com.elavon.binder.BindMap;
+import com.elavon.binder.DataBind;
 import com.elavon.helper.LocatorCounter;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 public class EditCustomerProfilePage extends PageObject {
 
-    public static BindMap<String, Target> bind;
+    public static DataBind<String, Target> bind;
 
     private static LocatorCounter update = new LocatorCounter("/html/body/div[1]/span/md-content/" +
             "md-content/div/form/md-card[3]/md-card-content/md-card-actions/button[@COUNTER]");
