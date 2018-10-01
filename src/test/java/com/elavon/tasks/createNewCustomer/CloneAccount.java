@@ -4,6 +4,7 @@ import com.elavon.constants.UserLanguage;
 import com.elavon.constants.UserRole;
 import com.elavon.interactions.ClickOn;
 import com.elavon.tasks.Cancellable;
+import com.elavon.tasks.searchCustomer.ViewAccount;
 import com.elavon.ui.pages.CustomerAccount.CloneCustomerPage;
 import com.elavon.ui.pages.CustomerAccount.ViewCustomerPage;
 import net.serenitybdd.screenplay.Actor;
@@ -22,6 +23,8 @@ public class CloneAccount extends Cancellable implements Task {
     private String email;
     private UserLanguage language;
     private UserRole role;
+
+    private static String name = ViewAccount.getName();
     private static PropertiesConfiguration generate;
 
     static {
@@ -43,7 +46,7 @@ public class CloneAccount extends Cancellable implements Task {
     }
 
     @Override
-    @Step("{0} clones the user account ")
+    @Step("{0} clones the user account #name #status")
     public <T extends Actor> void performAs(T actor) {
         String[] name = userId.split(generate.getString("user.separator"));
         Target valueToSelect = CloneCustomerPage.bind.getDefaultItem(language);
