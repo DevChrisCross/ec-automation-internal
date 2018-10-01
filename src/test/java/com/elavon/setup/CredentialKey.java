@@ -18,12 +18,13 @@ public class CredentialKey {
 
     public static void main(String[] args) throws Exception {
 
-        String configProperty = "credentials.qa.internal.username";
+        String configProperty = "credentials.qa.internal.password";
 //        String pathname = CONFIG.getString("credential.src") + configProperty +".txt";
 //        String message = "";
 //
 //        valueOf(configProperty, "c038975");
 //
+//        generate(configProperty, "");
         String s = retrieve(configProperty);
         System.out.println(s);
     }

@@ -38,7 +38,7 @@ public class SearchByKeywordStory {
 //        andThat(anna).wasAbleTo(Search.withTheName().thatContains(""));
 //        andThat(anna).wasAbleTo(Search.withTheEmail().thatStartsWith(""));
 //        when(anna).attemptsTo(Search.forTheTerm("BDD In Action"));
-        andThat(anna).wasAbleTo(Clone.theUser());
+        andThat(anna).wasAbleTo(Clone.theUser().incompletely());
 //        then(anna).should(eventually(seeThat(TheWebPage.title(), containsString("BDD In Action"))));
 
     }

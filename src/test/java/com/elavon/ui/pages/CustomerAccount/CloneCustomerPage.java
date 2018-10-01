@@ -9,10 +9,26 @@ public class CloneCustomerPage extends EditCustomerProfilePage {
 
     public static DataBind<String, Target> bind;
 
+    private static LocatorCounter create = new LocatorCounter("/html/body/div[1]/span/md-content/md-content/" +
+            "div/form/md-card[2]/md-card-content/md-card-actions/button[@COUNTER]");
+    public static final Target CANCEL_BUTTON = Target
+            .the("cancel button")
+            .located(By.xpath(create.valueOf(1)));
     public static final Target NEXT_BUTTON = Target
             .the("next button")
-            .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/form/md-card[2]/md-card-content/" +
-                    "md-card-actions/button[2]"));
+            .located(By.xpath(create.valueOf(2)));
+
+    public static class Confirmation {
+
+        private static LocatorCounter confirm = new LocatorCounter("/html/body/div[1]/span/md-content/" +
+                "md-content/div/div/button[@COUNTER]");
+        public static final Target BACK_BUTTON = Target
+                .the("back button")
+                .located(By.xpath(confirm.valueOf(1)));
+        public static final Target CREATE_USER_BUTTON = Target
+                .the("create user button")
+                .located(By.xpath(confirm.valueOf(2)));
+    }
 
     public static class Language {
 
