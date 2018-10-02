@@ -10,6 +10,10 @@ public class CustomerSearchPage extends PageObject {
 
     public static DataBind<String, Target> bind;
 
+    public static final Target ADD_CUSTOMERS_LINK = Target
+            .the("add customer link")
+            .located(By.xpath("//a[contains(., 'add customers')]"));
+
     public static final Target LOCATION_TAB_BUTTON = Target
             .the("location tab button")
             .located(By.id("userButton"));
@@ -22,13 +26,11 @@ public class CustomerSearchPage extends PageObject {
             .located(By.id("editFaqMenu"));
     public static final Target DOWNLOAD_RESULTS_OPTION = Target
             .the("download results option")
-            .located(By.cssSelector("#menu_container_23 > md-menu-content:nth-child(1) > " +
-                    "md-menu-item:nth-child(1) > button:nth-child(1)"));
+            .located(By.xpath("//button[@ng-click=\"intSearch.download()\"]"));
 
     public static final Target FIRST_ROW_SEARCH_RESULT = Target
             .the("first row search result")
-            .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/div/" +
-                    "md-card[2]/md-card-content[2]/md-table-container/table/tbody/tr/td[1]"));
+            .located(By.xpath("//md-table-container/table/tbody/tr[1]"));
 
     public static class Filter {
 
@@ -67,8 +69,7 @@ public class CustomerSearchPage extends PageObject {
                 .the("user id field")
                 .located(By.id("searchUserId"));
 
-        private static LocatorCounter dropdownOption = new LocatorCounter("/html/body/div[4]/md-select-menu/" +
-                "md-content/div/md-option[@COUNTER]");
+        private static LocatorCounter dropdownOption = new LocatorCounter("//md-content/div/md-option[@COUNTER]");
         public static final Target GROUP_DROPDOWN_OPTION = Target
                 .the("group dropdown option")
                 .located(By.xpath(dropdownOption.valueOf(1)));

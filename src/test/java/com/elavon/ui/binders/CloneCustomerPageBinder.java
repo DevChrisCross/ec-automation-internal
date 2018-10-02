@@ -11,9 +11,10 @@ import net.serenitybdd.screenplay.targets.Target;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-import static com.elavon.binder.PageBind.*;
-import static com.elavon.ui.pages.CustomerAccount.CloneCustomerPage.Language;
+import static com.elavon.binder.PageBind.DEFAULT_KEY;
+import static com.elavon.binder.PageBind.defaultMap;
 import static com.elavon.ui.pages.CustomerAccount.CloneCustomerPage.Role;
+import static com.elavon.ui.pages.CustomerAccount.EditCustomerProfilePage.Language;
 
 public class CloneCustomerPageBinder implements Bindable {
 
@@ -36,6 +37,6 @@ public class CloneCustomerPageBinder implements Bindable {
                         UserRole.class, new LinkedList<>(Arrays.asList(
                                 defaultMap(Role.EMPLOYEE_RADIO_BUTTON),
                                 defaultMap(Role.MANAGER_RADIO_BUTTON),
-                                defaultMap(TARGET_OF_NONE)))));
+                                defaultMap(Role.PARTNER_USER_RADIO_BUTTON)))));
     }
 }
