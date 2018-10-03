@@ -1,6 +1,5 @@
 package com.elavon.tasks.genericTasks;
 
-import com.elavon.constants.UserLocationRule;
 import com.elavon.constants.UserProfile;
 import com.elavon.tasks.operateCustomer.UpdateLocations;
 import com.elavon.tasks.operateCustomer.UpdateProfile;
@@ -12,7 +11,7 @@ public class Update {
         return Instrumented.instanceOf(UpdateProfile.class).withProperties(userProfile);
     }
 
-    public static UpdateLocations theAssignedLocationsWithTheRuleOf(UserLocationRule locationRule) {
-        return Instrumented.instanceOf(UpdateLocations.class).withProperties(locationRule);
+    public static UpdateLocations theAssignedLocation() {
+        return Instrumented.instanceOf(UpdateLocations.class).withProperties();
     }
 }

@@ -3,7 +3,7 @@ package com.elavon.features.search;
 import com.elavon.constants.HomeNavigation;
 import com.elavon.constants.UserType;
 import com.elavon.setup.Application;
-import com.elavon.tasks.genericTasks.Clone;
+import com.elavon.tasks.genericTasks.Add;
 import com.elavon.tasks.genericTasks.Login;
 import com.elavon.tasks.genericTasks.Open;
 import com.elavon.tasks.genericTasks.Search;
@@ -31,14 +31,13 @@ public class SearchByKeywordStory {
 //        andThat(anna).wasAbleTo(End.theImpersonationOfTheUser());
 //        andThat(anna).wasAbleTo(Reset.thePasswordOfTheUserAccount().incompletely());
 //        andThat(anna).wasAbleTo(Update.theCustomerProfile(UserProfile.ROLE).withTheValueOf(UserRole.MANAGER));
-//        andThat(anna).wasAbleTo(Update.theAssignedLocationsWithTheRuleOf(UserLocationRule.MID)
-//                .fromTheClientGroup("300")
-//                .withTheValueOf("2100371205"));
+//        andThat(anna).wasAbleTo(Update.theAssignedLocation().withTheValueOf("2100371205").fromTheClientGroup("300"));
 //        andThat(anna).wasAbleTo(Click.on());
 //        andThat(anna).wasAbleTo(Search.withTheName().thatContains(""));
 //        andThat(anna).wasAbleTo(Search.withTheEmail().thatStartsWith(""));
 //        when(anna).attemptsTo(Search.forTheTerm("BDD In Action"));
-        andThat(anna).wasAbleTo(Clone.theUser().incompletely());
+//        andThat(anna).wasAbleTo(Clone.theUser().incompletely());
+        andThat(anna).wasAbleTo(Add.theNewUser().withTheValueOf("2100371205").fromTheClientGroup("300").incompletely());
 //        then(anna).should(eventually(seeThat(TheWebPage.title(), containsString("BDD In Action"))));
 
     }
