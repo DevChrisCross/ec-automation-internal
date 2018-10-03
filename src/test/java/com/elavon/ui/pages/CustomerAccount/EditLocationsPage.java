@@ -20,6 +20,15 @@ public class EditLocationsPage extends PageObject {
 
     public static class Location {
 
+        public static String itemXPath = "//md-list/md-list-item";
+        public static final Target ITEMS = Target
+                .the("location items")
+                .located(By.xpath("//md-list/md-list-item/div[3]"));
+        public static final Target ITEMS_CLOSE_BUTTON = Target
+                .the("location items close button")
+                .located(By.xpath("//md-list/md-list-item/div[5]"));
+
+
         private static String locations = "//accesscriteriaselector/div[1]/md-list-item[@COUNTER]/" +
                 "md-autocomplete/md-autocomplete-wrap/";
 
