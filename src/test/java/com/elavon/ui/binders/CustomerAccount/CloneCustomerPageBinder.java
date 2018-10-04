@@ -1,9 +1,9 @@
-package com.elavon.ui.binders;
+package com.elavon.ui.binders.CustomerAccount;
 
 import com.elavon.binder.Bindable;
 import com.elavon.binder.DataBind;
-import com.elavon.constants.UserLanguage;
-import com.elavon.constants.UserRole;
+import com.elavon.constants.user.UserLanguage;
+import com.elavon.constants.user.UserRole;
 import com.elavon.ui.pages.CustomerAccount.CloneCustomerPage;
 import com.google.common.collect.ImmutableMap;
 import net.serenitybdd.screenplay.targets.Target;

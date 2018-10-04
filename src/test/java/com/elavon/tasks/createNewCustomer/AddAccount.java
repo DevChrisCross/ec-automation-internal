@@ -1,11 +1,11 @@
 package com.elavon.tasks.createNewCustomer;
 
-import com.elavon.constants.UserLocationRule;
+import com.elavon.constants.user.UserLocationRule;
 import com.elavon.interactions.ClickOn;
 import com.elavon.tasks.operateCustomer.FillUpCustomerLocations;
-import com.elavon.ui.pages.CustomerAccount.AddCustomerPage;
+import com.elavon.ui.pages.CustomerAccount.AddNewCustomerPage;
 import com.elavon.ui.pages.CustomerSearchPage;
-import com.elavon.ui.pages.InternalHomePage;
+import com.elavon.ui.pages.IHomePageNavigation;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -27,18 +27,18 @@ public class AddAccount extends CreateAccount implements Task {
     public <T extends Actor> void performAs(T actor) {
         increaseUserCount();
         actor.attemptsTo(
-                ClickOn.the(InternalHomePage.CUSTOMER_SEARCH_TAB),
+                ClickOn.the(IHomePageNavigation.CUSTOMER_SEARCH_TAB),
                 ClickOn.the(CustomerSearchPage.ADD_CUSTOMERS_LINK),
                 provideDefaultInformation(),
-                ClickOn.the(AddCustomerPage.NEXT_BUTTON),
+                ClickOn.the(AddNewCustomerPage.NEXT_BUTTON),
                 FillUpCustomerLocations.withTheValueOf(rule, clg, value),
-                ClickOn.the(AddCustomerPage.NEXT_BUTTON),
+                ClickOn.the(AddNewCustomerPage.NEXT_BUTTON),
                 SuccessOrFail(
-                        new Performable[]{ClickOn.the(AddCustomerPage.Confirmation.CREATE_USER_BUTTON)},
+                        new Performable[]{ClickOn.the(AddNewCustomerPage.Confirmation.CREATE_USER_BUTTON)},
                         new Performable[]{
-                                ClickOn.the(AddCustomerPage.Confirmation.BACK_BUTTON),
-                                ClickOn.the(AddCustomerPage.CANCEL_BUTTON),
-                                ClickOn.the(AddCustomerPage.CANCEL_BUTTON)
+                                ClickOn.the(AddNewCustomerPage.Confirmation.BACK_BUTTON),
+                                ClickOn.the(AddNewCustomerPage.CANCEL_BUTTON),
+                                ClickOn.the(AddNewCustomerPage.CANCEL_BUTTON)
                         })
         );
     }

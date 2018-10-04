@@ -1,11 +1,11 @@
 package com.elavon.tasks.searchCustomer;
 
-import com.elavon.constants.SearchBy;
-import com.elavon.constants.SearchFilter;
-import com.elavon.constants.SearchMatch;
+import com.elavon.constants.search.SearchBy;
+import com.elavon.constants.search.SearchFilter;
+import com.elavon.constants.search.SearchMatch;
 import com.elavon.interactions.ClickOn;
 import com.elavon.ui.pages.CustomerSearchPage;
-import com.elavon.ui.pages.InternalHomePage;
+import com.elavon.ui.pages.IHomePageNavigation;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -39,7 +39,7 @@ public class SearchAccount implements Task {
         Map<String, Target> selectedFilter = CustomerSearchPage.bind.getItem(filter);
 
         actor.attemptsTo(
-                ClickOn.the(InternalHomePage.CUSTOMER_SEARCH_TAB),
+                ClickOn.the(IHomePageNavigation.CUSTOMER_SEARCH_TAB),
                 Click.on(CustomerSearchPage.Filter.DROPDOWN),
                 Click.on(selectedFilter.get("option")),
                 Enter.theValue(input).into(selectedFilter.get("field")),

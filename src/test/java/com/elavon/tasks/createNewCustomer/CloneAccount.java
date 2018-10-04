@@ -1,7 +1,7 @@
 package com.elavon.tasks.createNewCustomer;
 
 import com.elavon.interactions.ClickOn;
-import com.elavon.ui.pages.CustomerAccount.AddCustomerPage;
+import com.elavon.ui.pages.CustomerAccount.AddNewCustomerPage;
 import com.elavon.ui.pages.CustomerAccount.CloneCustomerPage;
 import com.elavon.ui.pages.CustomerAccount.ViewCustomerPage;
 import net.serenitybdd.screenplay.Actor;
@@ -24,10 +24,10 @@ public class CloneAccount extends CreateAccount implements Task {
                 provideDefaultInformation(),
                 ClickOn.the(CloneCustomerPage.NEXT_BUTTON),
                 SuccessOrFail(
-                        new Performable[]{ClickOn.the(AddCustomerPage.Confirmation.CREATE_USER_BUTTON)},
+                        new Performable[]{ClickOn.the(AddNewCustomerPage.Confirmation.CREATE_USER_BUTTON)},
                         new Performable[] {
-                                ClickOn.the(AddCustomerPage.Confirmation.BACK_BUTTON),
-                                ClickOn.the(AddCustomerPage.CANCEL_BUTTON)
+                                ClickOn.the(AddNewCustomerPage.Confirmation.BACK_BUTTON),
+                                ClickOn.the(AddNewCustomerPage.CANCEL_BUTTON)
                         })
         );
     }

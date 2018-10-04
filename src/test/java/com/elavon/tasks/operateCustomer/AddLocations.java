@@ -1,6 +1,6 @@
 package com.elavon.tasks.operateCustomer;
 
-import com.elavon.constants.UserLocationRule;
+import com.elavon.constants.user.UserLocationRule;
 import com.elavon.interactions.ClickOn;
 import com.elavon.tasks.Cancellable;
 import com.elavon.tasks.searchCustomer.ViewAccount;

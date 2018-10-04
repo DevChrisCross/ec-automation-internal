@@ -4,7 +4,7 @@ import com.elavon.helper.LocatorCounter;
 import net.serenitybdd.screenplay.targets.Target;
 import org.openqa.selenium.By;
 
-public class AddCustomerPage extends CloneCustomerPage {
+public class AddNewCustomerPage extends CloneCustomerPage {
 
     public static final Target CLONE_EXISTING_BUTTON = Target
             .the("clone from existing button")

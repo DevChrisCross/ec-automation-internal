@@ -1,4 +1,4 @@
-package com.elavon.constants;
+package com.elavon.constants.search;
 
 public enum SearchFilter {
     GROUP,

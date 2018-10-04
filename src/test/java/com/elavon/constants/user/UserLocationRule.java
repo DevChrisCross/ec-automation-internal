@@ -1,4 +1,4 @@
-package com.elavon.constants;
+package com.elavon.constants.user;
 
 public enum UserLocationRule {
     MID,

@@ -1,6 +1,6 @@
 package com.elavon.tasks.genericTasks;
 
-import com.elavon.constants.UserType;
+import com.elavon.constants.user.UserType;
 import com.elavon.tasks.accessApplication.LoginAccount;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Performable;

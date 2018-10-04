@@ -1,8 +1,8 @@
 package com.elavon.tasks.createNewCustomer;
 
-import com.elavon.constants.UserLanguage;
-import com.elavon.constants.UserRole;
-import com.elavon.ui.pages.CustomerAccount.AddCustomerPage;
+import com.elavon.constants.user.UserLanguage;
+import com.elavon.constants.user.UserRole;
+import com.elavon.ui.pages.CustomerAccount.AddNewCustomerPage;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -35,14 +35,14 @@ public class FillUpCustomerInformation implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        Target languageToSelect = AddCustomerPage.bind.getDefaultItem(language);
-        Target roleToSelect = AddCustomerPage.bind.getDefaultItem(role);
+        Target languageToSelect = AddNewCustomerPage.bind.getDefaultItem(language);
+        Target roleToSelect = AddNewCustomerPage.bind.getDefaultItem(role);
 
         actor.attemptsTo(
-                Enter.theValue(firstName).into(AddCustomerPage.FIRST_NAME_FIELD),
-                Enter.theValue(lastName).into(AddCustomerPage.LAST_NAME_FIELD),
-                Enter.theValue(email).into(AddCustomerPage.EMAIL_FIELD),
-                Click.on(AddCustomerPage.LANGUAGE_DROPDOWN),
+                Enter.theValue(firstName).into(AddNewCustomerPage.FIRST_NAME_FIELD),
+                Enter.theValue(lastName).into(AddNewCustomerPage.LAST_NAME_FIELD),
+                Enter.theValue(email).into(AddNewCustomerPage.EMAIL_FIELD),
+                Click.on(AddNewCustomerPage.LANGUAGE_DROPDOWN),
                 Click.on(languageToSelect),
                 Click.on(roleToSelect)
         );

@@ -1,7 +1,7 @@
 package com.elavon.tasks.createNewCustomer;
 
-import com.elavon.constants.UserLanguage;
-import com.elavon.constants.UserRole;
+import com.elavon.constants.user.UserLanguage;
+import com.elavon.constants.user.UserRole;
 import com.elavon.tasks.Cancellable;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;

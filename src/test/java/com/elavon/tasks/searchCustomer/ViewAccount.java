@@ -1,8 +1,8 @@
 package com.elavon.tasks.searchCustomer;
 
-import com.elavon.constants.SearchBy;
-import com.elavon.constants.SearchFilter;
-import com.elavon.constants.SearchMatch;
+import com.elavon.constants.search.SearchBy;
+import com.elavon.constants.search.SearchFilter;
+import com.elavon.constants.search.SearchMatch;
 import com.elavon.interactions.ClickOn;
 import com.elavon.tasks.genericTasks.Search;
 import com.elavon.ui.pages.CustomerSearchPage;
