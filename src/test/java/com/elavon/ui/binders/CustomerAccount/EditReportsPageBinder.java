@@ -12,7 +12,6 @@ import java.util.LinkedList;
 
 import static com.elavon.binder.PageBind.DEFAULT_KEY;
 import static com.elavon.binder.PageBind.defaultMap;
-import static com.elavon.ui.pages.CustomerAccount.EditReportsPage.Available;
 
 public class EditReportsPageBinder implements Bindable {
 
@@ -22,14 +21,14 @@ public class EditReportsPageBinder implements Bindable {
                 DEFAULT_KEY,
                 EditReportsPage.class,
                 ImmutableMap.of(ReportGroup.class, new LinkedList<>(Arrays.asList(
-                        defaultMap(Available.SELECT_ALL_CHECKBOX),
-                        defaultMap(Available.AUTHORIZATIONS_REPORTS_CHECKBOX),
-                        defaultMap(Available.DCC_REPORTS_CHECKBOX),
-                        defaultMap(Available.DISPUTE_REPORTS_CHECKBOX),
-                        defaultMap(Available.INTERCHANGE_REPORTS_CHECKBOX),
-                        defaultMap(Available.OPTIONAL_REPORTS_CHECKBOX),
-                        defaultMap(Available.STANDARD_NONPARTNER_REPORTS_CHECKBOX),
-                        defaultMap(Available.STANDARD_PARTNER_REPORTS_CHECKBOX)
+                        defaultMap(EditReportsPage.SELECT_ALL_CHECKBOX),
+                        defaultMap(EditReportsPage.AUTHORIZATIONS_REPORTS_CHECKBOX),
+                        defaultMap(EditReportsPage.DCC_REPORTS_CHECKBOX),
+                        defaultMap(EditReportsPage.DISPUTE_REPORTS_CHECKBOX),
+                        defaultMap(EditReportsPage.INTERCHANGE_REPORTS_CHECKBOX),
+                        defaultMap(EditReportsPage.OPTIONAL_REPORTS_CHECKBOX),
+                        defaultMap(EditReportsPage.STANDARD_NONPARTNER_REPORTS_CHECKBOX),
+                        defaultMap(EditReportsPage.STANDARD_PARTNER_REPORTS_CHECKBOX)
                 )))
         );
     }

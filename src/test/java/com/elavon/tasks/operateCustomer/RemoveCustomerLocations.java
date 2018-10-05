@@ -21,11 +21,11 @@ public class RemoveCustomerLocations implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        List<String> items = Text.of(EditLocationsPage.Location.ITEMS).viewedBy(actor).asList();
+        List<String> items = Text.of(EditLocationsPage.Location.ITEM_NAMES).viewedBy(actor).asList();
         int indexToRemove = items.indexOf(value);
         Target removeButton = Target
                 .the("remove location button")
-                .located(By.xpath(EditLocationsPage.Location.itemXPath + "[" + ++indexToRemove + "]/div[5]"));
+                .located(By.xpath(EditLocationsPage.Location.ITEM_XPATH + "[" + ++indexToRemove + "]/div[5]"));
 
         actor.attemptsTo(
                 ClickOn.the(removeButton)

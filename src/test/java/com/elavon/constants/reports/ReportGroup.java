@@ -1,6 +1,6 @@
 package com.elavon.constants.reports;
 
-public enum ReportGroup {
+public enum ReportGroup implements Report {
     ALL,
     AUTHORIZATIONS_REPORTS,
     DCC_REPORTS,

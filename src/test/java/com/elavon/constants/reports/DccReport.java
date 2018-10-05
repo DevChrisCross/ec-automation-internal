@@ -1,8 +1,8 @@
 package com.elavon.constants.reports;
 
 public enum DccReport implements Report {
-    DCC_PERFORMANCE,
-    DCC_TERMINAL_PERFORMANCE,
-    VOLUME_PER_CARD
+    DCC_Performance,
+    DCC_Terminal_Performance,
+    Volume_per_Card_Issuing_Country
 }
 

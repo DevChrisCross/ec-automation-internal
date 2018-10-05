@@ -1,8 +1,8 @@
 package com.elavon.constants.reports;
 
 public enum DisputeReport implements Report {
-    CHARGEBACK_LIST,
-    CHARGEBACK_SUMMARY,
-    NONFINANCIAL_CHARGEBACK_LIST,
-    RETRIEVAL_LIST
+    Chargeback_List,
+    Chargeback_Summary,
+    Non_Financial_Chargeback_List,
+    Retrieval_List
 }

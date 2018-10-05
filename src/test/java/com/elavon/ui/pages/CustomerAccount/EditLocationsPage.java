@@ -20,13 +20,10 @@ public class EditLocationsPage extends PageObject {
 
     public static class Location {
 
-        public static String itemXPath = "//md-list/md-list-item";
-        public static final Target ITEMS = Target
+        public static final String ITEM_XPATH = "//md-list/md-list-item";
+        public static final Target ITEM_NAMES = Target
                 .the("location items")
-                .located(By.xpath("//md-list/md-list-item/div[3]"));
-        public static final Target ITEMS_CLOSE_BUTTON = Target
-                .the("location items close button")
-                .located(By.xpath("//md-list/md-list-item/div[5]"));
+                .located(By.xpath(ITEM_XPATH + "/div[3]"));
 
 
         private static String locations = "//accesscriteriaselector/div[1]/md-list-item[@COUNTER]/" +
