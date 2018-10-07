@@ -1,7 +1,6 @@
 package com.elavon.ui.pages.CustomerAccount;
 
 import com.elavon.binder.DataBind;
-import com.elavon.helper.LocatorCounter;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
@@ -17,50 +16,24 @@ public class ViewCustomerPage extends PageObject {
             .the("delete account option")
             .located(By.id("manageUserDeleteUser"));
 
-    private static LocatorCounter accountActions = new LocatorCounter("//md-card-actions/button[@COUNTER]");
-    public static final Target CLONE_USER_BUTTON = Target
-            .the("clone user button")
-            .located(By.xpath(accountActions.valueOf(1)));
-    public static final Target IMPERSONATE_BUTTON = Target
-            .the("impersonate button")
-            .located(By.xpath(accountActions.valueOf(2)));
-    public static final Target RESET_PASSWORD_BUTTON = Target
-            .the("reset password button")
-            .located(By.xpath(accountActions.valueOf(3)));
+    public static final Target ACCOUNT_ACTIONS = Target
+            .the("account actions")
+            .locatedBy("//md-card-actions/button[{0}]");
+    public static final Target CLONE_USER_BUTTON = ACCOUNT_ACTIONS.of("1").called("clone user button");
+    public static final Target IMPERSONATE_BUTTON = ACCOUNT_ACTIONS.of("2").called("impersonate button");
+    public static final Target RESET_PASSWORD_BUTTON = ACCOUNT_ACTIONS.of("3").called("reset password button");
 
-    private static LocatorCounter editButtons = new LocatorCounter("//md-card[@COUNTER]/md-card-title/" +
-            "md-card-title-text/div[2]/button");
-    public static final Target EDIT_PROFILE_BUTTON = Target
-            .the("edit profile button")
-            .located(By.xpath(editButtons.valueOf(2)));
-    public static final Target EDIT_LOCATIONS_BUTTON = Target
-            .the("edit locations button")
-            .located(By.xpath(editButtons.valueOf(3)));
-    public static final Target EDIT_REPORTS_BUTTON = Target
-            .the("edit locations button")
-            .located(By.xpath(editButtons.valueOf(4)));
+    public static final Target EDIT_BUTTON = Target
+            .the("edit button")
+            .locatedBy("//md-card[{0}]/md-card-title/md-card-title-text/div[2]/button");
+    public static final Target EDIT_PROFILE_BUTTON = EDIT_BUTTON.of("2").called("edit profile button");
+    public static final Target EDIT_LOCATIONS_BUTTON = EDIT_BUTTON.of("3").called("edit locations button");
+    public static final Target EDIT_REPORTS_BUTTON = EDIT_BUTTON.of("4").called("edit reports button");
 
-    public static class DeleteModal {
-
-        private static LocatorCounter modalButton = new LocatorCounter("//div[5]/md-dialog/" +
-                "md-dialog-actions/button[@COUNTER]");
-        public static final Target DELETE_BUTTON = Target
-                .the("delete button")
-                .located(By.xpath(modalButton.valueOf(2)));
-        public static final Target CANCEL_BUTTON = Target
-                .the("cancel button")
-                .located(By.xpath(modalButton.valueOf(1)));
-    }
-
-    public static class ResetModal {
-
-        private static LocatorCounter modalButton = new LocatorCounter("//div[4]/md-dialog/" +
-                "md-dialog-actions/button[@COUNTER]");
-        public static final Target SEND_BUTTON = Target
-                .the("send button")
-                .located(By.xpath(modalButton.valueOf(2)));
-        public static final Target CANCEL_BUTTON = Target
-                .the("cancel button")
-                .located(By.xpath(modalButton.valueOf(1)));
-    }
+    public static final Target RESET_MODAL_BUTTON = Target
+            .the("reset modal button")
+            .locatedBy("//div[4]/md-dialog/md-dialog-actions/button[{0}]");
+    public static final Target DELETE_MODAL_BUTTON = Target
+            .the("reset modal button")
+            .locatedBy("//div[5]/md-dialog/md-dialog-actions/button[{0}]");
 }

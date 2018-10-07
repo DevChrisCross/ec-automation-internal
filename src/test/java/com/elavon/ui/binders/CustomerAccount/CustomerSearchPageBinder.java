@@ -45,6 +45,8 @@ public class CustomerSearchPageBinder implements Bindable {
                                 ImmutableMap.of("option", Filter.EMAIL_DROPDOWN_OPTION,
                                         "field", Filter.EMAIL_FIELD),
                                 ImmutableMap.of("option", Filter.USER_ID_DROPDOWN_OPTION,
-                                        "field", Filter.USER_ID_FIELD)))));
+                                        "field", Filter.USER_ID_FIELD),
+                                ImmutableMap.of("option", Filter.SALES_REPCODE_DROPDOWN_OPTION,
+                                        "field", Filter.SALES_REPCODE_FIELD)))));
     }
 }

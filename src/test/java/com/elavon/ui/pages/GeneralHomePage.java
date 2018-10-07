@@ -21,11 +21,10 @@ public class GeneralHomePage extends PageObject {
 
     public static class Footer {
 
-        public static final Target TERMS_OF_USE_LINK = Target
-                .the("terms of use link")
-                .located(By.xpath("//span[@ng-click=\"vm.footerRedirect('terms')\"]"));
-        public static final Target COOKIES_POLICY_LINK = Target
-                .the("cookies poilcy link")
-                .located(By.xpath("//span[@ng-click=\"vm.footerRedirect('cookies')\"]"));
+        public static final Target FOOTER_LINK = Target
+                .the("footer link")
+                .locatedBy("//span[@ng-click=\"vm.footerRedirect('{0}')\"]");
+        public static final Target TERMS_OF_USE_LINK = FOOTER_LINK.of("terms").called("terms of use link");
+        public static final Target COOKIES_POLICY_LINK = FOOTER_LINK.of("cookies").called("cookies poilcy link");
     }
 }

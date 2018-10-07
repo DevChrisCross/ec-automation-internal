@@ -1,7 +1,6 @@
 package com.elavon.ui.pages;
 
 import com.elavon.binder.DataBind;
-import com.elavon.helper.LocatorCounter;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
@@ -68,33 +67,21 @@ public class CustomerSearchPage extends PageObject {
         public static final Target USER_ID_FIELD = Target
                 .the("user id field")
                 .located(By.id("searchUserId"));
+        public static final Target SALES_REPCODE_FIELD = Target
+                .the("sales rep code field")
+                .located(By.id("salesRepCode"));
 
-        private static LocatorCounter dropdownOption = new LocatorCounter("//md-content/div/md-option[@COUNTER]");
-        public static final Target GROUP_DROPDOWN_OPTION = Target
-                .the("group dropdown option")
-                .located(By.xpath(dropdownOption.valueOf(1)));
-        public static final Target ENTITY_DROPDOWN_OPTION = Target
-                .the("entity dropdown option")
-                .located(By.xpath(dropdownOption.valueOf(2)));
-        public static final Target MCC_DROPDOWN_OPTION = Target
-                .the("mcc dropdown option")
-                .located(By.xpath(dropdownOption.valueOf(3)));
-        public static final Target MERCHANT_ID_DROPDOWN_OPTION = Target
-                .the("merchant id dropdown option")
-                .located(By.xpath(dropdownOption.valueOf(4)));
-        public static final Target NAME_DROPDOWN_OPTION = Target
-                .the("name dropdown option")
-                .located(By.xpath(dropdownOption.valueOf(5)));
-        public static final Target TAX_ID_DROPDOWN_OPTION = Target
-                .the("tax id dropdown option")
-                .located(By.xpath(dropdownOption.valueOf(6)));
-        public static final Target EMAIL_DROPDOWN_OPTION = Target
-                .the("email dropdown option")
-                .located(By.xpath(dropdownOption.valueOf(7)));
-        public static final Target USER_ID_DROPDOWN_OPTION = Target
-                .the("user id dropdown option")
-                .located(By.xpath(dropdownOption.valueOf(8)));
-
-        // TODO: Add for Sales Rep Code
+        public static final Target DROPDOWN_OPTION = Target
+                .the("dropdown option")
+                .locatedBy("//md-content/div/md-option[{0}]");
+        public static final Target GROUP_DROPDOWN_OPTION = DROPDOWN_OPTION.of("1").called("group dropdown option");
+        public static final Target ENTITY_DROPDOWN_OPTION = DROPDOWN_OPTION.of("2").called("entity dropdown option");
+        public static final Target MCC_DROPDOWN_OPTION = DROPDOWN_OPTION.of("3").called("mcc dropdown option");
+        public static final Target MERCHANT_ID_DROPDOWN_OPTION = DROPDOWN_OPTION.of("4").called("merchant id dropdown option");
+        public static final Target NAME_DROPDOWN_OPTION = DROPDOWN_OPTION.of("5").called("name dropdown option");
+        public static final Target TAX_ID_DROPDOWN_OPTION = DROPDOWN_OPTION.of("6").called("tax id dropdown option");
+        public static final Target EMAIL_DROPDOWN_OPTION = DROPDOWN_OPTION.of("7").called("email dropdown option");
+        public static final Target USER_ID_DROPDOWN_OPTION = DROPDOWN_OPTION.of("8").called("user id dropdown option");
+        public static final Target SALES_REPCODE_DROPDOWN_OPTION = DROPDOWN_OPTION.of("9").called("sales rep code dropdown option");
     }
 }
