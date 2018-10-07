@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.actions.JavaScriptClick;
 import net.serenitybdd.screenplay.actions.Scroll;
 import net.serenitybdd.screenplay.targets.Target;
+import net.thucydides.core.annotations.Step;
 
 public class ClickOn implements Interaction {
 
@@ -19,6 +20,7 @@ public class ClickOn implements Interaction {
     }
 
     @Override
+    @Step("{0} clicks on #target")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 WaitUntilThe.targetIsLoaded(target),

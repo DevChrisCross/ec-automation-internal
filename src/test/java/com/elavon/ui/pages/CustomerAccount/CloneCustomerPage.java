@@ -8,8 +8,11 @@ public class CloneCustomerPage extends EditCustomerProfilePage {
 
     public static DataBind<String, Target> bind;
 
-//    public static final Target CANCEL_BUTTON = EditCustomerProfilePage.CANCEL_BUTTON;
-//    public static final Target NEXT_BUTTON = EditCustomerProfilePage.UPDATE_BUTTON;
+    public static final Target ACTION_BUTTON = Target
+            .the("action button")
+            .locatedBy("//md-card-actions/button[{0}]");
+    public static final Target CANCEL_BUTTON = ACTION_BUTTON.of("1").called("cancel button");
+    public static final Target NEXT_BUTTON = ACTION_BUTTON.of("2").called("update button");
 
     public static class Confirmation {
 
