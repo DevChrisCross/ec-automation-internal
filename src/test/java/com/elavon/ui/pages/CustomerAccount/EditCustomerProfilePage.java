@@ -10,8 +10,7 @@ public class EditCustomerProfilePage extends PageObject {
 
     public static DataBind<String, Target> bind;
 
-    private static LocatorCounter update = new LocatorCounter("/html/body/div[1]/span/md-content/" +
-            "md-content/div/form/md-card[3]/md-card-content/md-card-actions/button[@COUNTER]");
+    private static LocatorCounter update = new LocatorCounter("//md-card-actions/button[@COUNTER]");
     public static final Target UPDATE_BUTTON = Target
             .the("update button")
             .located(By.xpath(update.valueOf(2)));
@@ -31,43 +30,40 @@ public class EditCustomerProfilePage extends PageObject {
 
     public static final Target LANGUAGE_DROPDOWN = Target
             .the("language dropdown")
-            .located(By.xpath("/html/body/div[1]/span/md-content/md-content/div/form/md-card[1]/" +
-                    "md-card-content/div[3]/md-list-item/md-input-container/md-select"));
+            .located(By.xpath("//md-list-item/md-input-container/md-select"));
 
     public static class Language {
 
-        protected static LocatorCounter languageOption = new LocatorCounter("/html/body/div[4]/md-select-menu/" +
-                "md-content/md-option[@COUNTER]");
+        protected static String languageOption = "//md-select-menu/md-content/md-option";
         public static final Target DEUTSCH_OPTION = Target
                 .the("deutsch option")
-                .located(By.xpath(languageOption.valueOf(1)));
+                .located(By.xpath(languageOption + "[@value=\"de_DE\"]"));
         public static final Target ENGLISH_OPTION = Target
                 .the("english option")
-                .located(By.xpath(languageOption.valueOf(2)));
+                .located(By.xpath(languageOption + "[@value=\"en_GB\"]"));
         public static final Target ESPANOL_OPTION = Target
                 .the("espanol option")
-                .located(By.xpath(languageOption.valueOf(3)));
+                .located(By.xpath(languageOption + "[@value=\"es_ES\"]"));
         public static final Target FRANCAIS_OPTION = Target
                 .the("francais option")
-                .located(By.xpath(languageOption.valueOf(4)));
+                .located(By.xpath(languageOption + "[@value=\"fr_FR\"]"));
         public static final Target ITALIANO_OPTION = Target
                 .the("italiano option")
-                .located(By.xpath(languageOption.valueOf(5)));
+                .located(By.xpath(languageOption + "[@value=\"it_IT\"]"));
         public static final Target NEDERLANDS_OPTION = Target
                 .the("nederlands option")
-                .located(By.xpath(languageOption.valueOf(6)));
+                .located(By.xpath(languageOption + "[@value=\"nl_NL\"]"));
         public static final Target NORSK_OPTION = Target
                 .the("norsk option")
-                .located(By.xpath(languageOption.valueOf(7)));
+                .located(By.xpath(languageOption + "[@value=\"no_NO\"]"));
         public static final Target POLSKI_OPTION = Target
                 .the("polski option")
-                .located(By.xpath(languageOption.valueOf(8)));
+                .located(By.xpath(languageOption + "[@value=\"pl_PL\"]"));
     }
 
     public static class Role {
 
-        private static LocatorCounter roleOption = new LocatorCounter("/html/body/div[1]/span/md-content/md-content/" +
-                "div/form/md-card[2]/md-card-content/div/md-input-container/md-radio-group/div[@COUNTER]/div[1]/" +
+        private static LocatorCounter roleOption = new LocatorCounter("//md-radio-group/div[@COUNTER]/div[1]/" +
                 "md-radio-button");
         public static final Target EMPLOYEE_RADIO_BUTTON = Target
                 .the("employee radio button")

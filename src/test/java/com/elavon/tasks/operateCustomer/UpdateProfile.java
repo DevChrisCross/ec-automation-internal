@@ -1,6 +1,6 @@
 package com.elavon.tasks.operateCustomer;
 
-import com.elavon.constants.UserProfile;
+import com.elavon.constants.user.UserProfile;
 import com.elavon.interactions.ClickOn;
 import com.elavon.tasks.Cancellable;
 import com.elavon.tasks.searchCustomer.ViewAccount;

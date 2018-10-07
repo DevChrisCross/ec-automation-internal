@@ -1,10 +1,10 @@
-package com.elavon.ui.binders;
+package com.elavon.ui.binders.CustomerAccount;
 
 import com.elavon.binder.Bindable;
 import com.elavon.binder.DataBind;
-import com.elavon.constants.UserLanguage;
-import com.elavon.constants.UserProfile;
-import com.elavon.constants.UserRole;
+import com.elavon.constants.user.UserLanguage;
+import com.elavon.constants.user.UserProfile;
+import com.elavon.constants.user.UserRole;
 import com.elavon.ui.pages.CustomerAccount.EditCustomerProfilePage;
 import com.google.common.collect.ImmutableMap;
 import net.serenitybdd.screenplay.targets.Target;

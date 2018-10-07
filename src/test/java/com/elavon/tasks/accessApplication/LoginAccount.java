@@ -1,6 +1,6 @@
 package com.elavon.tasks.accessApplication;
 
-import com.elavon.constants.UserType;
+import com.elavon.constants.user.UserType;
 import com.elavon.setup.CredentialKey;
 import com.elavon.tasks.waitToLoad.WaitUntilThe;
 import com.elavon.ui.pages.AccountLoginPage;

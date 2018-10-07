@@ -1,8 +1,8 @@
-package com.elavon.ui.binders;
+package com.elavon.ui.binders.CustomerAccount;
 
 import com.elavon.binder.Bindable;
 import com.elavon.binder.DataBind;
-import com.elavon.constants.UserLocationRule;
+import com.elavon.constants.user.UserLocationRule;
 import com.elavon.ui.pages.CustomerAccount.EditLocationsPage;
 import com.google.common.collect.ImmutableMap;
 import net.serenitybdd.screenplay.targets.Target;

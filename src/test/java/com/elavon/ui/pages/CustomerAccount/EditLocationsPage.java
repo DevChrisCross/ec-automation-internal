@@ -10,8 +10,7 @@ public class EditLocationsPage extends PageObject {
 
     public static DataBind<String, Target> bind;
 
-    private static LocatorCounter button = new LocatorCounter("/html/body/div[1]/span/md-content/" +
-            "md-content/div/div/button[@COUNTER]");
+    private static LocatorCounter button = new LocatorCounter("//md-content/div/div/button[@COUNTER]");
     public static final Target CANCEL_BUTTON = Target
             .the("cancel button")
             .located(By.xpath(button.valueOf(1)));
@@ -21,14 +20,27 @@ public class EditLocationsPage extends PageObject {
 
     public static class Location {
 
-        private static String s = "/html/body/div[1]/span/md-content/md-content/div/" +
-                "md-card[2]/md-card-content/accesscriteriaselector/div[1]/md-list-item[@COUNTER]/md-autocomplete/" +
-                "md-autocomplete-wrap/";
+        public static final String ITEM_XPATH = "//md-list/md-list-item";
+        public static final Target ITEM_NAMES = Target
+                .the("location items")
+                .located(By.xpath(ITEM_XPATH + "/div[3]"));
+
+
+        private static String locations = "//accesscriteriaselector/div[1]/md-list-item[@COUNTER]/" +
+                "md-autocomplete/md-autocomplete-wrap/";
+
+        private static LocatorCounter closeButton = new LocatorCounter(locations + "button");
         public static final Target RULE_CLOSE_BUTTON = Target
                 .the("rule field close button")
-                .located(By.xpath(s.replace("@COUNTER", "1") + "button"));
+                .located(By.xpath(closeButton.valueOf(1)));
+        public static final Target CLG_CLOSE_BUTTON = Target
+                .the("rule field close button")
+                .located(By.xpath(closeButton.valueOf(2)));
+        public static final Target VALUE_CLOSE_BUTTON = Target
+                .the("rule field close button")
+                .located(By.xpath(closeButton.valueOf(3)));
 
-        private static LocatorCounter location = new LocatorCounter(s + "input");
+        private static LocatorCounter location = new LocatorCounter(locations + "input");
         public static final Target RULE_FIELD = Target
                 .the("location rule field")
                 .located(By.xpath(location.valueOf(1)));
@@ -39,7 +51,7 @@ public class EditLocationsPage extends PageObject {
                 .the("location value field")
                 .located(By.xpath(location.valueOf(3)));
 
-        private static LocatorCounter rule = new LocatorCounter("/html/body/md-virtual-repeat-container[1]/" +
+        private static LocatorCounter rule = new LocatorCounter("//md-virtual-repeat-container[1]/" +
                 "div/div[2]/ul/li[@COUNTER]");
         public static final Target RULE_MID_OPTION = Target
                 .the("rule mid option")
@@ -51,8 +63,8 @@ public class EditLocationsPage extends PageObject {
                 .the("rule entity option")
                 .located(By.xpath(rule.valueOf(3)));
 
-        private static LocatorCounter firstOption = new LocatorCounter("/html/body/" +
-                "md-virtual-repeat-container[@COUNTER]/div/div[2]/ul/li");
+        private static LocatorCounter firstOption = new LocatorCounter("//md-virtual-repeat-container[@COUNTER]/" +
+                "div/div[2]/ul/li[1]");
         public static final Target CLG_FIRST_OPTION = Target
                 .the("first option of clg")
                 .located(By.xpath(firstOption.valueOf(2)));

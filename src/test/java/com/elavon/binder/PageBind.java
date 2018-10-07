@@ -1,6 +1,7 @@
 package com.elavon.binder;
 
-import com.elavon.ui.binders.*;
+import com.elavon.ui.binders.CustomerAccount.*;
+import com.elavon.ui.binders.GeneralHomePageBinder;
 import com.google.common.collect.ImmutableMap;
 import net.serenitybdd.screenplay.targets.Target;
 
@@ -22,7 +23,8 @@ public class PageBind {
                 new CustomerSearchPageBinder(),
                 new EditCustomerProfilePageBinder(),
                 new EditLocationsPageBinder(),
-                new CloneCustomerPageBinder()
+                new CloneCustomerPageBinder(),
+                new EditReportsPageBinder()
         ));
 
         pageBinders.forEach(bindable -> {
