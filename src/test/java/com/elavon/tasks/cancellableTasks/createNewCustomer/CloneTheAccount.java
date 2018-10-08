@@ -19,14 +19,13 @@ public class CloneTheAccount extends Cancellable implements Task {
         this.userAccount = userAccount;
     }
 
-    public static AccountBuilder ofUser() {
+    public static AccountBuilder<CloneTheAccount> ofUser() {
         return new AccountBuilder(CloneTheAccount.class);
     }
 
     @Override
     @Step("{0} creates the new user clones the user account #firstName@#lastName #status")
     public <T extends Actor> void performAs(T actor) {
-        if (isCompletely) { UserAccount.increaseUserCount(); }
         actor.attemptsTo(
                 ClickOn.the(ViewCustomerPage.CLONE_USER_BUTTON),
                 FillUpCustomerInformation.withDetailsOf(userAccount),
@@ -38,6 +37,7 @@ public class CloneTheAccount extends Cancellable implements Task {
                                 ClickOn.the(AddNewCustomerPage.CANCEL_BUTTON)
                         })
         );
+        if (isCompletely) { UserAccount.increaseUserCount(); }
     }
 }
 
