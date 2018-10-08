@@ -4,5 +4,5 @@ public enum SearchMatch {
     STARTS_WITH,
     ENDS_WITH,
     CONTAINS,
-    EXACTS
+    EXACTLY_MATCHES
 }

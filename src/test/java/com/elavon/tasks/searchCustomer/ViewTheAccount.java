@@ -28,7 +28,7 @@ public class ViewTheAccount implements Task {
         actor.attemptsTo(
                 SearchForTheAccount.by(SearchBy.USER)
                         .withThe(SearchFilter.USER_ID)
-                        .that(SearchMatch.EXACTS)
+                        .that(SearchMatch.EXACTLY_MATCHES)
                         .theWord(name),
                 ClickOn.the(CustomerSearchPage.FIRST_ROW_SEARCH_RESULT)
         );
