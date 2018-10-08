@@ -50,7 +50,7 @@ public class AddTheNewUser extends Cancellable implements Task {
         if (userToClone.isEmpty()) {
             todoList.addAll(Arrays.asList(
                     ClickOn.the(AddNewCustomerPage.NEXT_BUTTON),
-                    AddNewLocation.withTheValueOf(userAccount.getLocations().get(0)),
+                    AddNewLocation.withTheValueOf(userAccount.getLocations()),
                     ClickOn.the(AddNewCustomerPage.NEXT_BUTTON)
             ));
         } else {
