@@ -7,6 +7,10 @@ import com.elavon.model.Location;
 import com.elavon.model.UserAccount;
 import net.serenitybdd.core.steps.Instrumented;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class AccountBuilder<T> {
 
     Class<T> aClass;
@@ -27,9 +31,12 @@ public class AccountBuilder<T> {
         return this;
     }
 
-    public AccountBuilder<T> withTheLocationOf(String location) {
-        String[] loc = location.split("-");
-        account.getLocations().add(new Location(UserLocationRule.valueOf(loc[0]), loc[1], loc[2]));
+    public AccountBuilder<T> withTheLocationOf(String... locations) {
+        List<String> locationList = new ArrayList<>(Arrays.asList(locations));
+        locationList.forEach(location -> {
+            String[] loc = location.split("-");
+            account.getLocations().add(new Location(UserLocationRule.valueOf(loc[0]), loc[1], loc[2]));
+        });
         return this;
     }
 
