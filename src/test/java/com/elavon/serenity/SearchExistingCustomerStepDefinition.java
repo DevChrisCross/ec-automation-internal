@@ -9,7 +9,6 @@ import com.elavon.setup.Application;
 import com.elavon.tasks.accessApplication.LoginTheAccount;
 import com.elavon.tasks.accessApplication.OpenTheApplication;
 import com.elavon.tasks.searchCustomer.SearchForTheAccount;
-import cucumber.api.PendingException;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -23,20 +22,25 @@ public class SearchExistingCustomerStepDefinition {
     @Before
     public void set_the_stage() {
         Cast cast = Cast.whereEveryoneCan(
-                Application.USER.usingAbilityTo(BrowseTheWeb.class),
-                Application.USER.usingAbilityTo(CallAnApi.class));
+                BrowseTheWeb.with(Application.generateBrowser()),
+                CallAnApi.at(Application.generateApi()));
         OnStage.setTheStage(cast);
     }
 
-    @Given("^that (.*) has search by (.*) with the (.*) filter that (.*) the criteria (.*) in the customer search$")
-    public void search_for_customer(String name,
-                                    SearchBy by,
-                                    SearchFilter filter,
-                                    SearchMatch match,
-                                    String searchTerm) throws Throwable {
+    @Given("^that (.*) decided to find a specific customer using the customer search$")
+    public void decided_to_search_customer(String name) throws Throwable {
         OnStage.theActorCalled(name).attemptsTo(
                 OpenTheApplication.on().thePageOf(HomeNavigation.LOGIN),
-                LoginTheAccount.as(UserType.INTERNAL),
+                LoginTheAccount.as(UserType.INTERNAL)
+        );
+    }
+
+    @When("^s?he searches for a criteria that (.*) the term (.*) using the (.*) filter shown by (.*) category$")
+    public void search_for_customer(SearchMatch match,
+                                    String searchTerm,
+                                    SearchFilter filter,
+                                    SearchBy by) throws Throwable {
+        OnStage.theActorInTheSpotlight().attemptsTo(
                 SearchForTheAccount.by(by)
                         .withThe(filter)
                         .that(match)
@@ -44,15 +48,10 @@ public class SearchExistingCustomerStepDefinition {
         );
     }
 
-    @When("^s?he looks at the search results table$")
-    public void heLooksAtTheSearchResultsTable() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @Then("^s?he should see that the search results matches the criteria of the filter$")
+    public void search_result_matches_filter() throws Throwable {
+//        throw new PendingException();
     }
 
-    @Then("^s?he should see that the search results matches the criteria of the filter$")
-    public void heShouldSeeThatTheSearchResultsMatchesTheCriteriaOfTheFilter() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
+
 }

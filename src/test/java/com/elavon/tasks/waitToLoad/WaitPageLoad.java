@@ -23,7 +23,7 @@ public class WaitPageLoad implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        WebDriverWait wait = new WebDriverWait(Application.BROWSER, Application.MAXIMUM_TIMEOUT);
+        WebDriverWait wait = new WebDriverWait(Application.browser, Application.MAXIMUM_TIMEOUT);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
 
         ExpectedCondition<Boolean> angularIsDefined = (webDriver) ->

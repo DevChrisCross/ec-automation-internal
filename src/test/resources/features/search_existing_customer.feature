@@ -3,7 +3,12 @@ Feature: Search existing customer
   As an Internal User
   I want to be able to search a customer
 
-  Scenario: Robert wants to search a customer with his preferred filter
-    Given that Robert has search by USER with the EMAIL filter that STARTS_WITH the criteria Christian in the customer search
-    When he looks at the search results table
+  Scenario Outline: Robert wants to search a customer with his preferred filter
+    Given that Robert decided to find a specific customer using the customer search
+    When he searches for a criteria that <match> the term <word> using the <filter> filter shown by <group> category
     Then he should see that the search results matches the criteria of the filter
+    Examples:
+      | match           | word                        | filter | group |
+      | CONTAINS        | christian                   | EMAIL  | USER  |
+      | EXACTLY_MATCHES | christian.molina@elavon.com | EMAIL  | USER  |
+

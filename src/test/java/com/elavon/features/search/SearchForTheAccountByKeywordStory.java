@@ -2,7 +2,6 @@ package com.elavon.features.search;
 
 import com.elavon.constants.HomeNavigation;
 import com.elavon.constants.user.UserType;
-import com.elavon.setup.Application;
 import com.elavon.tasks.accessApplication.LoginTheAccount;
 import com.elavon.tasks.accessApplication.OpenTheApplication;
 import com.elavon.tasks.cancellableTasks.createNewCustomer.AddTheNewUser;
@@ -18,7 +17,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.givenThat;
 @RunWith(SerenityRunner.class)
 public class SearchForTheAccountByKeywordStory {
 
-    private Actor anna = Application.USER;
+    private Actor anna = null;
 
     @Test
     public void search_results_should_show_the_search_term_in_the_title() {
