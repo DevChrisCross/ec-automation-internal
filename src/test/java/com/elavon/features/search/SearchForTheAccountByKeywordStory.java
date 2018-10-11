@@ -1,33 +1,38 @@
 package com.elavon.features.search;
 
 import com.elavon.constants.HomeNavigation;
-import com.elavon.constants.user.UserType;
-import com.elavon.tasks.accessApplication.LoginTheAccount;
+import com.elavon.setup.Application;
 import com.elavon.tasks.accessApplication.OpenTheApplication;
-import com.elavon.tasks.cancellableTasks.createNewCustomer.AddTheNewUser;
-import com.elavon.tasks.searchCustomer.ViewTheAccount;
+import com.google.common.collect.ImmutableMap;
+import io.restassured.RestAssured;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static net.serenitybdd.screenplay.GivenWhenThen.andThat;
+import java.util.Map;
+
 import static net.serenitybdd.screenplay.GivenWhenThen.givenThat;
 
 @RunWith(SerenityRunner.class)
 public class SearchForTheAccountByKeywordStory {
 
-    private Actor anna = null;
+    private Actor anna = Application.generateUser();
 
     @Test
     public void search_results_should_show_the_search_term_in_the_title() {
-
         givenThat(anna).wasAbleTo(OpenTheApplication.on().thePageOf(HomeNavigation.LOGIN));
-        andThat(anna).wasAbleTo(LoginTheAccount.as(UserType.INTERNAL));
+        Map<String, String> jsonMap = ImmutableMap.of("username", "c038975", "password", "Architech@4");
+        RestAssured.given()
+                .contentType("application/json")
+                .body(jsonMap)
+                .when().post("https://qa-elavonconnect.eu.global.prv/api/v1/user/authenticate/")
+                .then().statusCode(200);
+//        andThat(anna).wasAbleTo(LoginTheAccount.as(UserType.INTERNAL));
 //        andThat(anna).wasAbleTo(SearchForTheAccount.forTheCustomer(SearchBy.USER)
-        andThat(anna).wasAbleTo(AddTheNewUser.ofUser()
-                .typeOfAccount().byCloningTheUserOf("chris@creag").incompletely());
-        andThat(anna).wasAbleTo(ViewTheAccount.of("chris@creag"));
+//        andThat(anna).wasAbleTo(AddTheNewUser.ofUser()
+//                .typeOfAccount().byCloningTheUserOf("chris@creag").incompletely());
+//        andThat(anna).wasAbleTo(ViewTheAccount.of("chris@creag"));
 //        andThat(anna).wasAbleTo(Impersonate.theUserProfile());
 //        andThat(anna).wasAbleTo(End.theImpersonationOfTheUser());
 //        andThat(anna).wasAbleTo(Reset.thePasswordOfTheUserAccount().incompletely());

@@ -1,6 +1,7 @@
 package com.elavon.setup;
 
 import com.elavon.binder.PageBind;
+import io.github.bonigarcia.wdm.DriverManagerType;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.rest.abiities.CallAnApi;
@@ -33,7 +34,10 @@ public class Application {
     }
 
     public static WebDriver generateBrowser() {
-        browser = (new Driver(CONFIG.getString("environment.driver"))).getBrowser();
+        String driver = CONFIG.getString("environment.driver");
+        browser = (new Driver(
+                DriverManagerType.valueOf(driver.toUpperCase()),
+                CONFIG.getString("environment.binary." + driver))).getBrowser();
         if (CONFIG.getBoolean("environment.timeout.enabled")) {
             browser.manage().timeouts()
                     .implicitlyWait(CONFIG.getInt("environment.timeout.element"), TimeUnit.SECONDS)

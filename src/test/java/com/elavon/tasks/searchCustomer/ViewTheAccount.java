@@ -30,7 +30,7 @@ public class ViewTheAccount implements Task {
                         .withThe(SearchFilter.USER_ID)
                         .that(SearchMatch.EXACTLY_MATCHES)
                         .theWord(name),
-                ClickOn.the(CustomerSearchPage.FIRST_ROW_SEARCH_RESULT)
+                ClickOn.the(CustomerSearchPage.FIRST_SEARCH_RESULT)
         );
     }
 

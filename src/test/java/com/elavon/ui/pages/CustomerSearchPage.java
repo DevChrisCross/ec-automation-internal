@@ -25,11 +25,14 @@ public class CustomerSearchPage extends PageObject {
             .located(By.id("editFaqMenu"));
     public static final Target DOWNLOAD_RESULTS_OPTION = Target
             .the("download results option")
-            .located(By.xpath("//button[@ng-click=\"intSearch.download()\"]"));
+            .locatedBy("//button[@ng-click=\"intSearch.download()\"]");
 
-    public static final Target FIRST_ROW_SEARCH_RESULT = Target
-            .the("first row search result")
-            .located(By.xpath("//md-table-container/table/tbody/tr[1]"));
+    public static final Target SEARCH_RESULTS = Target
+            .the("search results")
+            .locatedBy("//md-table-container/table/tbody/tr");
+    public static final Target FIRST_SEARCH_RESULT = Target
+            .the("first search result")
+            .locatedBy("//md-table-container/table/tbody/tr[1]");
 
     public static class Filter {
 

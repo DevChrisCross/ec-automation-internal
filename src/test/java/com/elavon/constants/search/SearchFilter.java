@@ -9,5 +9,6 @@ public enum SearchFilter {
     LAST_NAME,
     TAX_ID,
     EMAIL,
-    USER_ID
+    USER_ID,
+    SALES_REPCODE
 }

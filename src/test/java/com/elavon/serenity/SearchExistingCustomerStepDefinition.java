@@ -48,9 +48,12 @@ public class SearchExistingCustomerStepDefinition {
         );
     }
 
-    @Then("^s?he should see that the search results matches the criteria of the filter$")
+    @Then("^s?he should see that the search results matches the (.*) criteria of the (.*) filter$")
     public void search_result_matches_filter() throws Throwable {
-//        throw new PendingException();
+        OnStage.theActorInTheSpotlight().should(
+//                seeThat()
+//                RestAssured.given().auth().basic()
+        );
     }
 
 
