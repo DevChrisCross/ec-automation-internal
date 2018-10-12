@@ -27,7 +27,7 @@ public class SearchForTheAccountByKeywordStory {
                 .contentType("application/json")
                 .body(jsonMap)
                 .when().post("https://qa-elavonconnect.eu.global.prv/api/v1/user/authenticate/")
-                .then().statusCode(200);
+                .then().assertThat().statusCode(200);
 //        andThat(anna).wasAbleTo(LoginTheAccount.as(UserType.INTERNAL));
 //        andThat(anna).wasAbleTo(SearchForTheAccount.forTheCustomer(SearchBy.USER)
 //        andThat(anna).wasAbleTo(AddTheNewUser.ofUser()

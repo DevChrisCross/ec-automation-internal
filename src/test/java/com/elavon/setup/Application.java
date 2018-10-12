@@ -4,6 +4,7 @@ import com.elavon.binder.PageBind;
 import io.github.bonigarcia.wdm.DriverManagerType;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+import net.serenitybdd.screenplay.actors.Cast;
 import net.serenitybdd.screenplay.rest.abiities.CallAnApi;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
@@ -14,10 +15,13 @@ import java.util.concurrent.TimeUnit;
 
 public class Application {
 
+    public static final String API;
     public static final int MAXIMUM_TIMEOUT;
     public static final PropertiesConfiguration CONFIG;
+
     public static Actor user;
     public static WebDriver browser;
+    public static Cast cast;
 
     static {
         Optional<PropertiesConfiguration> config = Optional.empty();
@@ -29,6 +33,7 @@ public class Application {
         }
 
         CONFIG = config.orElse(new PropertiesConfiguration());
+        API = CONFIG.getString("environment.url.restapi");
         MAXIMUM_TIMEOUT = CONFIG.getInt("environment.timeout.maximum");
         PageBind.loadBinders();
     }
@@ -51,11 +56,14 @@ public class Application {
         generateBrowser();
         user = (new Actor(CONFIG.getString("user.name")))
                 .can(BrowseTheWeb.with(browser))
-                .can(CallAnApi.at(generateApi()));
+                .can(CallAnApi.at(API));
         return user;
     }
 
-    public static String generateApi() {
-        return CONFIG.getString("environment.url.restapi");
+    public static Cast generateCast() {
+        cast = Cast.whereEveryoneCan(
+                BrowseTheWeb.with(generateBrowser()),
+                CallAnApi.at(API));
+        return cast;
     }
 }

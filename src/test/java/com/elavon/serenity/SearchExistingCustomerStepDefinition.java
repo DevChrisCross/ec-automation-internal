@@ -13,18 +13,12 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
-import net.serenitybdd.screenplay.actors.Cast;
 import net.serenitybdd.screenplay.actors.OnStage;
-import net.serenitybdd.screenplay.rest.abiities.CallAnApi;
 
 public class SearchExistingCustomerStepDefinition {
     @Before
     public void set_the_stage() {
-        Cast cast = Cast.whereEveryoneCan(
-                BrowseTheWeb.with(Application.generateBrowser()),
-                CallAnApi.at(Application.generateApi()));
-        OnStage.setTheStage(cast);
+        OnStage.setTheStage(Application.generateCast());
     }
 
     @Given("^that (.*) decided to find a specific customer using the customer search$")
