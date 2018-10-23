@@ -1,33 +1,43 @@
 package com.elavon.features.search;
 
-import com.elavon.constants.HomeNavigation;
-import com.elavon.setup.Application;
-import com.elavon.tasks.accessApplication.OpenTheApplication;
 import com.google.common.collect.ImmutableMap;
 import io.restassured.RestAssured;
+import io.restassured.http.Header;
 import net.serenitybdd.junit.runners.SerenityRunner;
-import net.serenitybdd.screenplay.Actor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.Map;
 
-import static net.serenitybdd.screenplay.GivenWhenThen.givenThat;
-
 @RunWith(SerenityRunner.class)
 public class SearchForTheAccountByKeywordStory {
 
-    private Actor anna = Application.generateUser();
+//    private Actor anna = Application.generateUser();
 
     @Test
     public void search_results_should_show_the_search_term_in_the_title() {
-        givenThat(anna).wasAbleTo(OpenTheApplication.on().thePageOf(HomeNavigation.LOGIN));
+//        givenThat(anna).wasAbleTo(OpenTheApplication.on().thePageOf(HomeNavigation.LOGIN));
         Map<String, String> jsonMap = ImmutableMap.of("username", "c038975", "password", "Architech@4");
-        RestAssured.given()
+        String a = RestAssured.given()
                 .contentType("application/json")
                 .body(jsonMap)
                 .when().post("https://qa-elavonconnect.eu.global.prv/api/v1/user/authenticate/")
+                .then().assertThat().statusCode(200).and().extract().response().header("authorization");
+        jsonMap = new ImmutableMap.Builder<String, String>()
+                .put("allowWildCard", "true")
+                .put("lim", "5")
+                .put("locale", "en_GB")
+                .put("page", "1")
+                .put("sort", "firstName")
+                .put("userEmail", "c%")
+                .build();
+        RestAssured.given()
+                .contentType("application/json")
+                .request().header(new Header("authorization", "bearer " + a))
+                .queryParams(jsonMap)
+                .when().get("https://qa-elavonconnect.eu.global.prv/api/v1/internalsearch/user")
                 .then().assertThat().statusCode(200);
+
 //        andThat(anna).wasAbleTo(LoginTheAccount.as(UserType.INTERNAL));
 //        andThat(anna).wasAbleTo(SearchForTheAccount.forTheCustomer(SearchBy.USER)
 //        andThat(anna).wasAbleTo(AddTheNewUser.ofUser()
